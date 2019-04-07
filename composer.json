@@ -1,0 +1,24 @@
+{
+  "name": "cuongpm/modularization",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [ "module", "crud", "editor", "repository", "html", "richtext", "text", "javascript", "laravel"],
+  "authors": [
+    {
+      "name": "Fight Light Diamond",
+      "email": "i.am.m.cuong@gmail.com",
+      "homepage": "http://cuongpm.portalbeanzvn.com/"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Modularization\\": "./"
+    }
+  },
+  "require": {
+    "intervention/image": "^2.3",
+    "prettus/l5-repository": "^2.6"
+  },
+  "minimum-stability": "dev"
+}
