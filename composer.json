@@ -1,5 +1,5 @@
 {
-  "name": "CuongPM/Modularization",
+  "name": "cuongpm/modularization",
   "license": "MIT",
   "type": "library",
   "keywords": [ "module", "crud", "editor", "repository", "html", "richtext", "text", "javascript", "laravel"],
