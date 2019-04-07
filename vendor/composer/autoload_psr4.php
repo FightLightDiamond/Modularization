@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ForceDB\\Magic\\' => array($baseDir . '/src'),
+    'Modularization\\' => array($baseDir . '/'),
 );
