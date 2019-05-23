@@ -18,6 +18,14 @@ Route::group(['namespace' => 'Modularization\Controllers', 'middleware' => ['web
     Route::get('repository/{table?}', 'RepositoryController@produce')->name('repository.produce');
     Route::get('policy/{table?}', 'PolicyController@produce')->name('policy.produce');
     Route::get('request/{table?}', 'RequestController@produce')->name('request.produce');
+
+    Route::namespace('Group')
+        ->group(function () {
+            Route::post('admin-render', 'AdminController@store')->name('admin.render');
+            Route::post('api-render', 'APIController@store')->name('api.render');
+            Route::post('all-render', 'AllController@store')->name('all.render');
+            Route::post('frontend-render', 'FrontendController@store')->name('frontend.render');
+        });
 });
 
 

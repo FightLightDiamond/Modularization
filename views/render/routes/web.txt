@@ -1,0 +1,13 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: cuongpm
+ * Date: 7/23/18
+ * Time: 10:23 AM
+ */
+
+Route::namespace('_namespace_\Http\Controllers')
+    ->middleware(['web'])
+    ->group( function () {
+
+    });

@@ -3,9 +3,8 @@
 namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\RequestFactory;
-use Modularization\Helpers\BuildPath;
 use Illuminate\View\View;
+use Modularization\Core\Factories\Http\Requests\RequestFactory;
 
 /**
  * Created by PhpStorm.
@@ -29,7 +28,7 @@ class RequestController extends Controller
 
     public function show($table = 'users')
     {
-        echo $patch = BuildPath::outRequest($table);
+        echo $patch = $this->factory->getSource($table);
         echo '<pre>';
         echo file_get_contents($patch);
     }

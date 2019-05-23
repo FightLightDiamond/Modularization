@@ -10,7 +10,7 @@ namespace Modularization\Core\Console\Commands;
 
 
 use Illuminate\Console\Command;
-use Modularization\Core\Factories\ConstantFactory;
+use Modularization\Core\Factories\Constants\ConstantFactory;
 
 class ConstDBCommand extends Command
 {

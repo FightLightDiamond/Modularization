@@ -2,8 +2,7 @@
 
 namespace Modularization\Controllers;
 
-use Modularization\Core\Factories\ConstantFactory;
-use Modularization\Helpers\CRUDPath;
+use Modularization\Core\Factories\Constants\ConstantFactory;
 
 /**
  * Created by PhpStorm.
@@ -28,8 +27,15 @@ class ConstantController
 
     public function show($database)
     {
-        echo $patch = CRUDPath::outConstant($database);
+        echo $patch = $this->outConstant($database);
         echo '<pre>';
         echo file_get_contents($patch);
     }
+
+
+    public function outConstant($table)
+    {
+        return base_path('Constants/' . $table . 'db.php');
+    }
+
 }

@@ -9,31 +9,62 @@
 namespace Modularization\Core\Components;
 
 
-use Modularization\Helpers\CRUDPath;
 use Modularization\Helpers\DecoHelper;
 
 class BaseComponent
 {
     protected $source;
 
-    public function getSourceUpdate($input)
-    {
-        return (CRUDPath::viewPath() . '/form/update/' . $input . '.html');
+    public function getViewPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/resources') . $path;
     }
 
-    public function getSourceCreate($input)
-    {
-        return (CRUDPath::viewPath() . '/form/create/' . $input . '.html');
+    public function getCtrlPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Http/Controllers') . $path;
     }
 
-    public function getSourceIndex()
-    {
-        return (CRUDPath::viewPath() . '/form/index.html');
+    public function getRequestPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Http/Requests') . $path;
     }
 
-    public function getSourceTable()
-    {
-        return (CRUDPath::viewPath() . '/form/table.html');
+    public function getViewComposerPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Http/ViewComposers') . $path;
+    }
+
+    public function getServicePath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Http/Services') . $path;
+    }
+
+    public function getRepositoryPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Http/Repositories') . $path;
+    }
+
+    public function getModelPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Models') . $path;
+    }
+
+    public function getConstPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/const') . $path;
+    }
+
+    public function getObserverPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Observers') . $path;
+    }
+
+    public function getPolicyPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Policies') . $path;
+    }
+
+    public function getServiceProviderPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/') . $path;
+    }
+
+    public function getRouterPath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/routes') . $path;
+    }
+
+    public function getResourcePath($path) {
+        return dirname(dirname(__DIR__)) . ('/views/render/Http/Resources') . $path;
     }
 
     public function replace($string, $data, $source)

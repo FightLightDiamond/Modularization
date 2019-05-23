@@ -3,9 +3,8 @@
 namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\PolicyFactory;
-use Modularization\Helpers\BuildPath;
 use Illuminate\View\View;
+use Modularization\Core\Factories\Polices\PolicyFactory;
 
 /**
  * Created by PhpStorm.
@@ -30,7 +29,7 @@ class PolicyController extends Controller
 
     public function show($table = 'users')
     {
-        echo $patch = BuildPath::outPolicy($table);
+        echo $patch = $this->factory->getSource($table);
         echo '<pre>';
         echo file_get_contents($patch);
     }

@@ -9,57 +9,22 @@
 namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\CtrlFactory;
-use Modularization\Core\Factories\FormFactory;
-use Modularization\Core\Factories\InterfaceFactory;
-use Modularization\Core\Factories\ModelFactory;
-use Modularization\Core\Factories\PolicyFactory;
-use Modularization\Core\Factories\RepositoryFactory;
-use Modularization\Core\Factories\RequestFactory;
+use Modularization\Core\Factories\Http\Controllers\CtrlFactory;
+use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
+use Modularization\Core\Factories\Http\Requests\RequestFactory;
+use Modularization\Core\Factories\Models\ModelFactory;
+use Modularization\Core\Factories\Polices\PolicyFactory;
+use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
+
 use Illuminate\Http\Request;
-use Modularization\Core\Factories\RouterFactory;
+use Modularization\Core\Factories\Routers\RouterFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
+use Modularization\Core\Factories\Http\Services\ServiceFactory;
+use Modularization\Core\Factories\Views\FormFactory;
 use Modularization\Facades\DBFa;
 
 class MagicController extends Controller
 {
-    protected $formFactory, $ctrlFactory, $interfaceFactory, $repositoryFactory, $modelFactory,
-        $requestFactory, $policyFactory, $serviceProviderFactory, $routerFactory;
-
-    public function __construct(
-        FormFactory $formFactory,
-        CtrlFactory $ctrlFactory,
-        InterfaceFactory $interfaceFactory,
-        RepositoryFactory $repositoryFactory,
-        ModelFactory $modelFactory,
-        RequestFactory $requestFactory,
-        PolicyFactory $policyFactory,
-        ServiceProviderFactory $serviceProviderFactory,
-        RouterFactory $routerFactory
-    )
-    {
-        $this->formFactory = $formFactory;
-        $this->ctrlFactory = $ctrlFactory;
-        $this->interfaceFactory = $interfaceFactory;
-        $this->repositoryFactory = $repositoryFactory;
-        $this->modelFactory = $modelFactory;
-        $this->requestFactory = $requestFactory;
-        $this->policyFactory = $policyFactory;
-        $this->serviceProviderFactory = $serviceProviderFactory;
-        $this->routerFactory = $routerFactory;
-    }
-
-    public function produce($table = 'users')
-    {
-        $this->formFactory->building($table);
-        $this->ctrlFactory->building($table);
-        $this->interfaceFactory->building($table);
-        $this->repositoryFactory->building($table);
-        $this->modelFactory->building($table);
-        $this->requestFactory->building(str_singular($table));
-        $this->policyFactory->building($table);
-    }
-
     public function create()
     {
         $tables = DBFa::table();
@@ -71,7 +36,14 @@ class MagicController extends Controller
                 }
             }
         }
-        return view('mod::module.create', compact('tables'));
+        $options = [
+            'controller', 'model', 'repository', 'view', 'request', 'policy', 'service', 'route', 'provider'
+        ];
+        $optionApis = [
+            'controller', 'model', 'repository', 'resource', 'request', 'policy', 'service', 'route', 'provider'
+        ];
+
+        return view('mod::module.create', compact('tables', 'options', 'optionApis'));
     }
 
     public function store(Request $request)
@@ -83,15 +55,34 @@ class MagicController extends Controller
         $namespace = $input['namespace'];
         $path = $input['path'];
 
-        $this->formFactory->building($input);
-        $this->ctrlFactory->building($input);
-        $this->interfaceFactory->building($table, $namespace, $path);
-        $this->repositoryFactory->building($table, $namespace, $path);
-        $this->modelFactory->building($table, $namespace, $path);
-        $this->requestFactory->building(str_singular($table), $namespace, $path);
-        $this->policyFactory->building($table, $namespace, $path);
-        $this->serviceProviderFactory->building($namespace, $path, $prefix);
-        $this->routerFactory->building($namespace, $path);
+        if($request->provider) {
+            app(ServiceProviderFactory::class)->building($namespace, $path, $prefix);
+        }
+        if($request->view) {
+            app(FormFactory::class)->building($input);
+        }
+        if($request->controller) {
+            app(CtrlFactory::class)->building($input);
+        }
+        if($request->repository) {
+            app(RepositoryFactory::class)->building($table, $namespace, $path);
+            app(InterfaceFactory::class)->building($table, $namespace, $path);
+        }
+        if($request->model) {
+            app(ModelFactory::class)->building($table, $namespace, $path);
+        }
+        if($request->request) {
+            app(RepositoryFactory::class)->building($table, $namespace, $path);
+        }
+        if($request->policy) {
+            app(PolicyFactory::class)->building($table, $namespace, $path);
+        }
+        if($request->route) {
+            app(RouterFactory::class)->building($namespace, $path);
+        }
+        if($request->service) {
+            app(ServiceFactory::class)->building($input);
+        }
 
         $mgs = $this->buildMessage($table);
         $menu = $this->buildMenu($table, $namespace);

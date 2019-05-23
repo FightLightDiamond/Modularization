@@ -9,9 +9,8 @@
 namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\MutatorFactory;
-use Modularization\Helpers\BuildPath;
 use Illuminate\Support\Facades\View;
+use Modularization\Core\Factories\Models\MutatorFactory;
 
 class MutatorController extends Controller
 {
@@ -30,9 +29,9 @@ class MutatorController extends Controller
 
     public function show($table = 'users')
     {
-        echo BuildPath::outMutator($table);
+        echo $path = $this->factory->getSource($table);
         echo '<pre>';
-        echo file_get_contents(BuildPath::outMutator($table));
+        echo file_get_contents($path);
     }
 
     public function view($table)

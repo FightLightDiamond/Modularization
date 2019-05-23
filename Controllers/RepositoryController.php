@@ -3,8 +3,7 @@
 namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\RepositoryFactory;
-use Modularization\Helpers\BuildPath;
+use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Illuminate\View\View;
 
 /**
@@ -30,7 +29,7 @@ class RepositoryController extends Controller
 
     public function show($table = 'users')
     {
-        echo $patch = BuildPath::outRepository($table);
+        echo $patch = $this->factory->getSource($table);
         echo '<pre>';
         echo file_get_contents($patch);
     }

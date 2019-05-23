@@ -3,7 +3,7 @@
 namespace Modularization\Core\Console\Commands;
 
 use Illuminate\Console\Command;
-use Modularization\Core\Factories\TranslationFactory;
+use Modularization\Core\Factories\Views\TranslationFactory;
 
 class TransDBCommand extends Command
 {

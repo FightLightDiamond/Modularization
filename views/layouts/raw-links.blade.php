@@ -11,20 +11,20 @@
         <li class="dropdown pull-right">
             <strong>{{ auth()->check() ? auth()->user()->email : '' }}</strong>: &nbsp;
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                <i class="entypo-user"></i>
+                <i class="fa fa-user"></i>
                 <i class="entypo-down-open-mini"></i>
             </a>
             <ul class="dropdown-menu pull-right">
                 {{--<li>--}}
                     {{--<a href="{{route('acl.profile')}}">--}}
-                        {{--<i class="entypo-user"></i> Profile--}}
+                        {{--<i class="fa fa-user"></i> Profile--}}
                     {{--</a>--}}
                 {{--</li>--}}
                 <li class="navbar-form">
                     <form method="post" action="{{route('logout')}}">
                         {!! csrf_field() !!}
                         <button class="btn btn-sm">
-                            <i class="entypo-logout right"></i>Log Out
+                            <i class="fa fa-sign-out right"></i>Log Out
                         </button>
                     </form>
                 </li>

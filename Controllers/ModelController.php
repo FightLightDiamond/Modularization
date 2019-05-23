@@ -9,9 +9,8 @@
 namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\ModelFactory;
-use Modularization\Helpers\BuildPath;
 use Illuminate\Support\Facades\View;
+use Modularization\Core\Factories\Models\ModelFactory;
 
 class ModelController extends Controller
 {
@@ -30,7 +29,7 @@ class ModelController extends Controller
 
     public function show($table = 'users')
     {
-        echo $patch = BuildPath::outModel($table);
+        echo $patch = $this->factory->getSource($table);
         echo '<pre>';
         echo file_get_contents($patch);
     }

@@ -9,8 +9,7 @@
 namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\AccessorFactory;
-use Modularization\Helpers\BuildPath;
+use Modularization\Core\Factories\Models\AccessorFactory;
 use Illuminate\Support\Facades\View;
 
 class AccessorController extends Controller
@@ -30,9 +29,9 @@ class AccessorController extends Controller
 
     public function show($table = 'users')
     {
-        echo BuildPath::outAccessor($table);
+        echo $this->factory->getSource($table);
         echo '<pre>';
-        echo file_get_contents(BuildPath::outAccessor($table));
+        echo file_get_contents($this->factory->getSource($table));
     }
 
     public function view($table)

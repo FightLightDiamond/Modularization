@@ -292,7 +292,7 @@ trait ModelsTrait
 
     public function getImage($img)
     {
-        return asset("storage{$img}");
+        return config('app.asset_url') . ("/storage{$img}");
     }
 
     public function getThumbPath($img, $sizes)

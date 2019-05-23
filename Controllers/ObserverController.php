@@ -2,8 +2,7 @@
 
 namespace Modularization\Controllers;
 
-use Modularization\Core\Factories\ObserverFactory;
-use Modularization\Helpers\CRUDPath;
+use Modularization\Core\Factories\Observers\ObserverFactory;
 use Illuminate\Support\Facades\View;
 
 /**
@@ -23,15 +22,7 @@ class ObserverController
 
     public function produce($table = 'users')
     {
-        $this->factory->building($table);
-        $this->show($table);
-    }
-
-    public function show($table = 'users')
-    {
-        echo $patch = CRUDPath::outObServer($table);
-        echo '<pre>';
-        echo file_get_contents($patch);
+        $this->factory->building($table);;
     }
 
     public function view($table)

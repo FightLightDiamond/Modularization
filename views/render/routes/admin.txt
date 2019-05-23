@@ -1,0 +1,15 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: cuongpm
+ * Date: 7/23/18
+ * Time: 10:23 AM
+ */
+
+Route::name('admin.')
+    ->namespace('_namespace_\Http\Controllers\Admin')
+    ->prefix('admin')
+    ->middleware(['web', 'admin'])
+    ->group( function () {
+
+    });

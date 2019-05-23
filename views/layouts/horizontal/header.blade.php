@@ -4,7 +4,7 @@
         <div class="navbar-brand">
             <a href="/" style="color: whitesmoke">
                 <strong>{{config('app.name')}}</strong>
-                {{--                <img src="{{asset('')}}assets/images/logo@2x.png" width="88" alt=""/>--}}
+                {{--                <img src="{{$asset_url}}/assets/images/logo@2x.png" width="88" alt=""/>--}}
             </a>
         </div>
         <!-- main menu -->
@@ -21,7 +21,7 @@
             </li>
             <li>
                 <a href="{{route('game.index')}}">
-                    <span><i class="entypo-play"></i> Game</span>
+                    <span><i class="fa fa-play"></i> Game</span>
                 </a>
             </li>
             <li>
@@ -58,12 +58,12 @@
                                 {{auth()->user()->last_name}}
                             </strong>
                         </span>
-                        <i class="entypo-user"></i>
+                        <i class="fa fa-user"></i>
                     </a>
                     {{--<ul class="dropdown-menu">--}}
                         {{--<li class="external">--}}
                             {{--<a href="{{route('acl.profile')}}">--}}
-                                {{--<i class="entypo-user"></i> {{__('auth.profile')}}--}}
+                                {{--<i class="fa fa-user"></i> {{__('auth.profile')}}--}}
                             {{--</a>--}}
                         {{--</li>--}}
                     {{--</ul>--}}
@@ -71,7 +71,7 @@
                 <li class="sep"></li>
                 <li>
                     <a onclick="$('#logoutForm').submit()">
-                        <i class="entypo-logout"></i>
+                        <i class="fa fa-sign-out"></i>
                     </a>
                     <form id="logoutForm" style="display: none" method="post" action="{{route('logout')}}" >
                         {!! csrf_field() !!}
@@ -79,20 +79,13 @@
                 </li>
             @else
                 <li>
-                    <a href="{{asset('login')}}"> {{__('auth.login')}} <span class="entypo-login"></span></a>
+                    <a href="{{asset('login')}}"> {{__('auth.login')}} <span class="fa fa-sign-in"></span></a>
                 </li>
                 <li class="sep"></li>
                 <li>
-                    <a href="{{asset('register')}}">{{__('auth.register')}} <span class="entypo-user-add"></span></a>
+                    <a href="{{asset('register')}}">{{__('auth.register')}} <span class="fa fa fa-user-plus"></span></a>
                 </li>
             @endif
-            <li class="visible-xs">
-                <div class="horizontal-mobile-menu visible-xs">
-                    <a href="#" class="with-animation">
-                        <i class="entypo-menu"></i>
-                    </a>
-                </div>
-            </li>
         </ul>
 
         <!-- mobile only -->

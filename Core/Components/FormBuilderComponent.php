@@ -10,7 +10,6 @@ namespace Modularization\Core\Components;
 
 use Modularization\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
-use Modularization\Helpers\CRUDPath;
 use Modularization\Ingredients\Form;
 
 class FormBuilderComponent extends BaseComponent
@@ -22,7 +21,12 @@ class FormBuilderComponent extends BaseComponent
     public function __construct(Form $form)
     {
         $this->ingredient = $form;
-        $this->source = file_get_contents(CRUDPath::inNgFormBuilder());
+        $this->source = file_get_contents($this->getSource());
+    }
+
+    private function getSource()
+    {
+        return $this->getViewPath('/ng/form/builder.txt');
     }
 
     private function getColumns($table)

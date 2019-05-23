@@ -18,8 +18,16 @@
             </div>
         </header>
         <ul id="main-menu" class="main-menu">
+            @include('test::layouts.menu')
+            @include('acl::layouts.menu')
+            @include('tut::layouts.menu')
+            @include('cpn::layouts.menu')
+            @include('eco::layouts.menu')
+            @include('en::layouts.menu')
+            @include('profile::layouts.menu')
+            @include('studio::layouts.menu')
             @include('mod::layouts.menu')
-{{--            @include('set::layouts.menu')--}}
+            @include('aml::layouts.menu')
         </ul>
     </div>
 </div>

@@ -10,31 +10,73 @@ namespace Modularization\Controllers;
 
 
 use Illuminate\Http\Request;
-use Modularization\Core\Factories\ApiCtrlFactory;
-use Modularization\Core\Factories\ResourceFactory;
+use Modularization\Core\Components\Http\Controllers\ApiCtrlComponent;
+use Modularization\Core\Factories\Http\Controllers\ApiCtrlFactory;
+use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
+use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
+use Modularization\Core\Factories\Http\Resources\ResourceFactory;
+use Modularization\Core\Factories\Http\Services\ServiceFactory;
+use Modularization\Core\Factories\Models\ModelFactory;
+use Modularization\Core\Factories\Polices\PolicyFactory;
+use Modularization\Core\Factories\Routers\RouteApiFactory;
+use Modularization\Core\Factories\Routers\RouterFactory;
+use Modularization\Core\Factories\ServiceProviderFactory;
 
 class ApiCtrlController
 {
-    private $ApiCtrlFactory, $resourceFactory;
+    private $ApiCtrlFactory, $resourceFactory, $routeApiFactory;
 
     public function __construct(
         ApiCtrlFactory $ApiCtrlFactory,
-        ResourceFactory $resourceFactory
+        ResourceFactory $resourceFactory,
+        RouteApiFactory $routeApiFactory
     )
     {
         $this->ApiCtrlFactory = $ApiCtrlFactory;
         $this->resourceFactory = $resourceFactory;
+        $this->routeApiFactory = $routeApiFactory;
     }
 
-    public function produce($input)
+    public function produce($input, $request)
     {
+        $prefix = $input['prefix'];
+        $input = $this->fix($input);
+        $table = $input['table'];
+        $namespace = $input['namespace'];
+        $path = $input['path'];
+
         $this->ApiCtrlFactory->building($input);
         $this->resourceFactory->building($input);
-    }
+        $this->routeApiFactory->building($input['namespace'], $input['path']);
 
-    public function create()
-    {
-        return view('mod::render.create');
+        if($request->resource) {
+            app(ResourceFactory::class)->building($input);
+        }
+        if($request->provider) {
+            app(ServiceProviderFactory::class)->building($namespace, $path, $prefix);
+        }
+        if($request->controller) {
+            app(ApiCtrlComponent::class)->building($input);
+        }
+        if($request->repository) {
+            app(RepositoryFactory::class)->building($table, $namespace, $path);
+            app(InterfaceFactory::class)->building($table, $namespace, $path);
+        }
+        if($request->model) {
+            app(ModelFactory::class)->building($table, $namespace, $path);
+        }
+        if($request->request) {
+            app(RepositoryFactory::class)->building($table, $namespace, $path);
+        }
+        if($request->policy) {
+            app(PolicyFactory::class)->building($table, $namespace, $path);
+        }
+        if($request->route) {
+            app(RouterFactory::class)->building($namespace, $path);
+        }
+        if($request->service) {
+            app(ServiceFactory::class)->building($input);
+        }
     }
 
     public function store(Request $request)
@@ -42,8 +84,8 @@ class ApiCtrlController
         $input = $request->all();
         $input = $this->fix($input);
         $table = $input['table'];
-        $this->produce($input);
-        $mgs = $this->buildMessage($table);
+        $this->produce($input, $request);
+        $mgs = $this->buildRoute($input['namespace']) . $this->buildMessage($table);
         session()->flash('success', $mgs);
         return redirect()->back()->withInput($request->all());
     }
@@ -57,8 +99,26 @@ class ApiCtrlController
         return $mgs;
     }
 
+    private function buildRoute($namespace) {
+        return "Route::name('api.')
+            ->namespace('{$namespace}\Http\Controllers\API')
+            ->prefix('api')
+            ->middleware(['api'])
+            ->group( function () {
+                
+            });";
+    }
+
     private function fix($input)
     {
+        $path = $input['path'];
+
+        try {
+            mkdir(base_path($path));
+        } catch (\Exception $exception) {
+            dump($exception);
+        }
+
         $input['table'] = isset($input['table']) ? $input['table'] : USERS_TB;
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
         $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App';

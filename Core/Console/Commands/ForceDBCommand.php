@@ -8,14 +8,15 @@
 
 namespace Modularization\Core\Console\Commands;
 
-use Modularization\Core\Factories\CtrlFactory;
-use Modularization\Core\Factories\FormFactory;
-use Modularization\Core\Factories\InterfaceFactory;
-use Modularization\Core\Factories\ModelFactory;
-use Modularization\Core\Factories\PolicyFactory;
-use Modularization\Core\Factories\RepositoryFactory;
-use Modularization\Core\Factories\RequestFactory;
+
+use Modularization\Core\Factories\Http\Controllers\CtrlFactory;
+use Modularization\Core\Factories\Http\Requests\RequestFactory;
+use Modularization\Core\Factories\Models\ModelFactory;
+use Modularization\Core\Factories\Polices\PolicyFactory;
+use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
+use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Illuminate\Console\Command;
+use Modularization\Core\Factories\Views\FormFactory;
 
 class ForceDBCommand extends Command
 {

@@ -1,5 +1,5 @@
 {
-  "name": "cuongpm/modularization",
+  "name": "CuongPM/Modularization",
   "license": "MIT",
   "type": "library",
   "keywords": [ "module", "crud", "editor", "repository", "html", "richtext", "text", "javascript", "laravel"],
@@ -11,13 +11,14 @@
     }
   ],
   "minimum-stability": "dev",
+  "require": {},
   "autoload": {
     "psr-4": {
       "Modularization\\": "./"
     }
   },
   "require": {
-    "intervention/image": "^2.3",
     "prettus/l5-repository": "^2.6"
-  }
+  },
+  "minimum-stability": "dev"
 }

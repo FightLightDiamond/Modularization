@@ -9,9 +9,8 @@
 namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\FormFactory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Modularization\Core\Factories\Views\FormFactory;
 
 class FormController extends Controller
 {

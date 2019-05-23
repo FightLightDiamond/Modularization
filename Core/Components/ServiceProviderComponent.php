@@ -8,13 +8,12 @@
 
 namespace Modularization\Core\Components;
 
-use Modularization\Helpers\CRUDPath;
 
 class ServiceProviderComponent  extends BaseComponent
 {
     public function __construct()
     {
-        $this->source = file_get_contents( CRUDPath::viewPath() . '/mvc/ServiceProvider.php');
+        $this->source = file_get_contents( $this->getServiceProviderPath( '/ServiceProvider.txt'));
     }
 
     protected function buildPrefix($prefix)
@@ -24,7 +23,6 @@ class ServiceProviderComponent  extends BaseComponent
 
     public function building($nameSpace, $prefix = '')
     {
-        dump($prefix);
         $this->buildNameSpace($nameSpace);
         $this->buildPrefix($prefix);
         return $this->source;

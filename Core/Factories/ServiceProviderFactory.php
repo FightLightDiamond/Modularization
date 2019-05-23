@@ -21,14 +21,21 @@ class ServiceProviderFactory
         $this->component = $component;
     }
 
-    public function produce()
+    private function produce()
     {
         $fileForm = fopen($this->outFile(), "w");
         fwrite($fileForm, $this->material);
     }
 
-    public function building($nameSpace = 'App', $path = 'app', $prefix)
+    public function building($nameSpace = 'App', $path = 'app', $prefix = '')
     {
+        if (!is_dir(base_path($path))) {
+            try {
+                mkdir(base_path($path));
+            } catch (\Exception $exception) {
+                dump($exception);
+            }
+        }
         $this->nameSpace = $nameSpace;
         $this->path = $path;
         if (!file_exists($this->outFile())) {

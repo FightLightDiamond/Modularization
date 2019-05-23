@@ -4,7 +4,6 @@ namespace Modularization\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modularization\Core\Factories\FormBuilderFactory;
-use Modularization\Helpers\CRUDPath;
 use Modularization\Interfaces\ControllerInterface;
 use Illuminate\Support\Facades\View;
 
@@ -30,11 +29,17 @@ class FormBuilderController extends Controller implements ControllerInterface
         $this->show($table);
     }
 
+    private function outNgFormBuilder($table, $path = 'app')
+    {
+        return base_path('tsc/form/' . $table . '.ts');
+    }
+
+
     public function show($table = 'users')
     {
-        echo resource_path(CRUDPath::outNgFormBuilder($table));
+        echo resource_path($this->outNgFormBuilder($table));
         echo '<pre>';
-        echo file_get_contents(CRUDPath::outNgFormBuilder($table));
+        echo file_get_contents($this->outNgFormBuilder($table));
     }
 
     public function view($table)

@@ -28,7 +28,7 @@ namespace Composer\Autoload;
  *     $loader->setUseIncludePath(true);
  *
  * In this example, if you try to use a class in the Symfony\Component
- * namespace or one of its children (Symfony\Component\Console for instance),
+ * namespace or one of its children (Symfony\Landing\Console for instance),
  * the autoloader will first look for the class under the component/
  * directory, and it will then fallback to the framework/ directory if not
  * found before giving up.
@@ -377,7 +377,7 @@ class ClassLoader
             $subPath = $class;
             while (false !== $lastPos = strrpos($subPath, '\\')) {
                 $subPath = substr($subPath, 0, $lastPos);
-                $search = $subPath . '\\';
+                $search = $subPath.'\\';
                 if (isset($this->prefixDirsPsr4[$search])) {
                     $pathEnd = DIRECTORY_SEPARATOR . substr($logicalPathPsr4, $lastPos + 1);
                     foreach ($this->prefixDirsPsr4[$search] as $dir) {

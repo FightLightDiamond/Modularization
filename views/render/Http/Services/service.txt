@@ -1,0 +1,64 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: cuongpm
+ * Date: 4/15/19
+ * Time: 1:14 PM
+ */
+
+namespace _namespace_\Http\Services;
+
+use _namespace_\Http\Repositories\_class_Repository;
+
+class _class_Service
+{
+    private $repository;
+
+    public function __construct(_class_Repository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function index($input)
+    {
+        return $this->repository->myPaginate($input);
+    }
+
+    public function create()
+    {
+        return [];
+    }
+
+    public function store($input)
+    {
+        return $this->repository->store($input);
+    }
+
+    public function show($id)
+    {
+       return $this->repository->find($id);
+    }
+
+    public function edit($id)
+    {
+       return $this->repository->find($id);
+    }
+
+    public function update($input, $id)
+    {
+        $_var_ = $this->repository->find($id);
+        if (empty($_var_)) {
+            return $_var_;
+        }
+        return $this->repository->change($input, $_var_);
+    }
+
+    public function destroy($id)
+    {
+        $_var_ = $this->repository->find($id);
+        if (empty($_var_)) {
+            return $_var_;
+        }
+        return $this->repository->delete($id);
+    }
+}
