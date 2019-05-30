@@ -11,14 +11,13 @@
     }
   ],
   "minimum-stability": "dev",
-  "require": {},
   "autoload": {
     "psr-4": {
       "Modularization\\": "./"
     }
   },
   "require": {
+    "intervention/image": "^2.3",
     "prettus/l5-repository": "^2.6"
-  },
-  "minimum-stability": "dev"
+  }
 }
