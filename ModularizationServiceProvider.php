@@ -64,6 +64,8 @@ class ModularizationServiceProvider extends ServiceProvider
                 ]);
             }
         }
+
+        view()->share('asset_url', config('app.asset_url'));
     }
 
     /**

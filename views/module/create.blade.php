@@ -19,8 +19,8 @@
                         <th>Table</th>
                         <th>API</th>
                         <th>Admin</th>
-                        <th>Frontend</th>
-                        <th>All</th>
+                        {{--<th>Frontend</th>--}}
+                        {{--<th>All</th>--}}
                     </tr>
                 </thead>
                 <tbody>
@@ -31,27 +31,27 @@
                             <td>
                                 <button class="btn btn-xs btn-default setTable" data-toggle="modal" data-target="#apiModal"
                                         data-table="{{$table}}">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="glyphicon glyphicon-plus"></i>
                                 </button>
                             </td>
                             <td>
                                 <button class="btn btn-xs btn-default setTable" data-toggle="modal" data-target="#adminModal"
                                         data-table="{{$table}}">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="glyphicon glyphicon-plus"></i>
                                 </button>
                             </td>
-                            <td>
-                                <button class="btn btn-xs btn-default setTable" data-toggle="modal" data-target="#frontendModal"
-                                        data-table="{{$table}}">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </td>
-                            <td>
-                                <button class="btn btn-xs btn-default setTable" data-toggle="modal" data-target="#allModal"
-                                        data-table="{{$table}}">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </td>
+                            {{--<td>--}}
+                                {{--<button class="btn btn-xs btn-default setTable" data-toggle="modal" data-target="#frontendModal"--}}
+                                        {{--data-table="{{$table}}">--}}
+                                    {{--<i class="glyphicon glyphicon-plus"></i>--}}
+                                {{--</button>--}}
+                            {{--</td>--}}
+                            {{--<td>--}}
+                                {{--<button class="btn btn-xs btn-default setTable" data-toggle="modal" data-target="#allModal"--}}
+                                        {{--data-table="{{$table}}">--}}
+                                    {{--<i class="glyphicon glyphicon-plus"></i>--}}
+                                {{--</button>--}}
+                            {{--</td>--}}
                         </tr>
                     @endforeach
                 </tbody>
@@ -60,8 +60,8 @@
 
         @include('mod::module.modals.api')
         @include('mod::module.modals.admin')
-        @include('mod::module.modals.all')
-        @include('mod::module.modals.frontend')
+        {{--@include('mod::module.modals.all')--}}
+        {{--@include('mod::module.modals.frontend')--}}
     </div>
 @endsection
 
