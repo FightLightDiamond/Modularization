@@ -8,8 +8,7 @@
 
 namespace Modularization\MultiInheritance;
 
-use App\Events\ImportLogEvent;
-use App\Models\Tag;
+
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -54,11 +53,7 @@ trait RepositoriesTrait
         Excel::load($path, function ($reader) use ($path) {
             $results = $reader->toArray();
             foreach ($results as $value) {
-                try {
-                    $this->create($value);
-                } catch (\Exception $e) {
-                    event(new ImportLogEvent($path, $e));
-                }
+                $this->create($value);
             }
         });
         unlink($path);
@@ -86,7 +81,7 @@ trait RepositoriesTrait
             ->count();
     }
 
-    public function filterAvg($input = [], $field = ID_COL)
+    public function filterAvg($input = [], $field = 'id')
     {
         return $this->makeModel()
             ->filter($input)
@@ -150,7 +145,7 @@ trait RepositoriesTrait
     {
         $tagIds = [];
         foreach ($tagNames as $tagName) {
-            $tag = app(Tag::class)->firstOrCreate(['name' => $tagName]);
+            $tag = $this->makeModel()->firstOrCreate(['name' => $tagName]);
             array_push($tagIds, $tag->id);
         }
         $data->tags()->sync($tagIds);

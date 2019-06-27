@@ -33,7 +33,7 @@ class ServiceProviderFactory
             try {
                 mkdir(base_path($path));
             } catch (\Exception $exception) {
-                dump($exception);
+                dump($exception->getMessage());
             }
         }
         $this->nameSpace = $nameSpace;

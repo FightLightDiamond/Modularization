@@ -36,14 +36,14 @@ class InterfaceFactory implements _Interface
             try {
                 mkdir(base_path($path . '/Http'));
             } catch (\Exception $exception) {
-                dump($exception);
+                dump($exception->getMessage());
             }
         }
         if (!is_dir(base_path($path . $this->sortPath))) {
             try {
                 mkdir(base_path($path . $this->sortPath));
             } catch (\Exception $exception) {
-                dump($exception);
+                dump($exception->getMessage());
             }
         }
         return base_path($path . $this->sortPath . FormatFa::formatAppName($table) . 'Repository.php');

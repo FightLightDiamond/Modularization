@@ -34,18 +34,19 @@ class ApiCtrlFactory implements _Interface
         try {
             mkdir(base_path($path . '/Http'));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
         try {
             mkdir(base_path($path . '/Http/Controllers'));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
         try {
             mkdir(base_path($path . '/Http/Controllers/API'));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
+
         return base_path($path . '/Http/Controllers/API/' . FormatFa::formatAppName($table) . 'ApiController.php');
     }
 

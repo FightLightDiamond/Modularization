@@ -22,6 +22,7 @@ use Modularization\Core\Factories\Routers\RouteApiFactory;
 use Modularization\Core\Factories\Routers\RouterFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
 
+
 class ApiCtrlController
 {
     private $ApiCtrlFactory, $resourceFactory, $routeApiFactory;
@@ -37,7 +38,7 @@ class ApiCtrlController
         $this->routeApiFactory = $routeApiFactory;
     }
 
-    public function produce($input, $request)
+    public function produce($input)
     {
         $prefix = $input['prefix'];
         $input = $this->fix($input);
@@ -49,32 +50,29 @@ class ApiCtrlController
         $this->resourceFactory->building($input);
         $this->routeApiFactory->building($input['namespace'], $input['path']);
 
-        if($request->resource) {
-            app(ResourceFactory::class)->building($input);
-        }
-        if($request->provider) {
+        if(isset($input['provider'])) {
             app(ServiceProviderFactory::class)->building($namespace, $path, $prefix);
         }
-        if($request->controller) {
+        if(isset($input['controller'])) {
             app(ApiCtrlComponent::class)->building($input);
         }
-        if($request->repository) {
+        if(isset($input['repository'])) {
             app(RepositoryFactory::class)->building($table, $namespace, $path);
             app(InterfaceFactory::class)->building($table, $namespace, $path);
         }
-        if($request->model) {
+        if(isset($input['model'])) {
             app(ModelFactory::class)->building($table, $namespace, $path);
         }
-        if($request->request) {
+        if(isset($input['request'])) {
             app(RepositoryFactory::class)->building($table, $namespace, $path);
         }
-        if($request->policy) {
+        if(isset($input['policy'])) {
             app(PolicyFactory::class)->building($table, $namespace, $path);
         }
-        if($request->route) {
+        if(isset($input['route'])) {
             app(RouterFactory::class)->building($namespace, $path);
         }
-        if($request->service) {
+        if(isset($input['service'])) {
             app(ServiceFactory::class)->building($input);
         }
     }
@@ -84,10 +82,12 @@ class ApiCtrlController
         $input = $request->all();
         $input = $this->fix($input);
         $table = $input['table'];
-        $this->produce($input, $request);
+
+        $this->produce($input);
         $mgs = $this->buildRoute($input['namespace']) . $this->buildMessage($table);
         session()->flash('success', $mgs);
-        return redirect()->back()->withInput($request->all());
+
+        return redirect()->back()->withInput($input);
     }
 
     private function buildMessage($table)
@@ -116,10 +116,10 @@ class ApiCtrlController
         try {
             mkdir(base_path($path));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
 
-        $input['table'] = isset($input['table']) ? $input['table'] : USERS_TB;
+        $input['table'] = isset($input['table']) ? $input['table'] : 'users';
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
         $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App';
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';

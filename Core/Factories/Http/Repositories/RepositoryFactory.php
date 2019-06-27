@@ -41,7 +41,7 @@ class RepositoryFactory implements _Interface
             try {
                 mkdir(base_path($path . $this->sortPath));
             } catch (\Exception $exception) {
-                dump($exception);
+                dump($exception->getMessage());
             }
         }
         return base_path($path . $this->sortPath . FormatFa::formatAppName($table) . 'RepositoryEloquent.php');

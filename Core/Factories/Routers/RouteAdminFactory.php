@@ -43,7 +43,7 @@ class RouteAdminFactory
             try {
                 mkdir(base_path("{$this->path}/routers"));
             } catch (\Exception $exception) {
-                dump($exception);
+                dump($exception->getMessage());
             }
         }
         return base_path("{$this->path}/routers/admin.php");

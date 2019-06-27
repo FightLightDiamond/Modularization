@@ -12,7 +12,7 @@ class _class_ extends Model implements Transformable
 {
     use TransformableTrait;
     use ModelsTrait;
-    use SoftDeletes;
+    //use SoftDeletes;
 
     public $table = '_table_';
     public $fillable = _fillable_;

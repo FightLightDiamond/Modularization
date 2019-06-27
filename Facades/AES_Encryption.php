@@ -13,14 +13,10 @@ define('AES_256_CBC', 'aes-256-cbc');
 class AES_Encryption
 {
     private $iv;
+
     public function __construct()
     {
         $this->iv = 'iH84aMMOeP8CJ+wn';
-//        dump(strlen($this->iv));
-//        $this->iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length(AES_256_CBC));
-
-        dump($this->iv, strlen($this->iv));
-//        $this->iv = env('APP_KEY', 'Gz31yW0LlDtzktk7CUz4TE8tyv68QQ+mBo6gZXZVr1s=');
     }
 
     public function encryption($data, $encryption_key)

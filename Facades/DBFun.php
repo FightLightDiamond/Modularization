@@ -25,7 +25,7 @@ class DBFun
     public function table($dbName = NULL)
     {
         if ($dbName == NULL) {
-            $dbName = env('DB_DATABASE') ? env('DB_DATABASE') : $dbName = config('database.connections.mysql.database');
+            $dbName = config('database.connections.mysql.database');
         }
         $dbTables = DB::select('SHOW TABLES');
         $database = 'Tables_in_' . $dbName;

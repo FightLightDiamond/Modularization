@@ -33,12 +33,12 @@ class ResourceFactory
         try {
             mkdir(base_path($path . '/Http'));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
         try {
             mkdir(base_path($path . '/Http/Resources'));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
         return base_path($path . '/Http/Resources/' . FormatFa::formatAppName($table) . 'Resource.php');
     }

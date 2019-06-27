@@ -82,7 +82,7 @@ class RenderController extends Controller
         try {
             mkdir(base_path($path));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
 
         $input['table'] = isset($input['table']) ? $input['table'] : USERS_TB;

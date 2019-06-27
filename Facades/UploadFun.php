@@ -9,7 +9,6 @@
 namespace Modularization\Facades;
 
 use Intervention\Image\Facades\Image;
-use Modularization\Core\Events\LogUploadEvent;
 
 class UploadFun
 {
@@ -26,7 +25,6 @@ class UploadFun
         $this->pathUploaded = $basePath . '/' . $this->fileName;
         chmod($this->pathUploaded, 0777);
         $path = str_replace(config('filesystems.disks.public.root'), "", $this->pathUploaded);
-//        event(new LogUploadEvent($path, "FILE"));
         return $path;
     }
 
@@ -51,7 +49,6 @@ class UploadFun
         $thumbPath = $this->getThumbPath($size);
         Image::make($this->pathUploaded)->resize($size[0], $size[1])->save($thumbPath);
         chmod($thumbPath, 0777);
-//        event(new LogUploadEvent($thumbPath, 'THUMB'));
     }
 
     private function getThumbPath($size)

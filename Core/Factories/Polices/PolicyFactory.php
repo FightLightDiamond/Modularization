@@ -33,7 +33,7 @@ class PolicyFactory implements _Interface
             try {
                 mkdir(base_path($path . '/Policies'));
             } catch (\Exception $exception) {
-                dump($exception);
+                dump($exception->getMessage());
             }
         }
         return base_path($path . '/Policies/' . FormatFa::formatAppName($table) . 'Policy.php');

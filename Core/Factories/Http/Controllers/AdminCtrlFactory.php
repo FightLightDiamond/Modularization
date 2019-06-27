@@ -32,17 +32,17 @@ class AdminCtrlFactory implements _Interface
         try {
             mkdir(base_path($path . '/Http'));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
         try {
             mkdir(base_path($path . '/Http/Controllers'));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
         try {
             mkdir(base_path($path . '/Http/Controllers/Admin'));
         } catch (\Exception $exception) {
-            dump($exception);
+            dump($exception->getMessage());
         }
 
         return base_path($path . '/Http/Controllers/Admin/' . FormatFa::formatAppName($table) . 'Controller.php');
