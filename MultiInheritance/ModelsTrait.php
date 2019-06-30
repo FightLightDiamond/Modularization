@@ -11,9 +11,12 @@ namespace Modularization\MultiInheritance;
 
 use App\User;
 use Modularization\Facades\FormatFa;
+use Uploader\UploadAble;
 
 trait ModelsTrait
 {
+    use UploadAble;
+
     //=====================RELATION============================>
 
     public function creator()
