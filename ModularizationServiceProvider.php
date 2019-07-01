@@ -21,6 +21,7 @@ use Modularization\Facades\FormatFun;
 use Modularization\Facades\InputFun;
 use Modularization\Facades\UploadFun;
 use Illuminate\Support\ServiceProvider;
+use Uploader\Providers\UploadServiceProvider;
 
 class ModularizationServiceProvider extends ServiceProvider
 {
@@ -82,5 +83,7 @@ class ModularizationServiceProvider extends ServiceProvider
         $this->app->bind('FormatFa', FormatFun::class);
         $this->app->bind('InputFa', InputFun::class);
         $this->app->bind('UploadFa', UploadFun::class);
+
+        $this->app->register(UploadServiceProvider::class);
     }
 }
