@@ -6,7 +6,7 @@
  * Time: 9:54 AM
  */
 
-namespace _namespace_\Http\Controllers\Api;
+namespace _namespace_\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use _namespace_\Http\Requests\_class_CreateRequest;

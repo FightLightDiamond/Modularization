@@ -6,7 +6,7 @@
  * Time: 9:54 AM
  */
 
-namespace _namespace_\Http\Controllers\Api;
+namespace _namespace_\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use _namespace_\Http\Requests\_class_CreateRequest;
@@ -16,7 +16,7 @@ use _namespace_\Repositories\_class_Repository;
 use Illuminate\Http\Request;
 use Modularization\MultiInheritance\ControllersTrait;
 
-class _class_ApiController  extends Controller
+class _class_APIController  extends Controller
 {
     use ControllersTrait;
     private $repository;

@@ -4,7 +4,7 @@ Route::group(['namespace' => 'Modularization\Controllers',
     'middleware' => config('modularization.middleware')
 ],
     function () {
-//    Route::post('api-ctrl', 'ApiCtrlController@store')->name('api-ctrl.produce');
+//    Route::post('api-ctrl', 'APICtrlController@store')->name('api-ctrl.produce');
 //    Route::get('ctrl/{table?}', 'CtrlController@produce')->name('ctrl.produce');
 //
 //    Route::get('/dbmagic/{table?}', 'MagicController@produce')->name('dbmagic.produce');

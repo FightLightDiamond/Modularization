@@ -11,7 +11,7 @@ namespace Modularization\Core\Components\Routers;
 
 use Modularization\Core\Components\BaseComponent;
 
-class RouterApiComponent  extends BaseComponent
+class RouterAPIComponent  extends BaseComponent
 {
     public function building($nameSpace)
     {

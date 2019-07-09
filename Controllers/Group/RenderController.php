@@ -9,7 +9,7 @@
 namespace Modularization\Controllers\Group;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Components\Http\Controllers\ApiCtrlComponent;
+use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
 use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Modularization\Core\Factories\Http\Requests\RequestFactory;
@@ -37,11 +37,11 @@ class RenderController extends Controller
         $options = [
             'controller', 'model', 'repository', 'view', 'request', 'policy', 'service', 'route', 'provider'
         ];
-        $optionApis = [
+        $optionAPIs = [
             'controller', 'model', 'repository', 'resource', 'request', 'policy', 'service', 'route', 'provider'
         ];
 
-        return view('mod::module.create', compact('tables', 'options', 'optionApis'));
+        return view('mod::module.create', compact('tables', 'options', 'optionAPIs'));
     }
 
     public function extraRender($input)

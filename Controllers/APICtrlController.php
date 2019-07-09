@@ -10,32 +10,32 @@ namespace Modularization\Controllers;
 
 
 use Illuminate\Http\Request;
-use Modularization\Core\Components\Http\Controllers\ApiCtrlComponent;
-use Modularization\Core\Factories\Http\Controllers\ApiCtrlFactory;
+use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
+use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
 use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Modularization\Core\Factories\Http\Resources\ResourceFactory;
 use Modularization\Core\Factories\Http\Services\ServiceFactory;
 use Modularization\Core\Factories\Models\ModelFactory;
 use Modularization\Core\Factories\Polices\PolicyFactory;
-use Modularization\Core\Factories\Routers\RouteApiFactory;
+use Modularization\Core\Factories\Routers\RouteAPIFactory;
 use Modularization\Core\Factories\Routers\RouterFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
 
 
-class ApiCtrlController
+class APICtrlController
 {
-    private $ApiCtrlFactory, $resourceFactory, $routeApiFactory;
+    private $APICtrlFactory, $resourceFactory, $routeAPIFactory;
 
     public function __construct(
-        ApiCtrlFactory $ApiCtrlFactory,
+        APICtrlFactory $APICtrlFactory,
         ResourceFactory $resourceFactory,
-        RouteApiFactory $routeApiFactory
+        RouteAPIFactory $routeAPIFactory
     )
     {
-        $this->ApiCtrlFactory = $ApiCtrlFactory;
+        $this->APICtrlFactory = $APICtrlFactory;
         $this->resourceFactory = $resourceFactory;
-        $this->routeApiFactory = $routeApiFactory;
+        $this->routeAPIFactory = $routeAPIFactory;
     }
 
     public function produce($input)
@@ -46,15 +46,15 @@ class ApiCtrlController
         $namespace = $input['namespace'];
         $path = $input['path'];
 
-        $this->ApiCtrlFactory->building($input);
+        $this->APICtrlFactory->building($input);
         $this->resourceFactory->building($input);
-        $this->routeApiFactory->building($input['namespace'], $input['path']);
+        $this->routeAPIFactory->building($input['namespace'], $input['path']);
 
         if(isset($input['provider'])) {
             app(ServiceProviderFactory::class)->building($namespace, $path, $prefix);
         }
         if(isset($input['controller'])) {
-            app(ApiCtrlComponent::class)->building($input);
+            app(APICtrlComponent::class)->building($input);
         }
         if(isset($input['repository'])) {
             app(RepositoryFactory::class)->building($table, $namespace, $path);
@@ -94,7 +94,7 @@ class ApiCtrlController
     {
         $name = ucfirst(camel_case(str_singular($table)));
         $route = kebab_case(camel_case(($table)));
-        $mgs = "Route::resource('{$route}' , '{$name}ApiController'); \n";
+        $mgs = "Route::resource('{$route}' , '{$name}APIController'); \n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
         return $mgs;
     }

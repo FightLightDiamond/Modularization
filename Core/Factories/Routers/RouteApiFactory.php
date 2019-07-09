@@ -9,14 +9,14 @@
 namespace Modularization\Core\Factories\Routers;
 
 
-use Modularization\Core\Components\Routers\RouterApiComponent;
+use Modularization\Core\Components\Routers\RouterAPIComponent;
 
-class RouteApiFactory
+class RouteAPIFactory
 {
     protected $component;
     private $nameSpace, $path, $material;
 
-    public function __construct(RouterApiComponent $component)
+    public function __construct(RouterAPIComponent $component)
     {
         $this->component = $component;
     }

@@ -9,15 +9,15 @@
 namespace Modularization\Core\Factories\Http\Controllers;
 
 
-use Modularization\Core\Components\Http\Controllers\ApiCtrlComponent;
+use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
 use Modularization\Core\Factories\_Interface;
 use Modularization\Facades\FormatFa;
 
-class ApiCtrlFactory implements _Interface
+class APICtrlFactory implements _Interface
 {
     protected $component;
 
-    public function __construct(ApiCtrlComponent $component)
+    public function __construct(APICtrlComponent $component)
     {
         $this->component = $component;
     }
@@ -47,7 +47,7 @@ class ApiCtrlFactory implements _Interface
             dump($exception->getMessage());
         }
 
-        return base_path($path . '/Http/Controllers/API/' . FormatFa::formatAppName($table) . 'ApiController.php');
+        return base_path($path . '/Http/Controllers/API/' . FormatFa::formatAppName($table) . 'APIController.php');
     }
 
     public function building($input)

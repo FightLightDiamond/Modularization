@@ -2,7 +2,8 @@
 
 namespace Modularization;
 
-use Illuminate\Support\Facades\Blade;
+use Faker\Generator;
+use Illuminate\Database\Eloquent\Factory;
 use Modularization\Console\Commands\TableName;
 use Modularization\Core\Console\Commands\ConstDBCommand;
 use Modularization\Core\Console\Commands\FileChange;
@@ -19,8 +20,9 @@ use Modularization\Facades\DBFun;
 use Modularization\Facades\FileFun;
 use Modularization\Facades\FormatFun;
 use Modularization\Facades\InputFun;
-use Modularization\Facades\UploadFun;
+
 use Illuminate\Support\ServiceProvider;
+use Uploader\Facades\UploadFun;
 use Uploader\Providers\UploadServiceProvider;
 
 class ModularizationServiceProvider extends ServiceProvider
@@ -45,26 +47,30 @@ class ModularizationServiceProvider extends ServiceProvider
             __DIR__ . '/views/vendor/layouts/alerts/success.blade.php' => resource_path('/views/layouts/alerts/success.blade.php'),
         ], 'modularization');
 
-//        if(env('APP_ENV') === 'local')
-        {
-            $this->publishes([
-                __DIR__ . '/config/modularization.php' => config_path('modularization.php'),
+        $this->publishes([
+            __DIR__ . '/config/modularization.php' => config_path('modularization.php'),
+        ]);
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                ForceDBCommand::class,
+                ConstDBCommand::class,
+                FileRemove::class,
+                FileChange::class,
+                TableColumn::class,
+                TableData::class,
+                TableName::class,
+                RenderRoute::class,
+                FileRename::class,
+                TransDBCommand::class,
             ]);
-            if ($this->app->runningInConsole()) {
-                $this->commands([
-                    ForceDBCommand::class,
-                    ConstDBCommand::class,
-                    FileRemove::class,
-                    FileChange::class,
-                    TableColumn::class,
-                    TableData::class,
-                    TableName::class,
-                    RenderRoute::class,
-                    FileRename::class,
-                    TransDBCommand::class,
-                ]);
-            }
         }
+
+        $this->app->singleton(Factory::class, function ($app){
+            $faker = $app->make(Generator::class);
+            $factories_path = __DIR__ . '/database/factories';
+            return Factory::construct($faker, $factories_path);
+        });
 
         view()->share('asset_url', config('app.asset_url'));
     }

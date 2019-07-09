@@ -6,7 +6,7 @@
  * Time: 4:02 PM
  */
 
-namespace Modularization\Core\Components\Api\Controllers;
+namespace Modularization\Core\Components\API\Controllers;
 
 use Modularization\Core\Components\BaseComponent;
 

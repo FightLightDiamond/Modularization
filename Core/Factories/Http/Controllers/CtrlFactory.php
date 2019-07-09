@@ -8,7 +8,7 @@
 
 namespace Modularization\Core\Factories\Http\Controllers;
 
-use Modularization\Core\Components\Api\Controllers\CtrlComponent;
+use Modularization\Core\Components\API\Controllers\CtrlComponent;
 use Modularization\Core\Factories\_Interface;
 use Modularization\Facades\FormatFa;
 

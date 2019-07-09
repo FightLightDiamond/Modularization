@@ -10,34 +10,34 @@ namespace Modularization\Controllers\Group;
 
 
 use Illuminate\Http\Request;
-use Modularization\Core\Components\Http\Controllers\ApiCtrlComponent;
-use Modularization\Core\Factories\Http\Controllers\ApiCtrlFactory;
+use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
+use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
 use Modularization\Core\Factories\Http\Resources\ResourceFactory;
-use Modularization\Core\Factories\Routers\RouteApiFactory;
+use Modularization\Core\Factories\Routers\RouteAPIFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
 
 class APIController extends RenderController
 {
-    private $ApiCtrlFactory, $resourceFactory, $routeApiFactory;
+    private $APICtrlFactory, $resourceFactory, $routeAPIFactory;
 
     public function __construct(
-        ApiCtrlFactory $ApiCtrlFactory,
+        APICtrlFactory $APICtrlFactory,
         ResourceFactory $resourceFactory,
-        RouteApiFactory $routeApiFactory
+        RouteAPIFactory $routeAPIFactory
     )
     {
-        $this->ApiCtrlFactory = $ApiCtrlFactory;
+        $this->APICtrlFactory = $APICtrlFactory;
         $this->resourceFactory = $resourceFactory;
-        $this->routeApiFactory = $routeApiFactory;
+        $this->routeAPIFactory = $routeAPIFactory;
     }
 
     public function produce($input)
     {
         $input = $this->fix($input);
 
-        $this->ApiCtrlFactory->building($input);
+        $this->APICtrlFactory->building($input);
         $this->resourceFactory->building($input);
-        $this->routeApiFactory->building($input['namespace'], $input['path']);
+        $this->routeAPIFactory->building($input['namespace'], $input['path']);
         $this->extraRender($input);
     }
 
@@ -57,7 +57,7 @@ class APIController extends RenderController
     {
         $name = ucfirst(camel_case(str_singular($table)));
         $route = kebab_case(camel_case(($table)));
-        $mgs = "Route::resource('{$route}' , '{$name}ApiController'); \n";
+        $mgs = "Route::resource('{$route}' , '{$name}APIController'); \n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
         return $mgs;
     }

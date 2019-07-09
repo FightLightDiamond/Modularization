@@ -39,11 +39,11 @@ class MagicController extends Controller
         $options = [
             'controller', 'model', 'repository', 'view', 'request', 'policy', 'service', 'route', 'provider'
         ];
-        $optionApis = [
+        $optionAPIs = [
             'controller', 'model', 'repository', 'resource', 'request', 'policy', 'service', 'route', 'provider'
         ];
 
-        return view('mod::module.create', compact('tables', 'options', 'optionApis'));
+        return view('mod::module.create', compact('tables', 'options', 'optionAPIs'));
     }
 
     public function store(Request $request)

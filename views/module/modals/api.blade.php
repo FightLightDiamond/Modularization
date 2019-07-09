@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="list-group">
-                            @foreach($optionApis as $option)
+                            @foreach($optionAPIs as $option)
                                 <li type="button" class="list-group-item">{{$option}}
                                     <input checked class="pull-right" type="checkbox" name="{{$option}}">
                                 </li>

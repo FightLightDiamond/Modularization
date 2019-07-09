@@ -11,7 +11,7 @@ namespace Modularization\Core\Components\Http\Controllers;
 
 use Modularization\Core\Components\BaseComponent;
 
-class ApiCtrlComponent extends  BaseComponent
+class APICtrlComponent extends  BaseComponent
 {
     public function building($input)
     {
@@ -30,6 +30,6 @@ class ApiCtrlComponent extends  BaseComponent
 
     private function getSource()
     {
-        return $this->getCtrlPath('/api/ApiCtrlController.txt');
+        return $this->getCtrlPath('/API/APICtrlController.txt');
     }
 }

@@ -32,14 +32,14 @@ class BuildPath
         return base_path($path . '/Http/Controllers/' . FormatFa::formatAppName($table) . 'Controller.php');
     }
 
-    static function inControllerApi()
+    static function inControllerAPI()
     {
-        return (CRUDPath::viewPath() . '/api/ApiCtrlController.php');
+        return (CRUDPath::viewPath() . '/api/APICtrlController.php');
     }
 
-    static function outControllerApi($table, $path = 'app')
+    static function outControllerAPI($table, $path = 'app')
     {
-        return base_path($path . '/Http/Controllers/Api/' . FormatFa::formatAppName($table) . 'ApiController.php');
+        return base_path($path . '/Http/Controllers/API/' . FormatFa::formatAppName($table) . 'APIController.php');
     }
 
     static function inViewComposer()

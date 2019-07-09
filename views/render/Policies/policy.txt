@@ -4,7 +4,7 @@ namespace _namespace_\Policies;
 
 use _namespace_\Models\_class_;
 use ACL\Http\Repositories\PermissionRepository;
-use ACL\Http\Repositories\Repositories\RoleRepository;
+use ACL\Http\Repository\RoleRepository;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
