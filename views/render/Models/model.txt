@@ -17,16 +17,6 @@ class _class_ extends Model implements Transformable
     public $table = '_table_';
     public $fillable = _fillable_;
 
-    //public function scopeFilter($query, $input)
-    //{
-        //foreach ($this->fillable as $value) {
-            //if (isset($input[$value])) {
-                //$query->where($value, $input[$value]);
-            //}
-        //}
-        //return $query;
-    //}
-
     public function scopeFilter($query, $params)
     {
         foreach ($params as $field => $value) {
@@ -50,10 +40,10 @@ class _class_ extends Model implements Transformable
                 continue;
             }
 
-            //if (key_exists($field, $this->filterable)) {
-                //$query->where($this->table . '.' . $this->filterable[$field], $value);
-                //continue;
-            //}
+            if (key_exists($field, $this->filterable)) {
+                $query->where($this->table . '.' . $this->filterable[$field], $value);
+                continue;
+            }
         }
 
         return $query;

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
              <pre>
-                {!! session()->pull('success') !!}
+                {!! session('moduleContent') !!}
             </pre>
         </div>
 

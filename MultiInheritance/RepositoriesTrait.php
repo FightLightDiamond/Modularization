@@ -95,6 +95,14 @@ trait RepositoriesTrait
             ->first();
     }
 
+    public function filterLookFirst($input = [])
+    {
+        return $this->makeModel()
+            ->filter($input)
+            ->lockForUpdate()
+            ->first();
+    }
+
     public function filterOneList($input = [], $field = 'id')
     {
         return $this->makeModel()

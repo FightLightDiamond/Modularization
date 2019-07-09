@@ -1,14 +1,14 @@
 <?php
 
 Route::group(['namespace' => 'Modularization\Controllers',
-    'middleware' => config('modularization.middleware')
+    'middleware' => config('modularization.middleware', 'web')
 ],
     function () {
 //    Route::post('api-ctrl', 'APICtrlController@store')->name('api-ctrl.produce');
 //    Route::get('ctrl/{table?}', 'CtrlController@produce')->name('ctrl.produce');
 //
 //    Route::get('/dbmagic/{table?}', 'MagicController@produce')->name('dbmagic.produce');
-    Route::get('module/create', 'MagicController@create')->name('dbmagic.create');
+    Route::get('module/create', 'MagicController@create')->name('module.create');
 //    Route::post('module-curl', 'MagicController@store')->name('dbmagic.store');
 //    Route::get('form/{table?}', 'FormController@produce')->name('form.produce');
 //    Route::get('mutator/{table?}', 'MutatorController@produce')->name('mutator.produce');

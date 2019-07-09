@@ -1,4 +1,0 @@
-if(isset($input[_var_]))
-{
-$query->where(_var_, $input[_var_]);
-}

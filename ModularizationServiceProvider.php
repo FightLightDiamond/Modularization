@@ -2,8 +2,6 @@
 
 namespace Modularization;
 
-use Faker\Generator;
-use Illuminate\Database\Eloquent\Factory;
 use Modularization\Console\Commands\TableName;
 use Modularization\Core\Console\Commands\ConstDBCommand;
 use Modularization\Core\Console\Commands\FileChange;
@@ -36,6 +34,7 @@ class ModularizationServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/views', 'mod');
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
+
         $this->publishes([
             __DIR__ . '/config/modularization.php' => config_path('modularization.php'),
             __DIR__ . '/views/vendor/layouts/alerts/confirm.blade.php' => resource_path('/views/layouts/alerts/confirm.blade.php'),
@@ -51,6 +50,8 @@ class ModularizationServiceProvider extends ServiceProvider
             __DIR__ . '/config/modularization.php' => config_path('modularization.php'),
         ]);
 
+        $this->mergeConfigFrom(__DIR__ . '/config/modularization.php', 'modularization');
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ForceDBCommand::class,
@@ -65,12 +66,6 @@ class ModularizationServiceProvider extends ServiceProvider
                 TransDBCommand::class,
             ]);
         }
-
-        $this->app->singleton(Factory::class, function ($app){
-            $faker = $app->make(Generator::class);
-            $factories_path = __DIR__ . '/database/factories';
-            return Factory::construct($faker, $factories_path);
-        });
 
         view()->share('asset_url', config('app.asset_url'));
     }

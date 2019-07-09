@@ -47,28 +47,30 @@ class APIController extends RenderController
         $input = $this->fix($input);
         $table = $input['table'];
         $this->produce($input);
-        $mgs = $this->buildRoute($input['namespace']) . $this->buildMessage($table);
-        session()->flash('success', $mgs);
+        $moduleContent = $this->buildRoute($input['namespace']) . "\n\n" . $this->buildMessage($table);
 
-        return redirect()->back()->withInput($request->all());
+        session()->flash('moduleContent', $moduleContent);
+
+        return redirect()->back()->withInput($input);
     }
 
     private function buildMessage($table)
     {
         $name = ucfirst(camel_case(str_singular($table)));
         $route = kebab_case(camel_case(($table)));
-        $mgs = "Route::resource('{$route}' , '{$name}APIController'); \n";
+        $mgs = "Route::resource('{$route}' , '{$name}APIController'); \n\n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
         return $mgs;
     }
 
     private function buildRoute($namespace) {
-        return "Route::name('api.')
-            ->namespace('{$namespace}\Http\Controllers\API')
-            ->prefix('api')
-            ->middleware(['api'])
-            ->group( function () {
-                
-            });";
+        return
+            "Route::name('api.')
+                ->namespace('{$namespace}\Http\Controllers\API')
+                ->prefix('api')
+                ->middleware(['api'])
+                ->group( function () {
+                    
+                });";
     }
 }

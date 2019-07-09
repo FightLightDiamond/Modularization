@@ -12,5 +12,5 @@ return [
     'content' => 'content',
     'extra_css' => 'css',
     'extra_js' => 'js',
-    'middleware' => ['web', 'auth:admin']
+    'middleware' => ['web']
 ];

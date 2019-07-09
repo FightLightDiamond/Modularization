@@ -1,4 +1,0 @@
-public function get_column_Attribute($value)
-{
-return ucfirst($value);
-}
