@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($tables as $k => $table)
+                    @forelse($tables as $k => $table)
                         <tr>
                             <td>{{$k + 1}}</td>
                             <td>{{$table}}</td>
@@ -53,7 +53,9 @@
                                 {{--</button>--}}
                             {{--</td>--}}
                         </tr>
-                    @endforeach
+                    @empty
+                        <p>No tables</p>
+                    @endforelse
                 </tbody>
             </table>
         </div>

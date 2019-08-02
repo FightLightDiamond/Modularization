@@ -10,6 +10,7 @@
 namespace Modularization\MultiInheritance;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Modularization\Facades\FormatFa;
 use Uploader\UploadAble;
 
@@ -21,12 +22,12 @@ trait ModelsTrait
 
     public function creator()
     {
-        return $this->belongsTo(User::class, CREATED_BY_COL);
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     public function updater()
     {
-        return $this->belongsTo(User::class, UPDATED_BY_COL);
+        return $this->belongsTo(User::class, 'updated_by');
     }
 
     public function creatorName($field = 'email')
@@ -86,33 +87,12 @@ trait ModelsTrait
         return $query;
     }
 
-    private $where = [];
-    private $whereIn = [];
-
-    public function scopeFilter($query, $input)
+    public function scopeMy($query, $field = 'user_id')
     {
-        foreach ($this->whereIn as $key => $value) {
-            if (isset($input[$value])) {
-                $query->whereIn($this->table . '.' . $key, $input[$value]);
-            }
+        if(in_array($field, $this->fillable)) {
+            return $query->where($this->table . '.' . $field, Auth::id());
         }
-        foreach ($this->where as $value) {
-            if (isset($input[$value])) {
-                $query->where($this->table . '.' . $value, $input[$value]);
-            }
-        }
+
         return $query;
     }
-
-//    public function getImage($img)
-//    {
-//        return config('app.asset_url') . ("/storage{$img}");
-//    }
-//
-//    public function getThumbPath($img, $sizes)
-//    {
-//        $sizeImage = '_' . implode('_', $sizes) . '.';
-//        $img = str_replace('.', $sizeImage, $img);
-//        return $this->getImage($img);
-//    }
 }

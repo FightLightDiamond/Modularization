@@ -38,7 +38,7 @@ class _class_RepositoryEloquent extends BaseRepository implements _class_Reposit
 
     public function store($input)
     {
-        $input[CREATED_BY_COL] = auth()->id();
+        $input['created_by'] = auth()->id();
         return $this->create($input);
     }
 
@@ -53,7 +53,7 @@ class _class_RepositoryEloquent extends BaseRepository implements _class_Reposit
 
     public function change($input, $data)
     {
-        $input[UPDATED_BY_COL] = auth()->id();
+        $input['updated_by'] = auth()->id();
         return $this->update($input, $data->id);
     }
 

@@ -32,25 +32,25 @@ class ModularizationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/views', 'mod');
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mod');
+        $this->loadRoutesFrom(__DIR__ . '/../routers/web.php');
 
         $this->publishes([
             __DIR__ . '/config/modularization.php' => config_path('modularization.php'),
-            __DIR__ . '/views/vendor/layouts/alerts/confirm.blade.php' => resource_path('/views/layouts/alerts/confirm.blade.php'),
-            __DIR__ . '/views/vendor/layouts/alerts/error.blade.php' => resource_path('/views/layouts/alerts/error.blade.php'),
-            __DIR__ . '/views/vendor/layouts/alerts/errors.blade.php' => resource_path('/views/layouts/alerts/errors.blade.php'),
-            __DIR__ . '/views/vendor/layouts/alerts/global.blade.php' => resource_path('/views/layouts/alerts/global.blade.php'),
-            __DIR__ . '/views/vendor/layouts/alerts/index.blade.php' => resource_path('/views/layouts/alerts/index.blade.php'),
-            __DIR__ . '/views/vendor/layouts/alerts/message.blade.php' => resource_path('/views/layouts/alerts/message.blade.php'),
-            __DIR__ . '/views/vendor/layouts/alerts/success.blade.php' => resource_path('/views/layouts/alerts/success.blade.php'),
+            __DIR__ . '/../resources/views/vendor/layouts/alerts/confirm.blade.php' => resource_path('/views/layouts/alerts/confirm.blade.php'),
+            __DIR__ . '/../resources/views/vendor/layouts/alerts/error.blade.php' => resource_path('/views/layouts/alerts/error.blade.php'),
+            __DIR__ . '/../resources/views/vendor/layouts/alerts/errors.blade.php' => resource_path('/views/layouts/alerts/errors.blade.php'),
+            __DIR__ . '/../resources/views/vendor/layouts/alerts/global.blade.php' => resource_path('/views/layouts/alerts/global.blade.php'),
+            __DIR__ . '/../resources/views/vendor/layouts/alerts/index.blade.php' => resource_path('/views/layouts/alerts/index.blade.php'),
+            __DIR__ . '/../resources/views/vendor/layouts/alerts/message.blade.php' => resource_path('/views/layouts/alerts/message.blade.php'),
+            __DIR__ . '/../resources/views/vendor/layouts/alerts/success.blade.php' => resource_path('/views/layouts/alerts/success.blade.php'),
         ], 'modularization');
 
         $this->publishes([
-            __DIR__ . '/config/modularization.php' => config_path('modularization.php'),
+            __DIR__ . '/../config/modularization.php' => config_path('modularization.php'),
         ]);
 
-        $this->mergeConfigFrom(__DIR__ . '/config/modularization.php', 'modularization');
+        $this->mergeConfigFrom(__DIR__ . '/../config/modularization.php', 'modularization');
 
         if ($this->app->runningInConsole()) {
             $this->commands([

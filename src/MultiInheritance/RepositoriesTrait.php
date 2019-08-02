@@ -10,7 +10,7 @@ namespace Modularization\MultiInheritance;
 
 
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
+
 
 trait RepositoriesTrait
 {
@@ -152,6 +152,7 @@ trait RepositoriesTrait
     public function tags($tagNames, $data)
     {
         $tagIds = [];
+
         foreach ($tagNames as $tagName) {
             $tag = $this->makeModel()->firstOrCreate(['name' => $tagName]);
             array_push($tagIds, $tag->id);

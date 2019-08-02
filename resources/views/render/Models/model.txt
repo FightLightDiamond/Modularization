@@ -2,9 +2,11 @@
 
 namespace _namespace_\Models;
 
+use Illuminate\Support\Str;
 use Modularization\MultiInheritance\ModelsTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -12,7 +14,6 @@ class _class_ extends Model implements Transformable
 {
     use TransformableTrait;
     use ModelsTrait;
-    use SoftDeletes;
 
     public $table = '_table_';
     public $fillable = _fillable_;
@@ -31,17 +32,17 @@ class _class_ extends Model implements Transformable
                 continue;
             }
 
-            if (empty($this->filterable) || !is_array($this->filterable)) {
-                continue;
-            }
+            //if (empty($this->filterable) || !is_array($this->filterable)) {
+              //  continue;
+            //}
 
-            if (in_array($field, $this->filterable)) {
-                $query->where($this->table . '.' . $field, $value);
-                continue;
-            }
+            //if (in_array($field, $this->filterable)) {
+                //$query->where($this->table . '.' . $field, $value);
+               // continue;
+           // }
 
-            if (key_exists($field, $this->filterable)) {
-                $query->where($this->table . '.' . $this->filterable[$field], $value);
+            if (key_exists($field, $this->fillable)) {
+                $query->where($this->table . '.' . $this->fillable, $value);
                 continue;
             }
         }
@@ -51,6 +52,7 @@ class _class_ extends Model implements Transformable
 
     public $fileUpload = ['image' => 1];
     protected $pathUpload = ['image' => '/images/_table_'];
+
     protected $thumbImage = [
         'image' => [
             '/thumbs/' => [

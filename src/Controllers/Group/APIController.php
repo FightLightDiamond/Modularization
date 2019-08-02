@@ -58,7 +58,7 @@ class APIController extends RenderController
     {
         $name = ucfirst(camel_case(str_singular($table)));
         $route = kebab_case(camel_case(($table)));
-        $mgs = "Route::resource('{$route}' , '{$name}APIController'); \n\n";
+        $mgs = "Route::resource('{$route}', '{$name}APIController'); \n\n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
         return $mgs;
     }
