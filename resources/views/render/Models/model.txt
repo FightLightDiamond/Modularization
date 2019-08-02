@@ -2,7 +2,7 @@
 
 namespace _namespace_\Models;
 
-use Illuminate\Support\Str;
+
 use Modularization\MultiInheritance\ModelsTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
