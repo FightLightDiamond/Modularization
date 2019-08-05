@@ -15,60 +15,65 @@ class BaseComponent
 {
     protected $source;
 
+    private function getPath()
+    {
+        return dirname(dirname(dirname(__DIR__))) . ('/resources/decorators');
+    }
+
     public function getViewPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/resources') . $path;
+        return $this->getPath() . $path;
     }
 
     public function getCtrlPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Controllers') . $path;
+        return $this->getPath() . ('Http/Controllers') . $path;
     }
 
     public function getRequestPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Requests') . $path;
+        return $this->getPath() . ('Http/Requests') . $path;
     }
 
     public function getViewComposerPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/ViewComposers') . $path;
+        return $this->getPath() . ('Http/ViewComposers') . $path;
     }
 
     public function getServicePath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Services') . $path;
+        return $this->getPath() . ('Http/Services') . $path;
     }
 
     public function getRepositoryPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Repositories') . $path;
+        return $this->getPath() . ('Http/Repositories') . $path;
     }
 
     public function getModelPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Models') . $path;
+        return $this->getPath() . ('Models') . $path;
     }
 
     public function getTestPatch($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Tests') . $path;
+        return $this->getPath() . ('Tests') . $path;
     }
 
     public function getConstPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/const') . $path;
+        return $this->getPath() . ('const') . $path;
     }
 
     public function getObserverPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Observers') . $path;
+        return $this->getPath() . ('Observers') . $path;
     }
 
     public function getPolicyPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Policies') . $path;
+        return $this->getPath() . ('Policies') . $path;
     }
 
     public function getServiceProviderPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/') . $path;
+        return $this->getPath() . $path;
     }
 
     public function getRouterPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/routes') . $path;
+        return $this->getPath() . ('routes') . $path;
     }
 
     public function getResourcePath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Resources') . $path;
+        return $this->getPath() . ('Http/Resources') . $path;
     }
 
     public function replace($string, $data, $source)
