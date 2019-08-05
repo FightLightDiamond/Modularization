@@ -17,11 +17,11 @@ class BaseComponent
 
     private function getPath()
     {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/decorators');
+        return dirname(dirname(dirname(__DIR__))) . ('/resources/decorators/');
     }
 
     public function getViewPath($path) {
-        return $this->getPath() . $path;
+        return $this->getPath() . 'resources' . $path;
     }
 
     public function getCtrlPath($path) {
