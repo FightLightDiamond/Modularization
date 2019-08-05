@@ -40,6 +40,7 @@ class AdminController extends RenderController
         $menu = $this->buildMenu($table, $namespace);
         session()->flash('success', $mgs);
         session()->flash('global', $menu);
+
         return redirect()->back()->withInput($request->all());;
     }
 
@@ -49,6 +50,7 @@ class AdminController extends RenderController
         $route = kebab_case(camel_case(($table)));
         $mgs = "Route::resource('{$route}' , '{$name}Controller'); \n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
+
         return $mgs;
     }
 
@@ -56,6 +58,7 @@ class AdminController extends RenderController
     {
         $name = (camel_case(($table)));
         $route = kebab_case(camel_case(($table)));
+
         return "<li class=\"has-sub root-level\" id=\"{$namespace}Menu\">
             <a>
                 <i class=\"fa fa-file\"></i>
@@ -70,5 +73,4 @@ class AdminController extends RenderController
             </ul>
         </li>";
     }
-
 }

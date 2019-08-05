@@ -32,6 +32,7 @@ class DecoHelper
     const namespace = '_namespace_';
     const MESSAGE = '_message_';
     const OBSERVER_NAMESPACE = 'App\Observers';
+    const PARAMS = '_params_';
     const REPOSITORY = '_repository_';
     const ROUTE = '_route_';
     const RULE = '_rule_';

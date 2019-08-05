@@ -9,17 +9,16 @@
 namespace Modularization\Controllers\Group;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
 use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Modularization\Core\Factories\Http\Requests\RequestFactory;
-use Modularization\Core\Factories\Http\Resources\ResourceFactory;
 use Modularization\Core\Factories\Http\Services\ServiceFactory;
 use Modularization\Core\Factories\Models\ModelFactory;
 use Modularization\Core\Factories\Polices\PolicyFactory;
 use Modularization\Core\Factories\Routers\RouterFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
 use Modularization\Facades\DBFa;
+use Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
 
 class RenderController extends Controller
 {
@@ -27,6 +26,7 @@ class RenderController extends Controller
     {
         $tables = DBFa::table();
         $name = \request('name');
+
         if ($name) {
             foreach ($tables as $k => $table) {
                 if (strpos($table, $name) === false) {
@@ -34,11 +34,13 @@ class RenderController extends Controller
                 }
             }
         }
+
         $options = [
-            'controller', 'model', 'repository', 'view', 'request', 'policy', 'service', 'route', 'provider'
+            'controller', 'model', 'repository', 'view', 'request', 'policy', 'service', 'route', 'provider', 'test'
         ];
+
         $optionAPIs = [
-            'controller', 'model', 'repository', 'resource', 'request', 'policy', 'service', 'route', 'provider'
+            'controller', 'model', 'repository', 'resource', 'request', 'policy', 'service', 'route', 'provider', 'test'
         ];
 
         return view('mod::module.create', compact('tables', 'options', 'optionAPIs'));
@@ -73,6 +75,10 @@ class RenderController extends Controller
         if(request()->service) {
             app(ServiceFactory::class)->building($input);
         }
+        if(request()->test)
+        {
+            app(FeatureTestFactory::class)->building($input);
+        }
     }
 
     public function fix($input)
@@ -85,12 +91,13 @@ class RenderController extends Controller
             dump($exception->getMessage());
         }
 
-        $input['table'] = isset($input['table']) ? $input['table'] : USERS_TB;
+        $input['table'] = isset($input['table']) ? $input['table'] : 'user_id';
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
         $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App';
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
         $input['route'] = kebab_case(camel_case(($input['table'])));
         $input['viewFolder'] = kebab_case(camel_case(str_singular($input['table'])));
+
         return $input;
     }
 

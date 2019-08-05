@@ -67,6 +67,6 @@ class _class_ApiController  extends Controller
     public function destroy($id)
     {
         $data = $this->service->destroy($id);
-        return new _class_Resource($data);
+        return new _class_Resource([$data]);
     }
 }

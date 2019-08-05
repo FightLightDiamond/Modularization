@@ -39,11 +39,14 @@ class IndexFormComponent extends BaseComponent
         $this->buildNameSpace($input['namespace']);
         $this->buildContent();
         $this->buildExtend();
+
         $this->buildTable($input['table']);
         $this->buildRoute($input['route']);
         $this->buildView($input['table'], $input['prefix']);
+
         $this->buildVariable($input['table']);
         $this->buildVariables($input['table']);
+
         return $this->source;
     }
 }

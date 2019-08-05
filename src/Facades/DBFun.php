@@ -38,7 +38,7 @@ class DBFun
     public function seed($dbName = NULL)
     {
         ini_set('memory_limit', '-1');
-        $tableExcept = [ROLES_TB, ROLE_USER_TB, ROLE_PERMISSION_TB, ROLES_TB, USERS_TB, PROBE_LOGS_TB];
+        $tableExcept = [ROLES_TB, ROLE_USER_TB, ROLE_PERMISSION_TB, ROLES_TB, 'user_id', PROBE_LOGS_TB];
         if ($dbName == NULL) {
             $dbName = env('DB_DATABASE');
         }

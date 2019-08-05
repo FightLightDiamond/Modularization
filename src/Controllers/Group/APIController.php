@@ -31,23 +31,23 @@ class APIController extends RenderController
         $this->routeAPIFactory = $routeAPIFactory;
     }
 
-    public function produce($input)
+    public function produce($inputFix)
     {
-        $input = $this->fix($input);
+        $inputFix = $this->fix($inputFix);
 
-        $this->APICtrlFactory->building($input);
-        $this->resourceFactory->building($input);
-        $this->routeAPIFactory->building($input['namespace'], $input['path']);
-        $this->extraRender($input);
+        $this->APICtrlFactory->building($inputFix);
+        $this->resourceFactory->building($inputFix);
+        $this->routeAPIFactory->building($inputFix['namespace'], $inputFix['path']);
+        $this->extraRender($inputFix);
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
-        $input = $this->fix($input);
-        $table = $input['table'];
-        $this->produce($input);
-        $moduleContent = $this->buildRoute($input['namespace']) . "\n\n" . $this->buildMessage($table);
+        $inputFix = $this->fix($input);
+        $table = $inputFix['table'];
+        $this->produce($inputFix);
+        $moduleContent = $this->buildRoute($inputFix['namespace']) . "\n\n" . $this->buildMessage($table);
 
         session()->flash('moduleContent', $moduleContent);
 

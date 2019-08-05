@@ -29,6 +29,7 @@ class MagicController extends Controller
     {
         $tables = DBFa::table();
         $name = \request('name');
+
         if($name) {
             foreach ($tables as $k => $table) {
                 if (strpos($table, $name) === false) {
@@ -36,11 +37,12 @@ class MagicController extends Controller
                 }
             }
         }
+
         $options = [
-            'controller', 'model', 'repository', 'view', 'request', 'policy', 'service', 'route', 'provider'
+            'controller', 'model', 'repository', 'view', 'request', 'policy', 'service', 'route', 'provider', 'test'
         ];
         $optionAPIs = [
-            'controller', 'model', 'repository', 'resource', 'request', 'policy', 'service', 'route', 'provider'
+            'controller', 'model', 'repository', 'resource', 'request', 'policy', 'service', 'route', 'provider', 'test'
         ];
 
         return view('mod::module.create', compact('tables', 'options', 'optionAPIs'));
@@ -88,6 +90,7 @@ class MagicController extends Controller
         $menu = $this->buildMenu($table, $namespace);
         session()->flash('success', $mgs);
         session()->flash('global', $menu);
+
         return redirect()->back()->withInput($request->all());;
     }
 
@@ -104,6 +107,7 @@ class MagicController extends Controller
     {
         $name = (camel_case(($table)));
         $route = kebab_case(camel_case(($table)));
+
         return "<li class=\"has-sub root-level\" id=\"{$namespace}Menu\">
             <a>
                 <i class=\"fa fa-file\"></i>
@@ -121,12 +125,13 @@ class MagicController extends Controller
 
     private function fix($input)
     {
-        $input['table'] = isset($input['table']) ? $input['table'] : USERS_TB;
+        $input['table'] = isset($input['table']) ? $input['table'] : 'user_id';
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
         $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App';
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
         $input['route'] = kebab_case(camel_case(($input['table'])));
         $input['viewFolder'] = kebab_case(camel_case(str_singular($input['table'])));
+
         return $input;
     }
 }

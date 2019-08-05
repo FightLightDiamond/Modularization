@@ -43,6 +43,10 @@ class BaseComponent
         return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Models') . $path;
     }
 
+    public function getTestPatch($path) {
+        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Tests') . $path;
+    }
+
     public function getConstPath($path) {
         return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/const') . $path;
     }
@@ -83,9 +87,12 @@ class BaseComponent
         $this->working(DecoHelper::NAME, ucfirst(str_singular($table)));
     }
 
+    protected $class;
+
     protected function buildClassName($table, $tail = '')
     {
-        $this->working(DecoHelper::CLASSES, str_singular(ucfirst(camel_case($table))) . $tail);
+        $this->class = str_singular(ucfirst(camel_case($table)));
+        $this->working(DecoHelper::CLASSES,  $this->class . $tail);
     }
 
     protected function buildNameSpace($namespace = 'App')

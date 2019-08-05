@@ -1,0 +1,61 @@
+<?php
+
+namespace _namespace_\Tests\Feature;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class _class_Test extends TestCase
+{
+	protected $id;
+
+	public function __construct($name = null, array $data = [], $dataName = '')
+    {
+        parent::__construct();
+
+        $this->id = 1;
+    }
+
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function testIndex()
+    {
+        $response = $this->get(route('_route_.index'));
+
+        $response->assertStatus(200);
+    }
+
+    public function testStore()
+    {
+        $params = _params_;
+        $response = $this->post(route('_route_.store'), $params);
+
+        $response->assertStatus(200);
+    }
+
+    public function testShow()
+    {
+        $response = $this->get(route('_route_.show', $this->id));
+
+        $response->assertStatus(200);
+    }
+
+    public function testUpdate()
+    {
+        $params = _params_;
+        $response = $this->put(route('_route_.update', $this->id), $params);
+
+        $response->assertStatus(200);
+    }
+
+    public function testDestroy()
+    {
+        $response = $this->delete(route('_route_.destroy', $this->id));
+
+        $response->assertStatus(200);
+    }
+}
