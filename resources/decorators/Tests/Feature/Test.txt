@@ -8,13 +8,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class _class_Test extends TestCase
 {
-	protected $id;
-
 	public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct();
+    }
 
-        $this->id = 1;
+    private getId()
+    {
+        return _model_::value('id');
     }
 
     /**
@@ -34,12 +35,12 @@ class _class_Test extends TestCase
         $params = _params_;
         $response = $this->post(route('_route_.store'), $params);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
     }
 
     public function testShow()
     {
-        $response = $this->get(route('_route_.show', $this->id));
+        $response = $this->get(route('_route_.show', $this->getId()));
 
         $response->assertStatus(200);
     }
@@ -47,14 +48,14 @@ class _class_Test extends TestCase
     public function testUpdate()
     {
         $params = _params_;
-        $response = $this->put(route('_route_.update', $this->id), $params);
+        $response = $this->put(route('_route_.update', $this->getId()), $params);
 
         $response->assertStatus(200);
     }
 
     public function testDestroy()
     {
-        $response = $this->delete(route('_route_.destroy', $this->id));
+        $response = $this->delete(route('_route_.destroy', $this->getId()));
 
         $response->assertStatus(200);
     }

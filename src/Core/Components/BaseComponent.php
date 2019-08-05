@@ -16,59 +16,59 @@ class BaseComponent
     protected $source;
 
     public function getViewPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/resources') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/resources') . $path;
     }
 
     public function getCtrlPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Http/Controllers') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Controllers') . $path;
     }
 
     public function getRequestPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Http/Requests') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Requests') . $path;
     }
 
     public function getViewComposerPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Http/ViewComposers') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/ViewComposers') . $path;
     }
 
     public function getServicePath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Http/Services') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Services') . $path;
     }
 
     public function getRepositoryPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Http/Repositories') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Repositories') . $path;
     }
 
     public function getModelPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Models') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Models') . $path;
     }
 
     public function getTestPatch($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Tests') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Tests') . $path;
     }
 
     public function getConstPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/const') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/const') . $path;
     }
 
     public function getObserverPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Observers') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Observers') . $path;
     }
 
     public function getPolicyPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Policies') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Policies') . $path;
     }
 
     public function getServiceProviderPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/') . $path;
     }
 
     public function getRouterPath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/routes') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/routes') . $path;
     }
 
     public function getResourcePath($path) {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/views/render/Http/Resources') . $path;
+        return dirname(dirname(dirname(__DIR__))) . ('/decorators/Http/Resources') . $path;
     }
 
     public function replace($string, $data, $source)
