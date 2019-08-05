@@ -33,12 +33,10 @@ class FileChange extends Command
     }
 
     private $repeats = [
-        //'"assets' => "\"{{$asset_url}}/assets",
         '"{{asset(\'\')}}/' => "\"{{asset('')}}",
         '"css' => "\"{{asset('')}}/css",
         '"img' => "\"{{asset('')}}/img",
         '"js' => "\"{{asset('')}}/js",
-//         "\"{{asset('flat')}}" => "\"{{$asset_url}}/flat/",
     ];
 
     private function geLayouts()
