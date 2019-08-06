@@ -30,7 +30,12 @@ php artisan vendor:publish
 
 Access URL to build project: 
  ```angular2html
-/module/create
+{domain}/module/create
  ```
- 
+ Run unit test
+ ```angular2html
+./vendor/bin/phpunit {pathFolderModule}
+
+./vendor/bin/phpunit --filter {function}  packages/MAM/src/Tests/Feature/{testName.php}
+```
  ##
