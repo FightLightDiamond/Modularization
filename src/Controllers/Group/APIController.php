@@ -10,11 +10,9 @@ namespace Modularization\Controllers\Group;
 
 
 use Illuminate\Http\Request;
-use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
 use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
 use Modularization\Core\Factories\Http\Resources\ResourceFactory;
 use Modularization\Core\Factories\Routers\RouteAPIFactory;
-use Modularization\Core\Factories\ServiceProviderFactory;
 
 class APIController extends RenderController
 {
@@ -60,6 +58,7 @@ class APIController extends RenderController
         $route = kebab_case(camel_case(($table)));
         $mgs = "Route::resource('{$route}', '{$name}APIController'); \n\n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
+
         return $mgs;
     }
 
