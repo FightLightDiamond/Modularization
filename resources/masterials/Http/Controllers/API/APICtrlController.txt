@@ -1,0 +1,91 @@
+<?php
+
+namespace _namespace_\Http\Controllers\API;
+
+
+use App\Http\Controllers\Controller;
+use _namespace_\Http\Requests\_class_CreateRequest;
+use _namespace_\Http\Requests\_class_UpdateRequest;
+use _namespace_\Http\Resources\_class_Resource;
+use _namespace_\Http\Services\_class_Service;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+
+class _class_ApiController extends Controller
+{
+    private $service;
+
+    public function __construct(_class_Service $service)
+    {
+        $this->service = $service;
+    }
+
+    public function index(Request $request)
+    {
+        try {
+            $input = $request->all();
+            $data = $this->service->index($input);
+
+            return _class_Resource::collection($data);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
+        }
+    }
+
+    public function store(_class_CreateRequest $request)
+    {
+        try {
+            $input = $request->all();
+            $_var_ = $this->service->store($input);
+
+            return new _class_Resource($_var_);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
+        }
+    }
+
+    public function show($id)
+    {
+        try {
+            $_var_ = $this->service->show($id);
+
+            return new _class_Resource($_var_);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
+        }
+    }
+
+    public function edit($id)
+    {
+        try {
+            $_var_ = $this->service->edit($id);
+
+            return new _class_Resource($_var_);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
+        }
+    }
+
+    public function update(_class_UpdateRequest $request, $id)
+    {
+        $input = $request->all();
+        try {
+            $data = $this->service->update($input, $id);
+
+            return new _class_Resource($data);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $data = $this->service->destroy($id);
+
+            return new _class_Resource([$data]);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
+        }
+    }
+}

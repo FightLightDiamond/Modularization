@@ -47,18 +47,16 @@ class _class_Service
     public function update($input, $id)
     {
         $_var_ = $this->repository->find($id);
-        if (empty($_var_)) {
-            return $_var_;
-        }
+
         return $this->repository->change($input, $_var_);
     }
 
     public function destroy($id)
     {
         $_var_ = $this->repository->find($id);
-        if (empty($_var_)) {
-            return $_var_;
-        }
-        return $this->repository->delete($id);
+
+        $result =  $this->repository->delete($id);
+
+        return $_var_;
     }
 }

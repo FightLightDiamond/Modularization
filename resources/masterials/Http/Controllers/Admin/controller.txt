@@ -1,17 +1,16 @@
 <?php
 
-namespace _namespace_\Http\Controllers;
+namespace _namespace_\Http\Controllers\Admin;
+
 
 use App\Http\Controllers\Controller;
 use _namespace_\Http\Requests\_class_CreateRequest;
 use _namespace_\Http\Requests\_class_UpdateRequest;
-use _namespace_\Services\_class_Service;
+use _namespace_\Http\Services\_class_Service;
 use Illuminate\Http\Request;
-use Modularization\MultiInheritance\ControllersTrait;
 
-class _class_Controller extends Controller
+class _class_AController extends Controller
 {
-    use ControllersTrait;
     private $service;
 
     public function __construct(_class_Service $service)
@@ -22,7 +21,7 @@ class _class_Controller extends Controller
     public function index(Request $request)
     {
         $input = $request->all();
-        $data['_vars_'] = $this->service->myPaginate($input);
+        $data['_vars_'] = $this->service->index($input);
         if ($request->ajax()) {
             return view('_view_.table', $data)->render();
         }
@@ -44,7 +43,7 @@ class _class_Controller extends Controller
 
     public function show($id)
     {
-        $_var_ = $this->service->find($id);
+        $_var_ = $this->service->show($id);
         if (empty($_var_)) {
             session()->flash('error', 'not found');
             return back();
@@ -54,7 +53,7 @@ class _class_Controller extends Controller
 
     public function edit($id)
     {
-        $_var_ = $this->service->find($id);
+        $_var_ = $this->service->edit($id);
         if (empty($_var_)) {
             session()->flash('error', 'not found');
             return back();
@@ -65,23 +64,21 @@ class _class_Controller extends Controller
     public function update(_class_UpdateRequest $request, $id)
     {
         $input = $request->all();
-        $_var_ = $this->service->find($id);
+        $_var_ = $this->service->update($input, $id);
         if (empty($_var_)) {
             session()->flash('error', 'not found');
             return back();
         }
-        $this->service->change($input, $_var_);
         session()->flash('success', 'update success');
         return redirect()->route('_route_.index');
     }
 
     public function destroy($id)
     {
-        $_var_ = $this->service->find($id);
+        $_var_ = $this->service->destroy($id);
         if (empty($_var_)) {
             session()->flash('error', 'not found');
         }
-        $this->service->delete($id);
         session()->flash('success', 'delete success');
         return back();
     }

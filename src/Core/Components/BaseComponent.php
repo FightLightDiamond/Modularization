@@ -17,7 +17,7 @@ class BaseComponent
 
     private function getPath()
     {
-        return dirname(dirname(dirname(__DIR__))) . ('/resources/decorators/');
+        return dirname(dirname(dirname(__DIR__))) . ('/resources/masterials/');
     }
 
     public function getViewPath($path) {
