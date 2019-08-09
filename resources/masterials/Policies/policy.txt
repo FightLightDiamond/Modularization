@@ -37,6 +37,7 @@ class _class_Policy
         if ($this->permissionRepository->is('view__name_')) {
             return true;
         }
+
         return $user->id === $_table_->user_id;
     }
 
@@ -45,6 +46,7 @@ class _class_Policy
         if ($this->permissionRepository->is('create__name_')) {
             return true;
         }
+
         return false;
     }
 
@@ -53,6 +55,7 @@ class _class_Policy
         if ($this->permissionRepository->is('update__name_')) {
             return true;
         }
+
         return $user->id === $_table_->user_id;
     }
 
@@ -61,6 +64,7 @@ class _class_Policy
         if ($this->permissionRepository->is('delete__name_')) {
             return true;
         }
+
         return $user->id === $_table_->user_id;
     }
 

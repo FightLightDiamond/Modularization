@@ -29,11 +29,11 @@ class _class_RepositoryEloquent extends BaseRepository implements _class_Reposit
 
     public function myPaginate($input)
     {
-        isset($input[PER_PAGE]) ?: $input[PER_PAGE] = 10;
+        isset($input['per_page']) ?: $input['per_page'] = 10;
         return $this->makeModel()
             ->filter($input)
             ->orderBy('id', 'DESC')
-            ->paginate($input[PER_PAGE]);
+            ->paginate($input['per_page']);
     }
 
     public function store($input)

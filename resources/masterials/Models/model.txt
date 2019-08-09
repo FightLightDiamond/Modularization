@@ -32,15 +32,6 @@ class _class_ extends Model implements Transformable
                 continue;
             }
 
-            //if (empty($this->filterable) || !is_array($this->filterable)) {
-              //  continue;
-            //}
-
-            //if (in_array($field, $this->filterable)) {
-                //$query->where($this->table . '.' . $field, $value);
-               // continue;
-           // }
-
             if (key_exists($field, $this->fillable)) {
                 $query->where($this->table . '.' . $this->fillable, $value);
                 continue;
