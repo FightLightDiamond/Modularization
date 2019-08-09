@@ -25,6 +25,7 @@ class APICtrlComponent extends  BaseComponent
         $this->buildView($input['table'], $input['prefix']);
         $this->buildVariables($input['table']);
         $this->buildRoute($input['route']);
+
         return $this->source;
     }
 

@@ -53,7 +53,7 @@ class RenderController extends Controller
         $namespace = $input['namespace'];
         $path = $input['path'];
 
-        if(request()->provider) {
+        if(request()->provider && request()->provider !== 'App') {
             app(ServiceProviderFactory::class)->building($namespace, $path, $prefix);
         }
         if(request()->repository) {
@@ -69,7 +69,7 @@ class RenderController extends Controller
         if(request()->policy) {
             app(PolicyFactory::class)->building($table, $namespace, $path);
         }
-        if(request()->route) {
+        if(request()->route && request()->provider !== 'App') {
             app(RouterFactory::class)->building($namespace, $path);
         }
         if(request()->service) {
