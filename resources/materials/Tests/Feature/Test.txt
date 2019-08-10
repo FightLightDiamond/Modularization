@@ -2,12 +2,16 @@
 
 namespace _namespace_\Tests\Feature;
 
+
+use Modularization\src\MultiInheritance\TestTrait;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class _class_Test extends TestCase
 {
+	use TestTrait;
+
 	public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct();
@@ -25,7 +29,7 @@ class _class_Test extends TestCase
      */
     public function testIndex()
     {
-        $response = $this->get(route('api._route_.index'));
+        $response = $this->get(route('api._route_.index'), $this->getHeader());
 
         $response->assertStatus(200);
     }
@@ -33,14 +37,14 @@ class _class_Test extends TestCase
     public function testStore()
     {
         $params = _params_;
-        $response = $this->post(route('api._route_.store'), $params);
+        $response = $this->post(route('api._route_.store'), $params, $this->getHeader());
 
         $response->assertStatus(201);
     }
 
     public function testShow()
     {
-        $response = $this->get(route('api._route_.show', $this->getId()));
+        $response = $this->get(route('api._route_.show', $this->getId()), $this->getHeader());
 
         $response->assertStatus(200);
     }
@@ -48,14 +52,14 @@ class _class_Test extends TestCase
     public function testUpdate()
     {
         $params = _params_;
-        $response = $this->put(route('api._route_.update', $this->getId()), $params);
+        $response = $this->put(route('api._route_.update', $this->getId()), $params, $this->getHeader());
 
         $response->assertStatus(200);
     }
 
     public function testDestroy()
     {
-        $response = $this->delete(route('api._route_.destroy', $this->getId()));
+        $response = $this->delete(route('api._route_.destroy', $this->getId()), [], $this->getHeader());
 
         $response->assertStatus(200);
     }

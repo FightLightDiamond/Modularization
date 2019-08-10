@@ -7,7 +7,6 @@
 
 namespace Modularization\src\MultiInheritance;
 
-
 use Illuminate\Support\Facades\DB;
 
 trait TestTrait
@@ -20,35 +19,42 @@ trait TestTrait
         return $this->model->value('id');
     }
 
-    protected function getHeader()
+    protected function getHeader($auth = true)
     {
         if(!$this->token) {
             $this->token = $this->getToken();
         }
 
-        return [
+        $header = [
             'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $this->token,
         ];
+
+        if($auth) {
+            $header['Authorization'] = 'Bearer ' . $this->token;
+        }
+
+        return $header;
     }
 
     protected function getToken()
     {
-        $oauth_clients = $this->getOauthClient();
+        return cache()->remember('token', 999, function () {
+            $oauth_clients = $this->getOauthClient();
 
-        $params = [
-            "grant_type" => "password",
-            "client_id" => $oauth_clients->id,
-            "client_secret" => $oauth_clients->secret,
-            "refresh_token" => "refresh-token",
+            $params = [
+                "grant_type" => "password",
+                "client_id" => $oauth_clients->id,
+                "client_secret" => $oauth_clients->secret,
+                "refresh_token" => "refresh-token",
 
-            "username" => 'i.am.m.cuong@gmail.com',
-            "password" => "123123"
-        ];
+                "username" => 'i.am.m.cuong@gmail.com',
+                "password" => "123123"
+            ];
 
-        $res = $this->post('/oauth/token', $params);
+            $res = $this->post('/oauth/token', $params);
 
-        return json_decode($res->content(), true)['access_token'];
+            return json_decode($res->content(), true)['access_token'];
+        });
     }
 
     protected function getOauthClient()

@@ -9,6 +9,7 @@
 namespace Modularization\Controllers\Group;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Modularization\Core\Factories\Http\Requests\RequestFactory;
@@ -52,6 +53,7 @@ class RenderController extends Controller
         $table = $input['table'];
         $namespace = $input['namespace'];
         $path = $input['path'];
+        $class = $input['class'];
 
         if(request()->provider && request()->provider !== 'App') {
             app(ServiceProviderFactory::class)->building($namespace, $path, $prefix);
@@ -79,6 +81,9 @@ class RenderController extends Controller
         {
             app(FeatureTestFactory::class)->building($input);
         }
+
+        Artisan::call("make:seeder {$class}Seeder");
+        Artisan::call("make:factory {$class}Factory --model={$class}");
     }
 
     public function fix($input)
@@ -91,12 +96,14 @@ class RenderController extends Controller
             dump($exception->getMessage());
         }
 
-        $input['table'] = isset($input['table']) ? $input['table'] : 'user_id';
+        $input['table'] = isset($input['table']) ? $input['table'] : 'users';
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
         $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App';
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
         $input['route'] = kebab_case(camel_case(($input['table'])));
         $input['viewFolder'] = kebab_case(camel_case(str_singular($input['table'])));
+
+        $input['class'] = str_singular(ucfirst(camel_case($input['table'])));
 
         return $input;
     }
