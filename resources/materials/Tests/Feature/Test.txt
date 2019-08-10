@@ -3,7 +3,7 @@
 namespace _namespace_\Tests\Feature;
 
 
-use Modularization\src\MultiInheritance\TestTrait;
+use Modularization\MultiInheritance\TestTrait;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

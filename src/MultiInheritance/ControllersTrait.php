@@ -30,7 +30,7 @@ trait ControllersTrait
     {
         $ids = $request->get('ids');
         foreach ($ids as $key => $id) {
-            $this->repository->update([NO_COL => $key + 1], $id);
+            $this->repository->update(['no' => $key + 1], $id);
         }
         return response()->json(true);
     }

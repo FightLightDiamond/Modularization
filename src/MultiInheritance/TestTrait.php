@@ -5,7 +5,7 @@
  * Time: 10:10 AM
  */
 
-namespace Modularization\src\MultiInheritance;
+namespace Modularization\MultiInheritance;
 
 use Illuminate\Support\Facades\DB;
 
