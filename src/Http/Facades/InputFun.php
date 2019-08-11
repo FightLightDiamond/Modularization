@@ -6,7 +6,7 @@
  * Time: 4:08 PM
  */
 
-namespace Modularization\Facades;
+namespace Modularization\Http\Facades;
 
 
 class InputFun

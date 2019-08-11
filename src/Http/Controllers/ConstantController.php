@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Controllers;
+namespace Modularization\Http\Controllers;
 
 use Modularization\Core\Factories\Constants\ConstantFactory;
 

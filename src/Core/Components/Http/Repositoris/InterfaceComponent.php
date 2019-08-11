@@ -18,9 +18,9 @@ class InterfaceComponent extends BaseComponent
         $this->source = file_get_contents($this->getSource());
     }
 
-    public function building($table, $nameSpace)
+    public function building($table, $namespace)
     {
-        $this->buildNameSpace($nameSpace);
+        $this->buildNameSpace($namespace);
         $this->buildClassName($table);
         return $this->source;
     }

@@ -6,7 +6,7 @@
  * Time: 6:18 PM
  */
 
-namespace Modularization\Controllers;
+namespace Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modularization\Core\Factories\Http\Controllers\CtrlFactory;
@@ -21,7 +21,7 @@ use Modularization\Core\Factories\Routers\RouterFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
 use Modularization\Core\Factories\Http\Services\ServiceFactory;
 use Modularization\Core\Factories\Views\FormFactory;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 
 class MagicController extends Controller
 {

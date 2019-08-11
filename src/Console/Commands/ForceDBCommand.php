@@ -6,7 +6,7 @@
  * Time: 11:25 AM
  */
 
-namespace Modularization\Core\Console\Commands;
+namespace Modularization\Console\Commands;
 
 
 use Modularization\Core\Factories\Http\Controllers\CtrlFactory;
@@ -21,7 +21,7 @@ use Modularization\Core\Factories\Views\FormFactory;
 class ForceDBCommand extends Command
 {
 
-    protected $signature = 'render:template {table="users"}';
+    protected $signature = 'module:template {table="users"}';
     protected $formFactory, $ctrlFactory, $interfaceFactory, $repositoryFactory, $modelFactory,
         $requestFactory, $requestUFactory, $policyFactory;
 

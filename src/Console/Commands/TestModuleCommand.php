@@ -7,14 +7,14 @@ use Modularization\Http\Facades\DBFa;
 use Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
 use Modularization\src\Helpers\BuildInput;
 
-class TestResetCommand extends Command
+class TestModuleCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'module:test {table} {--namespace="App"}  {--path="app"}';
+    protected $signature = 'module:test {table?} {--namespace=}  {--path=tests/Feature/}';
 
     /**
      * The console command description.

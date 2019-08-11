@@ -8,7 +8,7 @@
 
 namespace Modularization\Helpers;
 
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class BuildPath
 {

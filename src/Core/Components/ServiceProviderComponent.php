@@ -21,9 +21,9 @@ class ServiceProviderComponent  extends BaseComponent
         $this->working('_prefix_', "'$prefix'");
     }
 
-    public function building($nameSpace, $prefix = '')
+    public function building($namespace, $prefix = '')
     {
-        $this->buildNameSpace($nameSpace);
+        $this->buildNameSpace($namespace);
         $this->buildPrefix($prefix);
         return $this->source;
     }

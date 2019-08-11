@@ -9,7 +9,7 @@
 namespace Modularization\Core\Components\Constants;
 
 use Modularization\Core\Components\BaseComponent;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
 
 class ConstantComponent extends BaseComponent

@@ -9,7 +9,7 @@
 namespace Modularization\Core\Components\Http\Requests;
 
 use Modularization\Core\Components\BaseComponent;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
 
 class RequestComponent extends BaseComponent
@@ -36,9 +36,9 @@ class RequestComponent extends BaseComponent
         $this->working(DecoHelper::MESSAGE, '');
     }
 
-    public function building($table, $action, $nameSpace = 'App')
+    public function building($table, $action, $namespace = 'App')
     {
-        $this->buildNameSpace($nameSpace);
+        $this->buildNameSpace($namespace);
         $this->buildRule($table);
         $this->buildMessage();
         $this->buildClassName(str_singular($table) . $action);

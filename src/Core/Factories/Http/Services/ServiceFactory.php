@@ -10,7 +10,7 @@ namespace Modularization\Core\Factories\Http\Services;
 
 use Modularization\Core\Components\Http\Services\ServiceComponent;
 use Modularization\Core\Factories\_Interface;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 class ServiceFactory implements _Interface
 {
     protected $component;

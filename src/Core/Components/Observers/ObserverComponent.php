@@ -29,7 +29,7 @@ class ObserverComponent extends BaseComponent
         $this->working(DecoHelper::DEPENDENCY, $dependency);
     }
 
-    public function building($table, $nameSpace = 'app')
+    public function building($table, $namespace = 'app')
     {
         $this->buildClassName($table);
         $this->buildDependency($table);

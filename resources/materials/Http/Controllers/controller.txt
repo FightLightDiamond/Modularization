@@ -1,12 +1,12 @@
 <?php
 
-namespace _namespace_\Http\Controllers;
+namespace _namespace_Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use _namespace_\Http\Requests\_class_CreateRequest;
-use _namespace_\Http\Requests\_class_UpdateRequest;
-use _namespace_\Http\Services\_class_Service;
+use _namespace_Http\Requests\_class_CreateRequest;
+use _namespace_Http\Requests\_class_UpdateRequest;
+use _namespace_Http\Services\_class_Service;
 use Illuminate\Http\Request;
 
 class _class_Controller extends Controller

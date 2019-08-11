@@ -6,7 +6,7 @@
  * Time: 2:29 PM
  */
 
-namespace Modularization\Controllers\Group;
+namespace Modularization\Http\Controllers\Group;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
@@ -18,8 +18,9 @@ use Modularization\Core\Factories\Models\ModelFactory;
 use Modularization\Core\Factories\Polices\PolicyFactory;
 use Modularization\Core\Factories\Routers\RouterFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
+use Modularization\src\Helpers\BuildInput;
 
 class RenderController extends Controller
 {
@@ -96,14 +97,16 @@ class RenderController extends Controller
             dump($exception->getMessage());
         }
 
-        $input['table'] = isset($input['table']) ? $input['table'] : 'users';
-        $input['path'] = isset($input['path']) ? $input['path'] : 'app';
-        $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App';
-        $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
-        $input['route'] = kebab_case(camel_case(($input['table'])));
-        $input['viewFolder'] = kebab_case(camel_case(str_singular($input['table'])));
+        $table = isset($input['table']) ? $input['table'] : 'users';
 
-        $input['class'] = str_singular(ucfirst(camel_case($input['table'])));
+        $input['table'] = $table;
+        $input['path'] = isset($input['path']) ? $input['path'] : 'app';
+        $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : "App\\";
+        $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
+        $input['route'] = BuildInput::route($table);
+        $input['viewFolder'] = kebab_case(camel_case(str_singular($table)));
+
+        $input['class'] = BuildInput::classe($table);
 
         return $input;
     }

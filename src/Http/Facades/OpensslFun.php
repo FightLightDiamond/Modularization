@@ -6,7 +6,7 @@
  * Time: 2:18 PM
  */
 
-namespace Modularization\Facades;
+namespace Modularization\Http\Facades;
 
 
 class OpensslFun implements OpensslInterface

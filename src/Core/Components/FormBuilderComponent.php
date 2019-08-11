@@ -8,7 +8,7 @@
 
 namespace Modularization\Core\Components;
 
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
 use Modularization\Ingredients\Form;
 

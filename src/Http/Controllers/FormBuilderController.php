@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Controllers;
+namespace Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modularization\Core\Factories\FormBuilderFactory;

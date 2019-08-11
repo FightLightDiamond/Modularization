@@ -10,7 +10,7 @@ namespace Modularization\Core\Factories\Models;
 
 use Modularization\Core\Components\Models\MutatorComponent;
 use Modularization\Core\Factories\_Interface;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class MutatorFactory implements _Interface
 {
@@ -35,9 +35,9 @@ class MutatorFactory implements _Interface
         return base_path($path . '/Models/' . FormatFa::formatAppName($table) . 'Mutator.php');
     }
 
-    public function building($table, $nameSpace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App', $path = 'app')
     {
-        $material = $this->component->building($table, $nameSpace);
+        $material = $this->component->building($table, $namespace);
         $this->produce($table, $material);
     }
 }

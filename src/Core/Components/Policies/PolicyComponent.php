@@ -24,9 +24,9 @@ class PolicyComponent extends BaseComponent
         $this->working(DecoHelper::NAME, str_singular($table));
     }
 
-    public function building($table, $nameSpace = 'app')
+    public function building($table, $namespace = 'app')
     {
-        $this->buildNameSpace($nameSpace);
+        $this->buildNameSpace($namespace);
         $this->buildName($table);
         $this->buildClassName($table);
         $this->buildTable($table);

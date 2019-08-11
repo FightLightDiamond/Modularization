@@ -10,7 +10,7 @@ namespace Modularization\Core\Factories\Http\Resources;
 
 
 use Modularization\Core\Components\Http\Resources\ResourceComponent;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class ResourceFactory
 {

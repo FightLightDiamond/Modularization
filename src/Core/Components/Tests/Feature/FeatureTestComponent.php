@@ -9,16 +9,11 @@ namespace Modularization\src\Core\Components\Tests\Feature;
 
 
 use Modularization\Core\Components\BaseComponent;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
 
 class FeatureTestComponent extends BaseComponent
 {
-    public function __construct()
-    {
-        $this->source = file_get_contents($this->getSource());
-    }
-
     private function getSource()
     {
         return $this->getTestPatch('/Feature/Test.txt');
@@ -45,15 +40,21 @@ class FeatureTestComponent extends BaseComponent
 
     protected $model;
 
-    protected function buildModel($nameSpace)
+    protected function buildModel($namespace)
     {
+        if(!$namespace) {
+            $namespace = "App\\";
+        }
+
         $class = $this->class;
-        $this->model = "\\{$nameSpace}\Models\\$class";
+        $this->model = "\\{$namespace}Models\\$class";
         $this->working(DecoHelper::MODEL, $this->model);
     }
 
     public function building($input)
     {
+        $this->source = file_get_contents($this->getSource());
+
         $table = $input['table'];
         $namespace = $input['namespace'];
         $route = $input['route'];

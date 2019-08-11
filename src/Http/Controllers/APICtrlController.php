@@ -6,7 +6,7 @@
  * Time: 9:42 AM
  */
 
-namespace Modularization\Controllers;
+namespace Modularization\Http\Controllers;
 
 
 use Illuminate\Http\Request;
@@ -101,7 +101,7 @@ class APICtrlController
 
     private function buildRoute($namespace) {
         return "Route::name('api.')
-            ->namespace('{$namespace}\Http\Controllers\API')
+            ->namespace('{$namespace}Http\Controllers\API')
             ->prefix('api')
             ->middleware(['api'])
             ->group( function () {

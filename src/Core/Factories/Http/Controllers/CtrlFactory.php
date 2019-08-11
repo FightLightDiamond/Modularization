@@ -10,7 +10,7 @@ namespace Modularization\Core\Factories\Http\Controllers;
 
 use Modularization\Core\Components\Http\Controllers\CtrlComponent;
 use Modularization\Core\Factories\_Interface;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class CtrlFactory implements _Interface
 {

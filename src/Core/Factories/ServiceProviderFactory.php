@@ -14,7 +14,7 @@ use Modularization\Core\Components\ServiceProviderComponent;
 class ServiceProviderFactory
 {
     protected $component;
-    private $nameSpace, $path, $material;
+    private $namespace, $path, $material;
 
     public function __construct(ServiceProviderComponent $component)
     {
@@ -27,7 +27,7 @@ class ServiceProviderFactory
         fwrite($fileForm, $this->material);
     }
 
-    public function building($nameSpace = 'App', $path = 'app', $prefix = '')
+    public function building($namespace = 'App', $path = 'app', $prefix = '')
     {
         if (!is_dir(base_path($path))) {
             try {
@@ -36,10 +36,10 @@ class ServiceProviderFactory
                 dump($exception->getMessage());
             }
         }
-        $this->nameSpace = $nameSpace;
+        $this->nameSpace = $namespace;
         $this->path = $path;
         if (!file_exists($this->outFile())) {
-            $this->material = $this->component->building($nameSpace, $prefix);
+            $this->material = $this->component->building($namespace, $prefix);
             $this->produce();
         }
     }

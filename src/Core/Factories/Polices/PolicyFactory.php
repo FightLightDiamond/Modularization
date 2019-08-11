@@ -10,7 +10,7 @@ namespace Modularization\Core\Factories\Polices;
 
 use Modularization\Core\Components\Policies\PolicyComponent;
 use Modularization\Core\Factories\_Interface;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class PolicyFactory implements _Interface
 {
@@ -39,9 +39,9 @@ class PolicyFactory implements _Interface
         return base_path($path . '/Policies/' . FormatFa::formatAppName($table) . 'Policy.php');
     }
 
-    public function building($table, $nameSpace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App', $path = 'app')
     {
-        $material = $this->component->building($table, $nameSpace);
+        $material = $this->component->building($table, $namespace);
         $this->produce($table, $material, $path);
     }
 }

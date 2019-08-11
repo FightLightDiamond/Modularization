@@ -6,7 +6,7 @@
  * Time: 2:27 PM
  */
 
-namespace Modularization\Controllers\Group;
+namespace Modularization\Http\Controllers\Group;
 
 use Illuminate\Http\Request;
 use Modularization\Core\Factories\Http\Controllers\AdminCtrlFactory;

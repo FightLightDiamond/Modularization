@@ -10,7 +10,7 @@ namespace Modularization\Core\Factories\Http\Controllers;
 
 use Modularization\Core\Components\Http\Controllers\AdminCtrlComponent;
 use Modularization\Core\Factories\_Interface;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class AdminCtrlFactory implements _Interface
 {

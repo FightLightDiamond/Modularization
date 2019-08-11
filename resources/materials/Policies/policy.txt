@@ -1,8 +1,8 @@
 <?php
 
-namespace _namespace_\Policies;
+namespace _namespace_Policies;
 
-use _namespace_\Models\_class_;
+use _namespace_Models\_class_;
 use ACL\Http\Repositories\PermissionRepository;
 use ACL\Http\Repository\RoleRepository;
 use App\User;

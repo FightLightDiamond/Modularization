@@ -11,7 +11,7 @@ namespace Modularization\MultiInheritance;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 use Uploader\UploadAble;
 
 trait ModelsTrait

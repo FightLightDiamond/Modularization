@@ -1,6 +1,6 @@
 <?php
 
-namespace _namespace_\Http\Repositories;
+namespace _namespace_Http\Repositories;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 

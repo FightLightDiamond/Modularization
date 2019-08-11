@@ -6,11 +6,11 @@
  * Time: 4:08 PM
  */
 
-namespace _namespace_\ViewComposer;
+namespace _namespace_ViewComposer;
 
 
 use Illuminate\View\View;
-use _namespace_\Repositories\_name_Repository;
+use _namespace_Repositories\_name_Repository;
 
 class _name_Composer
 {
@@ -23,6 +23,6 @@ class _name_Composer
 
     public function compose(View $view)
     {
-        return $view->with('_var_Compose', $this->repository->makeModel()->pluck(NAME_COL, ID_COL));
+        return $view->with('_var_Compose', $this->repository->makeModel()->pluck(NAME_COL, 'id'));
     }
 }

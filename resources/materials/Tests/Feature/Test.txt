@@ -1,6 +1,6 @@
 <?php
 
-namespace _namespace_\Tests\Feature;
+namespace _namespace_Tests\Feature;
 
 
 use Modularization\MultiInheritance\TestTrait;

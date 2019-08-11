@@ -9,7 +9,7 @@
 namespace Modularization\Core\Factories\Models;
 
 use Modularization\Core\Components\Models\AccessorComponent;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class AccessorFactory
 {

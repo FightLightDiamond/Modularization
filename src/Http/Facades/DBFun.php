@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Facades;
+namespace Modularization\Http\Facades;
 
 /**
  * Created by PhpStorm.

@@ -8,6 +8,8 @@
 
 namespace Modularization\Helpers;
 
+use Modularization\src\Helpers\BuildInput;
+
 class CRUDPath
 {
     static function viewPath() {
@@ -87,7 +89,7 @@ class CRUDPath
 
     static function outObServer($table, $path = 'app')
     {
-        return app_path('Observers/' . ucfirst(str_singular($table)) . 'Observer.php');
+        return app_path('Observers/' . BuildInput::classe($table) . 'Observer.php');
     }
 
     /**

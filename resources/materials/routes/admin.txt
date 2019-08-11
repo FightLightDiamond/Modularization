@@ -7,7 +7,7 @@
  */
 
 Route::name('admin.')
-    ->namespace('_namespace_\Http\Controllers\Admin')
+    ->namespace('_namespace_Http\Controllers\Admin')
     ->prefix('admin')
     ->middleware(['web', 'admin'])
     ->group( function () {

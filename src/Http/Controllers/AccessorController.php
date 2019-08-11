@@ -6,7 +6,7 @@
  * Time: 4:49 PM
  */
 
-namespace Modularization\Controllers;
+namespace Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modularization\Core\Factories\Models\AccessorFactory;

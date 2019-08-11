@@ -13,10 +13,10 @@ use Modularization\Core\Components\BaseComponent;
 
 class RouterAPIComponent  extends BaseComponent
 {
-    public function building($nameSpace)
+    public function building($namespace)
     {
         $this->source = file_get_contents( $this->getRouterPath( '/api.txt'));
-        $this->buildNameSpace($nameSpace);
+        $this->buildNameSpace($namespace);
         return $this->source;
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Modularization\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
 use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
 use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
@@ -14,17 +15,17 @@ use Modularization\Core\Factories\Models\ModelFactory;
 use Modularization\Core\Factories\Polices\PolicyFactory;
 use Modularization\Core\Factories\Routers\RouteAPIFactory;
 use Modularization\Core\Factories\Routers\RouterFactory;
-use Modularization\Core\Factories\ServiceProviderFactory;
 use Modularization\Http\Facades\DBFa;
+use Modularization\src\Helpers\BuildInput;
 
-class BuildProjectCommand extends Command
+class ProjectModuleCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'build:project';
+    protected $signature = 'module:project {table?} {--namespace=}  {--path=tests/Feature/}';
 
     /**
      * The console command description.
@@ -54,12 +55,17 @@ class BuildProjectCommand extends Command
      */
     public function handle()
     {
-        $namespace = 'App';
-        $path = 'app';
+        $table = $this->argument('table') ?? '*';
+        $namespace = $this->option('namespace');
+        $path = $this->option('path');
 
-        app(RouteAPIFactory::class)->building('App', 'app');
+        app(RouteAPIFactory::class)->building($namespace, $path);
 
-        $tables = DBFa::table();
+        if ($table === '*') {
+            $tables = DBFa::table();
+        } else {
+            $tables = [$table];
+        }
 
         foreach ($tables as $table) {
             $input = $this->fix($table);
@@ -75,6 +81,11 @@ class BuildProjectCommand extends Command
             app(PolicyFactory::class)->building($table, $namespace, $path);
             app(RouterFactory::class)->building($namespace, $path);
             app(ServiceFactory::class)->building($input);
+
+            $class = BuildInput::classe($table);
+
+            Artisan::call("make:seeder {$class}Seeder");
+            Artisan::call("make:factory {$class}Factory --model={$class}");
 
             $this->buildMessage($table);
         }

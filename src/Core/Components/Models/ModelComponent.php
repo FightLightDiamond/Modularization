@@ -9,16 +9,11 @@
 namespace Modularization\Core\Components\Models;
 
 use Modularization\Core\Components\BaseComponent;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
 
 class ModelComponent extends BaseComponent
 {
-    public function __construct()
-    {
-        $this->source = file_get_contents($this->getSource());
-    }
-
     private function getSource()
     {
         return $this->getModelPath('/model.txt');
@@ -38,22 +33,29 @@ class ModelComponent extends BaseComponent
     private function buildFilter($table)
     {
         $fields = DBFa::getFillable($table);
+
         $filter = '';
+
         foreach ($fields as $field) {
             $filter .= "if(isset(\$input['{$field}'])) {
                 \$query->where('{$field}', \$input['{$field}']); 
                 }\n";
         }
+
         $this->working(DecoHelper::FILTER, $filter);
     }
 
-    public function building($table, $nameSpace)
+    public function building($table, $namespace)
     {
-        $this->buildNameSpace($nameSpace);
+
+        $this->source = file_get_contents($this->getSource());
+
+        $this->buildNameSpace($namespace);
         $this->buildFillAble($table);
         $this->buildClassName($table);
         $this->buildTableName($table);
         $this->buildFilter($table);
+
         return $this->source;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Core\Console\Commands;
+namespace Modularization\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;

@@ -13,7 +13,7 @@ use Modularization\Core\Components\RouterComponent;
 class RouterFactory
 {
     protected $component;
-    private $nameSpace, $path, $material;
+    private $namespace, $path, $material;
 
     public function __construct(RouterComponent $component)
     {
@@ -26,12 +26,12 @@ class RouterFactory
         fwrite($fileForm, $this->material);
     }
 
-    public function building($nameSpace = 'App', $path = 'app')
+    public function building($namespace = 'App', $path = 'app')
     {
-        $this->nameSpace = $nameSpace;
+        $this->nameSpace = $namespace;
         $this->path = $path;
         if (!file_exists($this->getSource())) {
-            $this->material = $this->component->building($nameSpace);
+            $this->material = $this->component->building($namespace);
             $this->produce();
         }
     }

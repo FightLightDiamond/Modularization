@@ -6,7 +6,7 @@
  * Time: 2:28 PM
  */
 
-namespace Modularization\Controllers\Group;
+namespace Modularization\Http\Controllers\Group;
 
 
 use Illuminate\Http\Request;

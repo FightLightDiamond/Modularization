@@ -1,13 +1,13 @@
 <?php
 
-namespace _namespace_\Http\Repositories;
+namespace _namespace_Http\Repositories;
 
 
 use Modularization\MultiInheritance\RepositoriesTrait;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use _namespace_\Models\_class_;
+use _namespace_Models\_class_;
 
 /**
  * Class NewsRepositoryEloquent

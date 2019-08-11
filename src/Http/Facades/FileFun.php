@@ -6,7 +6,7 @@
  * Time: 11:46 PM
  */
 
-namespace Modularization\Facades;
+namespace Modularization\Http\Facades;
 
 
 class FileFun

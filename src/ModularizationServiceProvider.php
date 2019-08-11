@@ -2,22 +2,28 @@
 
 namespace Modularization;
 
+use Modularization\Console\Commands\ProjectModuleCommand;
+use Modularization\Console\Commands\ModelModuleCommand;
+use Modularization\Console\Commands\RepositoryModuleCommand;
+use Modularization\Console\Commands\RequestModuleCommand;
+use Modularization\Console\Commands\ServiceModuleCommand;
 use Modularization\Console\Commands\TableName;
-use Modularization\Core\Console\Commands\ConstDBCommand;
-use Modularization\Core\Console\Commands\FileChange;
-use Modularization\Core\Console\Commands\FileRemove;
-use Modularization\Core\Console\Commands\FileRename;
-use Modularization\Core\Console\Commands\ForceDBCommand;
-use Modularization\Core\Console\Commands\RenderRoute;
-use Modularization\Core\Console\Commands\TableColumn;
-use Modularization\Core\Console\Commands\TableData;
-use Modularization\Core\Console\Commands\TransDBCommand;
-use Modularization\Facades\CheckFun;
-use Modularization\Facades\CurlFun;
-use Modularization\Facades\DBFun;
-use Modularization\Facades\FileFun;
-use Modularization\Facades\FormatFun;
-use Modularization\Facades\InputFun;
+use Modularization\Console\Commands\ConstDBCommand;
+use Modularization\Console\Commands\FileChange;
+use Modularization\Console\Commands\FileRemove;
+use Modularization\Console\Commands\FileRename;
+use Modularization\Console\Commands\ForceDBCommand;
+use Modularization\Console\Commands\RenderRoute;
+use Modularization\Console\Commands\TableColumn;
+use Modularization\Console\Commands\TableData;
+use Modularization\Console\Commands\TestModuleCommand;
+use Modularization\Console\Commands\TransDBCommand;
+use Modularization\Http\Facades\CheckFun;
+use Modularization\Http\Facades\CurlFun;
+use Modularization\Http\Facades\DBFun;
+use Modularization\Http\Facades\FileFun;
+use Modularization\Http\Facades\FormatFun;
+use Modularization\Http\Facades\InputFun;
 
 use Illuminate\Support\ServiceProvider;
 use Uploader\Facades\UploadFun;
@@ -63,6 +69,13 @@ class ModularizationServiceProvider extends ServiceProvider
                 RenderRoute::class,
                 FileRename::class,
                 TransDBCommand::class,
+
+                ModelModuleCommand::class,
+                ProjectModuleCommand::class,
+                RepositoryModuleCommand::class,
+                RequestModuleCommand::class,
+                ServiceModuleCommand::class,
+                TestModuleCommand::class,
             ]);
         }
     }

@@ -6,7 +6,9 @@
  * Time: 4:08 PM
  */
 
-namespace Modularization\Facades;
+namespace Modularization\Http\Facades;
+
+use Illuminate\Support\Str;
 
 class FormatFun
 {
@@ -91,7 +93,7 @@ class FormatFun
 
     public function formatAppName($name)
     {
-        return ucfirst(camel_case(str_singular($name)));
+        return ucfirst( Str::camel(Str::singular($name)));
     }
 
     function convertToHoursMins($time, $format = '%02d hours %02d minutes')

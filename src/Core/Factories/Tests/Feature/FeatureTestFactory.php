@@ -8,7 +8,7 @@
 namespace Modularization\src\Core\Factories\Tests\Feature;
 
 
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 use Modularization\src\Core\Components\Tests\Feature\FeatureTestComponent;
 
 class FeatureTestFactory
@@ -26,17 +26,22 @@ class FeatureTestFactory
         fwrite($fileForm, $material);
     }
 
-    public function getSource($table, $path = 'app')
+    public function getSource($table, $path)
     {
-        if (!is_dir(base_path($path . '/Tests'))) {
-            mkdir(base_path($path . '/Tests'));
+        if($path !== "tests/Feature/")
+        {
+            if (!is_dir(base_path($path . '/Tests'))) {
+                mkdir(base_path($path . '/Tests'));
+            }
+
+            if (!is_dir(base_path($path . '/Tests/Feature/'))) {
+                mkdir(base_path($path . '/Tests/Feature/'));
+            }
+
+            $path .= '/Tests/Feature/';
         }
 
-        if (!is_dir(base_path($path . '/Tests/Feature'))) {
-            mkdir(base_path($path . '/Tests/Feature'));
-        }
-
-        return base_path($path . '/Tests/Feature/' . FormatFa::formatAppName($table) . 'Test.php');
+        return base_path($path . FormatFa::formatAppName($table) . 'Test.php');
     }
 
     public function building($input)

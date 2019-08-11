@@ -10,10 +10,10 @@ namespace Modularization\Core\Components;
 
 class RouterComponent extends BaseComponent
 {
-    public function building($nameSpace)
+    public function building($namespace)
     {
         $this->source = file_get_contents( $this->getRouterPath( '/web.txt'));
-        $this->buildNameSpace($nameSpace);
+        $this->buildNameSpace($namespace);
         return $this->source;
     }
 }

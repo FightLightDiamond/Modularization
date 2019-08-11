@@ -6,7 +6,7 @@
  * Time: 6:01 PM
  */
 
-namespace Modularization\Facades;
+namespace Modularization\Http\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

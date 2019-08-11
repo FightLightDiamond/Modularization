@@ -6,7 +6,7 @@
  * Time: 10:23 AM
  */
 
-Route::namespace('_namespace_\Http\Controllers')
+Route::namespace('_namespace_Http\Controllers')
     ->middleware(['web'])
     ->group( function () {
 

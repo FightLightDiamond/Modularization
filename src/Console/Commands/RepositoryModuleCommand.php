@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Modularization\Console\Commands;
 
 use Illuminate\Console\Command;
 

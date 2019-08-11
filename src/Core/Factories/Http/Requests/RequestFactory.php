@@ -11,7 +11,7 @@ namespace Modularization\Core\Factories\Http\Requests;
 
 use Modularization\Core\Components\Http\Requests\RequestComponent;
 use Modularization\Core\Factories\_Interface;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class RequestFactory implements _Interface
 {
@@ -37,12 +37,12 @@ class RequestFactory implements _Interface
         return base_path($path . '/Http/Requests/' . FormatFa::formatAppName($table) . 'Request.php');
     }
 
-    public function building($table, $nameSpace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App', $path = 'app')
     {
-        $material = $this->componentCreate->building($table, 'Create', $nameSpace);
+        $material = $this->componentCreate->building($table, 'Create', $namespace);
         $class = str_singular($table);
         $this->produce($class . 'Create', $material, $path);
-        $material = $this->componentUpdate->building($table, 'Update', $nameSpace);
+        $material = $this->componentUpdate->building($table, 'Update', $namespace);
         $this->produce($class . 'Update', $material, $path);
     }
 }

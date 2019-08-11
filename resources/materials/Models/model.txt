@@ -1,6 +1,6 @@
 <?php
 
-namespace _namespace_\Models;
+namespace _namespace_Models;
 
 
 use Modularization\MultiInheritance\ModelsTrait;

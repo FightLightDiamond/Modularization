@@ -6,7 +6,7 @@
  * Time: 9:17 AM
  */
 
-namespace Modularization\Core\Console\Commands;
+namespace Modularization\Console\Commands;
 
 
 use Illuminate\Console\Command;

@@ -9,7 +9,7 @@
 namespace Modularization\Core\Factories\Models;
 
 use Modularization\Core\Components\Models\ModelComponent;
-use Modularization\Facades\FormatFa;
+use Modularization\Http\Facades\FormatFa;
 
 class ModelFactory
 {
@@ -22,7 +22,7 @@ class ModelFactory
 
     public function produce($table, $material, $path)
     {
-        $fileForm = fopen($this->getSource(camel_case($table), $path), "w");
+        $fileForm = fopen($this->getSource($table, $path), "w");
         fwrite($fileForm, $material);
     }
 
@@ -31,12 +31,13 @@ class ModelFactory
         if (!is_dir(base_path($path . '/Models'))) {
             mkdir(base_path($path . '/Models'));
         }
+
         return base_path($path . '/Models/' . FormatFa::formatAppName($table) . '.php');
     }
 
-    public function building($table, $nameSpace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App', $path = 'app')
     {
-        $material = $this->component->building($table, $nameSpace);
+        $material = $this->component->building($table, $namespace);
         $this->produce($table, $material, $path);
     }
 }

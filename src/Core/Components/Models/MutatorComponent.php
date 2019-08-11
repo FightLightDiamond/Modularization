@@ -10,7 +10,7 @@ namespace Modularization\Core\Components\Models;
 
 
 use Modularization\Core\Components\BaseComponent;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
 
 class MutatorComponent extends BaseComponent
@@ -32,7 +32,7 @@ class MutatorComponent extends BaseComponent
         return str_replace(DecoHelper::NAME, ($column), $content);
     }
 
-    public function building($table, $nameSpace = 'App')
+    public function building($table, $namespace = 'App')
     {
         $field = DBFa::getField($table);
         return $this->buildMutator($field);

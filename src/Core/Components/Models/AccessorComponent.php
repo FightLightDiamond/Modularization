@@ -10,7 +10,7 @@ namespace Modularization\Core\Components\Models;
 
 
 use Modularization\Core\Components\BaseComponent;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
 
 class AccessorComponent extends BaseComponent

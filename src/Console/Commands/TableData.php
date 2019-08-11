@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Core\Console\Commands;
+namespace Modularization\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +42,7 @@ class TableData extends Command
             $data = DB::table($this->argument('name'))
                 ->skip($this->argument('page') * 10)
                 ->take(10)
-                ->orderBy(ID_COL, 'DESC')
+                ->orderBy('id', 'DESC')
                 //->select($this->argument('select'))
                 ->get()->toArray();
             print_r($data);

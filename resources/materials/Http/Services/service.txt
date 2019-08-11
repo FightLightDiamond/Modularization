@@ -6,9 +6,9 @@
  * Time: 1:14 PM
  */
 
-namespace _namespace_\Http\Services;
+namespace _namespace_Http\Services;
 
-use _namespace_\Http\Repositories\_class_Repository;
+use _namespace_Http\Repositories\_class_Repository;
 
 class _class_Service
 {

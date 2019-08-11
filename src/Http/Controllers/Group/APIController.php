@@ -6,13 +6,14 @@
  * Time: 2:28 PM
  */
 
-namespace Modularization\Controllers\Group;
+namespace Modularization\Http\Controllers\Group;
 
 
 use Illuminate\Http\Request;
 use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
 use Modularization\Core\Factories\Http\Resources\ResourceFactory;
 use Modularization\Core\Factories\Routers\RouteAPIFactory;
+use Modularization\src\Helpers\BuildInput;
 
 class APIController extends RenderController
 {
@@ -54,8 +55,8 @@ class APIController extends RenderController
 
     private function buildMessage($table)
     {
-        $name = ucfirst(camel_case(str_singular($table)));
-        $route = kebab_case(camel_case(($table)));
+        $name = BuildInput::name($table);
+        $route = BuildInput::route($table);
         $mgs = "Route::resource('{$route}', '{$name}APIController'); \n\n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
 
@@ -65,7 +66,7 @@ class APIController extends RenderController
     private function buildRoute($namespace) {
         return
             "Route::name('api.')
-                ->namespace('{$namespace}\Http\Controllers\API')
+                ->namespace('{$namespace}Http\Controllers\API')
                 ->prefix('api')
                 ->middleware(['api'])
                 ->group( function () {

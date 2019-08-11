@@ -6,7 +6,7 @@
  * Time: 9:32 AM
  */
 
-namespace Modularization\Controllers;
+namespace Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;

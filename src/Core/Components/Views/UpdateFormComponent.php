@@ -10,7 +10,7 @@ namespace Modularization\Core\Components\Views;
 
 
 use Modularization\Core\Components\BaseComponent;
-use Modularization\Facades\DBFa;
+use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
 
 class UpdateFormComponent extends BaseComponent

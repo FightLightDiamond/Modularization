@@ -35,9 +35,9 @@ class ObserverFactory implements _Interface
         return app_path('Observers/' . ucfirst(str_singular($table)) . 'Observer.php');
     }
 
-    public function building($table, $nameSpace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App', $path = 'app')
     {
-        $material = $this->component->building($table, $nameSpace);
+        $material = $this->component->building($table, $namespace);
         $this->produce($table, $material, $path);
     }
 }
