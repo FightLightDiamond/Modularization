@@ -29,21 +29,26 @@ class DBFun
         }
         $dbTables = DB::select('SHOW TABLES');
         $database = 'Tables_in_' . $dbName;
+
         foreach ($dbTables as $table) {
             $this->tables[] = $table->$database;
         }
+
         return $this->tables;
     }
 
     public function seed($dbName = NULL)
     {
         ini_set('memory_limit', '-1');
-        $tableExcept = [ROLES_TB, ROLE_USER_TB, ROLE_PERMISSION_TB, ROLES_TB, 'user_id', PROBE_LOGS_TB];
+        $tableExcept = ['roles', 'role_user', 'role_permission', 'roles', 'user_id'];
+
         if ($dbName == NULL) {
             $dbName = env('DB_DATABASE');
         }
+
         $dbTables = DB::select('SHOW TABLES');
         $database = 'Tables_in_' . $dbName;
+
         foreach ($dbTables as $table) {
             $table = $table->$database;
             if (!in_array($table, $tableExcept)) {
@@ -51,11 +56,12 @@ class DBFun
                 $tables = Schema::getColumnListing($table);
                 foreach ($tables as $column) {
                     $dataType = Schema::getColumnType($table, $column);
-                    if ($column !== ID_COL && $column !== CREATED_AT_COL && $column !== UPDATED_AT_COL
+                    if ($column !== 'id' && $column !== 'created_at' && $column !== 'updated_at'
                         && $dataType !== 'datetime' && $dataType !== 'date' && $dataType !== 'time') {
                         $data[$column] = rand(1, 99);
                     }
                 }
+
                 try {
                     DB::table($table)->insert($data);
                 } catch (\Exception $exception) {
@@ -73,7 +79,7 @@ class DBFun
             $data = [];
             foreach (Schema::getColumnListing($table) as $column) {
                 $dataType = Schema::getColumnType($table, $column);
-                if ($column !== ID_COL && $column !== CREATED_AT_COL && $column !== UPDATED_AT_COL
+                if ($column !== 'id' && $column !== 'created_at' && $column !== 'updated_at'
                     && $dataType !== 'datetime' && $dataType !== 'date' && $dataType !== 'time') {
                     $data[$column] = rand(1, 9);
                 }
@@ -85,11 +91,14 @@ class DBFun
     public function getColumnSort($tables)
     {
         $columns = [];
+
         foreach ($tables as $table) {
             $columns = array_merge($columns, $this->getColumn($table));
         }
+
         $columns = array_unique($columns);
         sort($columns);
+
         return $columns;
     }
 
