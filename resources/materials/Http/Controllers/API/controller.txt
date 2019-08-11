@@ -4,10 +4,10 @@ namespace _namespace_Http\Controllers\API;
 
 
 use App\Http\Controllers\Controller;
-use _namespace_Http\Requests\_class_CreateRequest;
-use _namespace_Http\Requests\_class_UpdateRequest;
-use _namespace_Http\Resources\_class_Resource;
-use _namespace_Http\Services\_class_Service;
+use _namespace_Http\Requests\API\_class_CreateRequest;
+use _namespace_Http\Requests\API\_class_UpdateRequest;
+use _namespace_Http\Resources\API\_class_Resource;
+use _namespace_Http\Services\API\_class_Service;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 

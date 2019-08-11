@@ -6,7 +6,7 @@ use Modularization\Core\Factories\Observers\ObserverFactory;
 use Illuminate\Support\Facades\View;
 
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 4/30/17
  * Time: 12:55 AM

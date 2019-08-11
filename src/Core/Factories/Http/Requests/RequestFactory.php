@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 5/25/17
  * Time: 3:59 PM
@@ -11,11 +11,14 @@ namespace Modularization\Core\Factories\Http\Requests;
 
 use Modularization\Core\Components\Http\Requests\RequestComponent;
 use Modularization\Core\Factories\_Interface;
+use Modularization\Core\Factories\BaseFactory;
 use Modularization\Http\Facades\FormatFa;
+use Modularization\src\Helpers\BuildInput;
 
-class RequestFactory implements _Interface
+class RequestFactory extends BaseFactory implements _Interface
 {
     protected $componentCreate, $componentUpdate;
+    protected $sortPath = '/Http/Requests/API/';
 
     public function __construct(RequestComponent $componentCreate, RequestComponent $componentUpdate )
     {
@@ -29,20 +32,23 @@ class RequestFactory implements _Interface
         fwrite($fileForm, $material);
     }
 
-    public function getSource($table, $path = 'app')
+    protected function getSource($table, $path = 'app')
     {
         if (!is_dir(base_path($path . '/Http/Requests'))) {
             mkdir(base_path($path . '/Http/Requests'));
         }
-        return base_path($path . '/Http/Requests/' . FormatFa::formatAppName($table) . 'Request.php');
+
+        $this->makeFolder($path);
+
+        return base_path($path . $this->sortPath . FormatFa::formatAppName($table) . 'Request.php');
     }
 
-    public function building($table, $namespace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App\\', $path = 'app')
     {
-        $material = $this->componentCreate->building($table, 'Create', $namespace);
-        $class = str_singular($table);
+        $material = $this->componentCreate->building($table, 'Create', $namespace, $this->auth);
+        $class = BuildInput::classe($table);
         $this->produce($class . 'Create', $material, $path);
-        $material = $this->componentUpdate->building($table, 'Update', $namespace);
+        $material = $this->componentUpdate->building($table, 'Update', $namespace, $this->auth);
         $this->produce($class . 'Update', $material, $path);
     }
 }

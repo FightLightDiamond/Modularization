@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
  * Date: 5/8/19
  * Time: 10:54 AM
  */
@@ -27,9 +27,9 @@ class RouteAPIFactory
         fwrite($fileForm, $this->material);
     }
 
-    public function building($namespace = 'App', $path = 'app')
+    public function building($namespace = 'App\\', $path = 'app')
     {
-        $this->nameSpace = $namespace;
+        $this->namespace = $namespace;
         $this->path = $path;
         if (!file_exists($this->getSource())) {
             $this->material = $this->component->building($namespace);
@@ -43,7 +43,7 @@ class RouteAPIFactory
             try {
                 mkdir(base_path("{$this->path}/routers"));
             } catch (\Exception $exception) {
-                dump($exception->getMessage());
+                logger($exception->getMessage());
             }
         }
         return base_path("{$this->path}/routers/api.php");

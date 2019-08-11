@@ -7,7 +7,7 @@ use Modularization\Core\Factories\Http\Controllers\CtrlFactory;
 use Illuminate\View\View;
 
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 5/25/17
  * Time: 12:43 PM

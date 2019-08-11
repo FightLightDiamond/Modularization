@@ -1,8 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm
- * Date: 4/15/19
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
+ * MIT: 2e566161fd6039c38070de2ac4e4eadd8024a825
  * Time: 1:26 PM
  */
 
@@ -10,11 +10,12 @@ namespace Modularization\Core\Factories\Http\Services;
 
 use Modularization\Core\Components\Http\Services\ServiceComponent;
 use Modularization\Core\Factories\_Interface;
+use Modularization\Core\Factories\BaseFactory;
 use Modularization\Http\Facades\FormatFa;
-class ServiceFactory implements _Interface
+class ServiceFactory extends BaseFactory implements _Interface
 {
     protected $component;
-    private $sortPath = '/Http/Services/';
+    protected $sortPath = '/Http/Services/API/';
 
     public function __construct(ServiceComponent $component)
     {
@@ -29,26 +30,22 @@ class ServiceFactory implements _Interface
 
     public function building($input)
     {
-        $material = $this->component->building($input);
+        $material = $this->component->building($input, $this->auth);
         $this->produce($input['table'], $material, $input['path']);
     }
 
     public function getSource($table, $path = 'app')
     {
-        if (!is_dir(base_path($path . '/Http'))) {
+        if (!is_dir(base_path($path . '/Http/Services'))) {
             try {
-                mkdir(base_path($path . '/Http'));
+                mkdir(base_path($path . '/Http/Services'));
             } catch (\Exception $exception) {
-                dd($exception);
+                logger($path . '/Http/Services');
             }
         }
-        if (!is_dir(base_path($path . $this->sortPath))) {
-            try {
-                mkdir(base_path($path . $this->sortPath));
-            } catch (\Exception $exception) {
-                dd($exception);
-            }
-        }
+
+        $this->makeFolder($path);
+
         return base_path($path . $this->sortPath . FormatFa::formatAppName($table) . 'Service.php');
     }
 }

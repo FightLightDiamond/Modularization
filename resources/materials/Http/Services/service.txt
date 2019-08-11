@@ -1,9 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm
- * Date: 4/15/19
- * Time: 1:14 PM
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
+ * MIT: 2e566161fd6039c38070de2ac4e4eadd8024a825
+ *
  */
 
 namespace _namespace_Http\Services;
@@ -55,7 +55,7 @@ class _class_Service
     {
         $_var_ = $this->repository->find($id);
 
-        $result =  $this->repository->delete($id);
+        $this->repository->delete($id);
 
         return $_var_;
     }

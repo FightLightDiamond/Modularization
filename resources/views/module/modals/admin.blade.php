@@ -12,7 +12,7 @@
                     {{csrf_field()}}
                     <div class="form-group col-lg-3">
                         <label for="">Name space</label>
-                        <input value="{{old('namespace', 'App')}}" name="namespace" class="form-control">
+                        <input value="{{old('namespace', 'App\\')}}" name="namespace" class="form-control">
                     </div>
                     <div class="form-group col-lg-3">
                         <label for="">Table</label>

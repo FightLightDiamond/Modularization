@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 5/25/17
  * Time: 3:35 PM
@@ -33,13 +33,13 @@ class PolicyFactory implements _Interface
             try {
                 mkdir(base_path($path . '/Policies'));
             } catch (\Exception $exception) {
-                dump($exception->getMessage());
+                logger($exception->getMessage());
             }
         }
         return base_path($path . '/Policies/' . FormatFa::formatAppName($table) . 'Policy.php');
     }
 
-    public function building($table, $namespace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App\\', $path = 'app')
     {
         $material = $this->component->building($table, $namespace);
         $this->produce($table, $material, $path);

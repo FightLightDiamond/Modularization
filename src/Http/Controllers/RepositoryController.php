@@ -7,7 +7,7 @@ use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Illuminate\View\View;
 
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 5/25/17
  * Time: 12:42 PM

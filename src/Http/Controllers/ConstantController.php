@@ -5,7 +5,7 @@ namespace Modularization\Http\Controllers;
 use Modularization\Core\Factories\Constants\ConstantFactory;
 
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 4/26/17
  * Time: 3:00 PM

@@ -1,8 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm
- * Date: 4/15/19
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
+ * MIT: 2e566161fd6039c38070de2ac4e4eadd8024a825
  * Time: 1:12 PM
  */
 
@@ -12,14 +12,11 @@ use Modularization\Core\Components\BaseComponent;
 
 class ServiceComponent extends BaseComponent
 {
-
-    public function __construct()
+    public function building($input, $auth = 'API')
     {
-        $this->source = file_get_contents($this->inService());
-    }
+        $materialPath = $this->inService($auth);
+        $this->source = file_get_contents($materialPath);
 
-    public function building($input)
-    {
         $this->buildNameSpace($input['namespace']);
         $this->buildClassName($input['table']);
         $this->buildTable($input['table']);
@@ -27,11 +24,12 @@ class ServiceComponent extends BaseComponent
         $this->buildView($input['table'], $input['prefix']);
         $this->buildVariables($input['table']);
         $this->buildRoute($input['route']);
+
         return $this->source;
     }
 
-    public function inService()
+    public function inService($auth)
     {
-        return ($this->getServicePath('/service.txt'));
+        return $this->getServicePath("/{$auth}/service.txt");
     }
 }

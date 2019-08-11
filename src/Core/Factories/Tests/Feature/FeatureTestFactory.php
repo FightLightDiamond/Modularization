@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * Date: 8/3/19
  * Time: 3:26 PM
  */
@@ -8,10 +8,11 @@
 namespace Modularization\src\Core\Factories\Tests\Feature;
 
 
+use Modularization\Core\Factories\BaseFactory;
 use Modularization\Http\Facades\FormatFa;
 use Modularization\src\Core\Components\Tests\Feature\FeatureTestComponent;
 
-class FeatureTestFactory
+class FeatureTestFactory extends BaseFactory
 {
     protected $component;
 
@@ -22,7 +23,7 @@ class FeatureTestFactory
 
     public function produce($table, $material, $path)
     {
-        $fileForm = fopen($this->getSource(camel_case($table), $path), "w");
+        $fileForm = fopen($this->getSource($table, $path), "w");
         fwrite($fileForm, $material);
     }
 
@@ -40,6 +41,8 @@ class FeatureTestFactory
 
             $path .= '/Tests/Feature/';
         }
+
+        $this->makeFolder($path);
 
         return base_path($path . FormatFa::formatAppName($table) . 'Test.php');
     }

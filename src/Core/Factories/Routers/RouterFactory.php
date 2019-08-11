@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: CPM
  * Date: 7/23/2018
  * Time: 9:02 PM
@@ -26,9 +26,9 @@ class RouterFactory
         fwrite($fileForm, $this->material);
     }
 
-    public function building($namespace = 'App', $path = 'app')
+    public function building($namespace = 'App\\', $path = 'app')
     {
-        $this->nameSpace = $namespace;
+        $this->namespace = $namespace;
         $this->path = $path;
         if (!file_exists($this->getSource())) {
             $this->material = $this->component->building($namespace);
@@ -42,7 +42,7 @@ class RouterFactory
             try {
                 mkdir(base_path("{$this->path}/routers"));
             } catch (\Exception $exception) {
-                dump($exception->getMessage());
+                logger($exception->getMessage());
             }
         }
         return base_path("{$this->path}/routers/web.php");

@@ -8,7 +8,7 @@ use Modularization\Interfaces\ControllerInterface;
 use Illuminate\Support\Facades\View;
 
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 4/18/17
  * Time: 3:45 PM

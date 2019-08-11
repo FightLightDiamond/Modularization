@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
  * Date: 1/19/18
  * Time: 5:34 PM
  */

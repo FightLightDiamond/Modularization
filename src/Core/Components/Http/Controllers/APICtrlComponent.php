@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: mac
  * Date: 9/25/18
  * Time: 5:55 PM
@@ -31,6 +31,6 @@ class APICtrlComponent extends  BaseComponent
 
     private function getSource()
     {
-        return $this->getCtrlPath('/API/APICtrlController.txt');
+        return $this->getCtrlPath('/API/controller.txt');
     }
 }

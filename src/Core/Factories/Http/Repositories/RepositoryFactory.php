@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 5/25/17
  * Time: 3:59 PM
@@ -30,24 +30,26 @@ class RepositoryFactory implements _Interface
 
     public function getSource($table, $path = 'app')
     {
-        if (!is_dir(base_path($path . '/Http'))) {
+        if (!is_dir(base_path($path . '/Http/Repositories'))) {
             try {
-                mkdir(base_path($path . '/Http'));
+                mkdir(base_path($path . '/Http/Repositories'));
             } catch (\Exception $exception) {
-                dd($exception);
+                logger($path . '/Http/Repositories');
             }
         }
+
         if (!is_dir(base_path($path . $this->sortPath))) {
             try {
                 mkdir(base_path($path . $this->sortPath));
             } catch (\Exception $exception) {
-                dump($exception->getMessage());
+                logger($exception->getMessage());
             }
         }
+
         return base_path($path . $this->sortPath . FormatFa::formatAppName($table) . 'RepositoryEloquent.php');
     }
 
-    public function building($table, $namespace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App\\', $path = 'app')
     {
         $material = $this->component->building($table, $namespace);
         $this->produce($table, $material, $path);

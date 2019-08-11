@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm00
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com00
  * Date: 11/2/2016
  * Time: 9:14 AM
  */
@@ -100,7 +100,7 @@ class BaseComponent
         $this->working(DecoHelper::CLASSES,  $this->class . $tail);
     }
 
-    protected function buildNameSpace($namespace = 'App')
+    protected function buildNameSpace($namespace = 'App\\')
     {
         $this->working(DecoHelper::namespace, $namespace);
     }

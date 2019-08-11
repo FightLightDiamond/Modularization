@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 5/26/17
  * Time: 3:33 PM
@@ -32,24 +32,26 @@ class InterfaceFactory implements _Interface
 
     private function getSource($table, $path = 'app')
     {
-        if (!is_dir(base_path($path . '/Http'))) {
+        if (!is_dir(base_path($path . '/Http/Repositories'))) {
             try {
-                mkdir(base_path($path . '/Http'));
+                mkdir(base_path($path . '/Http/Repositories'));
             } catch (\Exception $exception) {
-                dump($exception->getMessage());
+                logger($exception->getMessage());
             }
         }
+
         if (!is_dir(base_path($path . $this->sortPath))) {
             try {
                 mkdir(base_path($path . $this->sortPath));
             } catch (\Exception $exception) {
-                dump($exception->getMessage());
+                logger($exception->getMessage());
             }
         }
+
         return base_path($path . $this->sortPath . FormatFa::formatAppName($table) . 'Repository.php');
     }
 
-    public function building($table, $namespace = 'App', $path = 'app')
+    public function building($table, $namespace = 'App\\', $path = 'app')
     {
         $material = $this->component->building($table, $namespace);
         $this->produce($table, $material, $path);

@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: mac
  * Date: 9/25/18
  * Time: 5:54 PM
@@ -34,17 +34,19 @@ class APICtrlFactory implements _Interface
         try {
             mkdir(base_path($path . '/Http'));
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
+            logger(base_path($path . '/Http/Controllers'));
         }
+
         try {
             mkdir(base_path($path . '/Http/Controllers'));
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
+            logger(base_path($path . '/Http/Controllers'));
         }
+
         try {
             mkdir(base_path($path . '/Http/Controllers/API'));
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
+            logger(base_path($path . '/Http/Controllers/API'));
         }
 
         return base_path($path . '/Http/Controllers/API/' . FormatFa::formatAppName($table) . 'APIController.php');

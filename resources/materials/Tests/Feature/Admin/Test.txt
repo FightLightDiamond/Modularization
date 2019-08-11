@@ -1,0 +1,71 @@
+<?php
+/**
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
+ * MIT: 2e566161fd6039c38070de2ac4e4eadd8024a825
+ */
+
+namespace _namespace_Tests\Feature\Admin;
+
+
+use Modularization\MultiInheritance\TestTrait;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class _class_Test extends TestCase
+{
+	use TestTrait;
+
+	public function __construct($name = null, array $data = [], $dataName = '')
+    {
+        parent::__construct();
+    }
+
+    private function getId()
+    {
+        return _model_::value('id');
+    }
+
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function testIndex()
+    {
+        $response = $this->get(route('api._route_.index'), $this->getHeader());
+
+        $response->assertStatus(200);
+    }
+
+    public function testStore()
+    {
+        $params = _params_;
+        $response = $this->post(route('api._route_.store'), $params, $this->getHeader());
+
+        $response->assertStatus(201);
+    }
+
+    public function testShow()
+    {
+        $response = $this->get(route('api._route_.show', $this->getId()), $this->getHeader());
+
+        $response->assertStatus(200);
+    }
+
+    public function testUpdate()
+    {
+        $params = _params_;
+        $response = $this->put(route('api._route_.update', $this->getId()), $params, $this->getHeader());
+
+        $response->assertStatus(200);
+    }
+
+    public function testDestroy()
+    {
+        $response = $this->delete(route('api._route_.destroy', $this->getId()), [], $this->getHeader());
+
+        $response->assertStatus(200);
+    }
+}

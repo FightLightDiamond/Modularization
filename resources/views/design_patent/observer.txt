@@ -1,6 +1,6 @@
 <?php
 
-namespace _namespace_/Observers;
+namespace _namespace_Observers;
 
 use _namespace_;
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: mac
  * Date: 9/25/18
  * Time: 5:55 PM
@@ -13,21 +13,19 @@ use Modularization\Core\Components\BaseComponent;
 
 class ResourceComponent extends BaseComponent
 {
-    public function __construct()
+    public function building($input, $auth = 'API')
     {
-        $inPath = $this->getSource();
+        $inPath = $this->getSource($auth);
         $this->source = file_get_contents($inPath);
-    }
 
-    public function building($input)
-    {
         $this->buildNameSpace($input['namespace']);
         $this->buildClassName($input['table']);
+
         return $this->source;
     }
 
-    private function getSource()
+    private function getSource($auth)
     {
-        return $this->getResourcePath('/Resource.txt');
+        return $this->getResourcePath("/{$auth}/Resource.txt");
     }
 }

@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
  * Date: 5/8/19
  * Time: 2:25 PM
  */
@@ -32,17 +32,17 @@ class AdminCtrlFactory implements _Interface
         try {
             mkdir(base_path($path . '/Http'));
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
+            logger($exception->getMessage());
         }
         try {
             mkdir(base_path($path . '/Http/Controllers'));
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
+            logger($exception->getMessage());
         }
         try {
             mkdir(base_path($path . '/Http/Controllers/Admin'));
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
+            logger($exception->getMessage());
         }
 
         return base_path($path . '/Http/Controllers/Admin/' . FormatFa::formatAppName($table) . 'Controller.php');

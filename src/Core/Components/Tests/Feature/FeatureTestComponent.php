@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * Date: 8/3/19
  * Time: 12:25 PM
  */
@@ -14,9 +14,9 @@ use Modularization\Helpers\DecoHelper;
 
 class FeatureTestComponent extends BaseComponent
 {
-    private function getSource()
+    private function getSource($auth)
     {
-        return $this->getTestPatch('/Feature/Test.txt');
+        return $this->getTestPatch("/Feature/{$auth}Test.txt");
     }
 
     private function buildTableName($table)
@@ -51,9 +51,9 @@ class FeatureTestComponent extends BaseComponent
         $this->working(DecoHelper::MODEL, $this->model);
     }
 
-    public function building($input)
+    public function building($input, $auth = 'API')
     {
-        $this->source = file_get_contents($this->getSource());
+        $this->source = file_get_contents($this->getSource($auth));
 
         $table = $input['table'];
         $namespace = $input['namespace'];

@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 5/25/17
  * Time: 3:34 PM
@@ -33,12 +33,12 @@ class CtrlFactory implements _Interface
             try {
                 mkdir(base_path($path . '/Http'));
             } catch (\Exception $exception) {
-                dump($exception->getMessage());
+                logger($exception->getMessage());
             }
             try {
                 mkdir(base_path($path . '/Http/Controllers'));
             } catch (\Exception $exception) {
-                dump($exception->getMessage());
+                logger($exception->getMessage());
             }
         }
 

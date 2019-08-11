@@ -1,13 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
  * Date: 7/23/18
  * Time: 10:23 AM
  */
 
 Route::name('api.')
-    ->namespace('_namespace_\Http\Controllers\API')
+    ->namespace('_namespace_Http\Controllers\API')
     ->prefix('api')
     ->middleware(['api'])
     ->group( function () {

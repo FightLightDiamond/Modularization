@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: mac
  * Date: 10/20/18
  * Time: 9:42 AM
@@ -23,7 +23,7 @@ use Modularization\Core\Factories\Routers\RouterFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
 
 
-class APICtrlController
+class controller
 {
     private $APICtrlFactory, $resourceFactory, $routeAPIFactory;
 
@@ -116,12 +116,12 @@ class APICtrlController
         try {
             mkdir(base_path($path));
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
+            logger($exception->getMessage());
         }
 
         $input['table'] = isset($input['table']) ? $input['table'] : 'users';
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
-        $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App';
+        $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App\\';
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
         $input['route'] = kebab_case(camel_case(($input['table'])));
         $input['viewFolder'] = kebab_case(camel_case(str_singular($input['table'])));

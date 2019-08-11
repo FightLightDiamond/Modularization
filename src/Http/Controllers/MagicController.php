@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by cuongpm/modularization.
  * User: vincent
  * Date: 5/25/17
  * Time: 6:18 PM
@@ -127,7 +127,7 @@ class MagicController extends Controller
     {
         $input['table'] = isset($input['table']) ? $input['table'] : 'user_id';
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
-        $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App';
+        $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App\\';
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
         $input['route'] = kebab_case(camel_case(($input['table'])));
         $input['viewFolder'] = kebab_case(camel_case(str_singular($input['table'])));

@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: cuongpm
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
  * Date: 5/8/19
  * Time: 2:29 PM
  */
@@ -56,7 +56,7 @@ class RenderController extends Controller
         $path = $input['path'];
         $class = $input['class'];
 
-        if(request()->provider && request()->provider !== 'App') {
+        if(request()->provider && request()->provider !== 'App\\') {
             app(ServiceProviderFactory::class)->building($namespace, $path, $prefix);
         }
         if(request()->repository) {
@@ -72,7 +72,7 @@ class RenderController extends Controller
         if(request()->policy) {
             app(PolicyFactory::class)->building($table, $namespace, $path);
         }
-        if(request()->route && request()->provider !== 'App') {
+        if(request()->route && request()->provider !== 'App\\') {
             app(RouterFactory::class)->building($namespace, $path);
         }
         if(request()->service) {
@@ -94,7 +94,7 @@ class RenderController extends Controller
         try {
             mkdir(base_path($path));
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
+            logger($exception->getMessage());
         }
 
         $table = isset($input['table']) ? $input['table'] : 'users';
