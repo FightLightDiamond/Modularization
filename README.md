@@ -28,11 +28,16 @@ You can publish the migration with:
 php artisan vendor:publish
 ```
 
-Access URL to build project: 
+### Build base project: 
+- User interface
  ```angular2html
 {domain}/module/create
  ```
- Run unit test
+- Use command line
+ ```angular2html
+ php artisan module:project {table?} {--namespace=App\}  {--path=app}
+ ```
+### Run unit test
  ```angular2html
 ./vendor/bin/phpunit {pathFolderModule}
 
