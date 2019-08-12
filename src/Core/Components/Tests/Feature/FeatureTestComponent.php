@@ -16,7 +16,7 @@ class FeatureTestComponent extends BaseComponent
 {
     private function getSource($auth)
     {
-        return $this->getTestPatch("/Feature/{$auth}Test.txt");
+        return $this->getTestPatch("/Feature/{$auth}/Test.txt");
     }
 
     private function buildTableName($table)
@@ -59,7 +59,12 @@ class FeatureTestComponent extends BaseComponent
         $namespace = $input['namespace'];
         $route = $input['route'];
 
-        $this->buildNameSpace($namespace);
+        if($namespace === 'App\\')
+        {
+            $this->buildNameSpace('');
+        } else {
+            $this->buildNameSpace($namespace);
+        }
 
         $this->buildClassName($table);
         $this->buildTableName($table);

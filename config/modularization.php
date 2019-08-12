@@ -12,5 +12,18 @@ return [
     'content' => 'content',
     'extra_css' => 'css',
     'extra_js' => 'js',
-    'middleware' => ['web']
+    'middleware' => ['web'],
+
+    'black_tables' => [
+        'oauth_auth_codes',
+        'oauth_access_tokens',
+        'oauth_access_token_providers',
+        'oauth_personal_access_clients',
+        'oauth_clients',
+        'oauth_refresh_tokens',
+        'password_resets',
+        'migrations',
+        'jobs',
+        'fail_jobs'
+    ]
 ];

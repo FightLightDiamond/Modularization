@@ -50,15 +50,10 @@ class ProjectModuleCommand extends Command
         parent::__construct();
     }
 
-    private $blackTables = [
-        'oauth_auth_codes',
-        'oauth_clients',
-        'oauth_refresh_tokens',
-        'password_resets',
-        'migrations',
-        'jobs',
-        'fail_jobs'
-    ];
+    public function getBlackTable()
+    {
+        return config('modularization.black_tables');
+    }
 
     /**
      * Execute the console command.
@@ -83,7 +78,7 @@ class ProjectModuleCommand extends Command
         $bar->start();
 
         foreach ($tables as $table) {
-            if(in_array($table, $this->blackTables)) {
+            if(in_array($table, $this->getBlackTable())) {
                 continue;
             }
 
@@ -112,7 +107,7 @@ class ProjectModuleCommand extends Command
             app(ModelFactory::class)->building($table, $namespace, $path);
 
 //            app(RouterFactory::class)->building($namespace, $path);
-//            app(FeatureTestFactory::class)->building($input);
+            app(FeatureTestFactory::class)->building($input);
 
             $class = BuildInput::classe($table);
 
@@ -158,10 +153,10 @@ class ProjectModuleCommand extends Command
             ->setAuth('Admin')
             ->building($input);
 
-//        app(FeatureTestFactory::class)
-//            ->setPath('/Http/Request/Admin/')
-//            ->setAuth('Admin')
-//            ->building($input);
+        app(FeatureTestFactory::class)
+            ->setPath('tests/Feature/Admin/')
+            ->setAuth('Admin')
+            ->building($input);
     }
 
 
