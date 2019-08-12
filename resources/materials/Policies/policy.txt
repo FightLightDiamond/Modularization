@@ -3,8 +3,6 @@
 namespace _namespace_Policies;
 
 use _namespace_Models\_class_;
-use ACL\Http\Repositories\PermissionRepository;
-use ACL\Http\Repository\RoleRepository;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -19,17 +17,10 @@ class _class_Policy
      */
     private $roleRepository, $permissionRepository;
 
-    public function __construct(RoleRepository $roleRepository, PermissionRepository $permissionRepository)
-    {
-        $this->roleRepository = $roleRepository;
-        $this->permissionRepository = $permissionRepository;
-    }
 
     public function before($user, $ability)
     {
-        if ($user->isSuperAdmin()) {
-            return true;
-        }
+        // do something
     }
 
     public function view(User $user, _class_ $_table_)

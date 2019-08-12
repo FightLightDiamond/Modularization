@@ -50,6 +50,16 @@ class ProjectModuleCommand extends Command
         parent::__construct();
     }
 
+    private $blackTables = [
+        'oauth_auth_codes',
+        'oauth_clients',
+        'oauth_refresh_tokens',
+        'password_resets',
+        'migrations',
+        'jobs',
+        'fail_jobs'
+    ];
+
     /**
      * Execute the console command.
      *
@@ -73,18 +83,35 @@ class ProjectModuleCommand extends Command
         $bar->start();
 
         foreach ($tables as $table) {
+            if(in_array($table, $this->blackTables)) {
+                continue;
+            }
+
             $bar->advance();
 
             $input = $this->fix($table);
+            /*
+             * Http folder
+             */
             app(APICtrlFactory::class)->building($input);
             app(ResourceFactory::class)->building($input);
             app(RequestFactory::class)->building($table, $namespace, $path);
+            app(ServiceFactory::class)->building($input);
+            /*
+            * Repository folder
+            */
             app(RepositoryFactory::class)->building($table, $namespace, $path);
             app(InterfaceFactory::class)->building($table, $namespace, $path);
-            app(RepositoryFactory::class)->building($table, $namespace, $path);
+            /*
+            * Policy folder
+            */
             app(PolicyFactory::class)->building($table, $namespace, $path);
-            app(RouterFactory::class)->building($namespace, $path);
-            app(ServiceFactory::class)->building($input);
+            /*
+            * Model folder
+            */
+            app(ModelFactory::class)->building($table, $namespace, $path);
+
+//            app(RouterFactory::class)->building($namespace, $path);
 //            app(FeatureTestFactory::class)->building($input);
 
             $class = BuildInput::classe($table);
@@ -111,9 +138,9 @@ class ProjectModuleCommand extends Command
 
     private function admin($input)
     {
-        $table = $this->argument('table') ?? '*';
-        $namespace = $this->option('namespace');
-        $path = $this->option('path');
+        $table = $input['table'];
+        $namespace = $input['namespace'];
+        $path = $input['path'];
 
         app(AdminCtrlFactory::class)->building($input);
         app(ServiceFactory::class)
@@ -147,7 +174,7 @@ class ProjectModuleCommand extends Command
         $input['prefix'] = '';
         $input['namespace'] = 'App\\';
         $input['route'] = BuildInput::route($table);
-        $input['viewFolder'] = kebab_case(camel_case(str_singular($table)));
+//        $input['viewFolder'] = kebab_case(camel_case(str_singular($table)));
 
         return $input;
     }

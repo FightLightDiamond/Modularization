@@ -6,10 +6,12 @@ namespace _namespace_Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use _namespace_Http\Requests\Admin\_class_CreateRequest;
 use _namespace_Http\Requests\Admin\_class_UpdateRequest;
+use _namespace_Http\Resources\Admin\_class_Resource;
 use _namespace_Http\Services\Admin\_class_Service;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class _class_AController extends Controller
+class _class_Controller extends Controller
 {
     private $service;
 
@@ -20,66 +22,70 @@ class _class_AController extends Controller
 
     public function index(Request $request)
     {
-        $input = $request->all();
-        $data['_vars_'] = $this->service->index($input);
-        if ($request->ajax()) {
-            return view('_view_.table', $data)->render();
-        }
-        return view('_view_.index', $data);
-    }
+        try {
+            $input = $request->all();
+            $data = $this->service->index($input);
 
-    public function create()
-    {
-        return view('_view_.create');
+            return _class_Resource::collection($data);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
+        }
     }
 
     public function store(_class_CreateRequest $request)
     {
-        $input = $request->all();
-        $this->service->store($input);
-        session()->flash('success', 'create success');
-        return redirect()->route('_route_.index');
+        try {
+            $input = $request->all();
+            $_var_ = $this->service->store($input);
+
+            return new _class_Resource($_var_);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
+        }
     }
 
     public function show($id)
     {
-        $_var_ = $this->service->show($id);
-        if (empty($_var_)) {
-            session()->flash('error', 'not found');
-            return back();
+        try {
+            $_var_ = $this->service->show($id);
+
+            return new _class_Resource($_var_);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
         }
-        return view('_view_.show', compact('_var_'));
     }
 
     public function edit($id)
     {
-        $_var_ = $this->service->edit($id);
-        if (empty($_var_)) {
-            session()->flash('error', 'not found');
-            return back();
+        try {
+            $_var_ = $this->service->edit($id);
+
+            return new _class_Resource($_var_);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
         }
-        return view('_view_.update', compact('_var_'));
     }
 
     public function update(_class_UpdateRequest $request, $id)
     {
         $input = $request->all();
-        $_var_ = $this->service->update($input, $id);
-        if (empty($_var_)) {
-            session()->flash('error', 'not found');
-            return back();
+        try {
+            $data = $this->service->update($input, $id);
+
+            return new _class_Resource($data);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
         }
-        session()->flash('success', 'update success');
-        return redirect()->route('_route_.index');
     }
 
     public function destroy($id)
     {
-        $_var_ = $this->service->destroy($id);
-        if (empty($_var_)) {
-            session()->flash('error', 'not found');
+        try {
+            $data = $this->service->destroy($id);
+
+            return new _class_Resource([$data]);
+        } catch (\Exception $exception) {
+            throw new HttpException(500, $exception->getMessage());
         }
-        session()->flash('success', 'delete success');
-        return back();
     }
 }
