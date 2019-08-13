@@ -43,8 +43,6 @@ class TestModuleCommand extends Command
         $namespace = $this->option('namespace');
         $path = $this->option('path');
 
-        //dd($table, $namespace, $path);
-
         if($table === '*') {
             $tables = DBFa::table($dbName = NULL);
         } else {

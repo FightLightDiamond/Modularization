@@ -36,19 +36,29 @@ trait TestTrait
         return $header;
     }
 
-    protected function getToken()
+    protected function getToken($username = null, $password = null)
     {
-        return cache()->remember('token', 999, function () {
+        if($username && $password) {
             $oauth_clients = $this->getOauthClient();
+            if($oauth_clients) {
+                return $this->cacheToken($username, $password, $oauth_clients->id, $oauth_clients->secret);
+            }
+        }
 
+        return '';
+    }
+
+    private function cacheToken($username, $password, $client_id, $client_secret)
+    {
+        return cache()->remember('token', 999, function () use ($username, $password, $client_id, $client_secret) {
             $params = [
                 "grant_type" => "password",
-                "client_id" => $oauth_clients->id,
-                "client_secret" => $oauth_clients->secret,
+                "client_id" => $client_id,
+                "client_secret" => $client_secret,
                 "refresh_token" => "refresh-token",
 
-                "username" => 'i.am.m.cuong@gmail.com',
-                "password" => "123123"
+                "username" => $username,
+                "password" => $password
             ];
 
             $res = $this->post('/oauth/token', $params);

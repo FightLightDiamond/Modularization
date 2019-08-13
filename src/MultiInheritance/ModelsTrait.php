@@ -11,6 +11,7 @@ namespace Modularization\MultiInheritance;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Modularization\Http\Facades\FormatFa;
 use Uploader\UploadAble;
 
@@ -18,41 +19,37 @@ trait ModelsTrait
 {
     use UploadAble;
 
-    //=====================RELATION============================>
-
-    public function creator()
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function updater()
-    {
-        return $this->belongsTo(User::class, 'updated_by');
-    }
-
-    public function creatorName($field = 'email')
-    {
-        if ($this->creator) {
-            return $this->creator->$field;
-        }
-        return '--';
-    }
-
-    public function updaterName($field = 'email')
-    {
-        if ($this->updater) {
-            return $this->updater->$field;
-        }
-        return '--';
-    }
-
     //======================SCOPE===============================>
+
+    public function scopeFilter($query, $params)
+    {
+        foreach ($params as $field => $value) {
+            $method = 'filter' . Str::studly($field);
+
+            if ($value === '') {
+                continue;
+            }
+
+            if (method_exists($this, $method)) {
+                $this->{$method}($query, $value);
+                continue;
+            }
+
+            if (in_array($field, $this->fillable)) {
+                $query->where($this->table . '.' . $field, $value);
+                continue;
+            }
+        }
+
+        return $query;
+    }
 
     public function scopeOrders($query, $input = [])
     {
         foreach ($input as $field => $value) {
             $query->orderBy($this->table . '.' . $field, $value);
         }
+
         return $query;
     }
 

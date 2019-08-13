@@ -18,29 +18,6 @@ class _class_ extends Model implements Transformable
     public $table = '_table_';
     public $fillable = _fillable_;
 
-    public function scopeFilter($query, $params)
-    {
-        foreach ($params as $field => $value) {
-            $method = 'filter' . Str::studly($field);
-
-            if ($value === '') {
-                continue;
-            }
-
-            if (method_exists($this, $method)) {
-                $this->{$method}($query, $value);
-                continue;
-            }
-
-            if (key_exists($field, $this->fillable)) {
-                $query->where($this->table . '.' . $this->fillable, $value);
-                continue;
-            }
-        }
-
-        return $query;
-    }
-
     public $fileUpload = ['image' => 1];
     protected $pathUpload = ['image' => '/images/_table_'];
 

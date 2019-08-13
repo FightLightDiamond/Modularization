@@ -30,6 +30,7 @@ class _class_RepositoryEloquent extends BaseRepository implements _class_Reposit
     public function myPaginate($input)
     {
         isset($input['per_page']) ?: $input['per_page'] = 10;
+
         return $this->makeModel()
             ->filter($input)
             ->orderBy('id', 'DESC')
@@ -38,22 +39,22 @@ class _class_RepositoryEloquent extends BaseRepository implements _class_Reposit
 
     public function store($input)
     {
-        $input['created_by'] = auth()->id();
         return $this->create($input);
     }
 
     public function edit($id)
     {
         $_var_ = $this->find($id);
+
         if (empty($_var_)) {
             return $_var_;
         }
+
         return compact('_var_');
     }
 
     public function change($input, $data)
     {
-        $input['updated_by'] = auth()->id();
         return $this->update($input, $data->id);
     }
 
@@ -61,6 +62,7 @@ class _class_RepositoryEloquent extends BaseRepository implements _class_Reposit
     {
         set_time_limit(9999);
         $path = $this->makeModel()->uploadImport($file);
+
         return $this->importing($path);
     }
 
