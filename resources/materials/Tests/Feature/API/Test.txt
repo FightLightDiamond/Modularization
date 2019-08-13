@@ -27,6 +27,11 @@ class _class_Test extends TestCase
         return _model_::value('id');
     }
 
+    public function getServer()
+    {
+        return $this->transformHeadersToServerVars($this->getHeader());
+    }
+
     /**
      * A basic feature test example.
      *
@@ -34,7 +39,12 @@ class _class_Test extends TestCase
      */
     public function testIndex()
     {
-        $response = $this->get(route('api._route_.index'), $this->getHeader());
+        $server = $this->getServer();
+		$params = [
+
+		];
+
+		$response = $this->call('GET', route('admin.services.index'), $params, [], [], $server);
 
         $response->assertStatus(200);
     }
