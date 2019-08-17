@@ -9,6 +9,9 @@
 namespace Modularization\Http\Facades;
 
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
 class OpensslFun implements OpensslInterface
 {
     private $config;
@@ -36,6 +39,7 @@ class OpensslFun implements OpensslInterface
         if (empty($this->keys)) {
             $this->createKeys();
         }
+
         return $this->keys;
     }
 
@@ -47,6 +51,7 @@ class OpensslFun implements OpensslInterface
             }
             openssl_pkey_export($this->keys, $this->privateKey);
         }
+
         return $this->privateKey;
     }
 
@@ -66,26 +71,61 @@ class OpensslFun implements OpensslInterface
             }
             $this->publicKey = $this->publicKeyDetail["key"];
         }
+
         return $this->publicKey;
     }
 
     public function encrypt($data, $publicKey)
     {
         openssl_public_encrypt($data, $encrypted, $publicKey);
+
         return $encrypted;
     }
 
     public function decrypt($encrypted, $privateKey)
     {
         openssl_private_decrypt($encrypted, $decrypted, $privateKey);
+
         return $decrypted;
     }
 
     public function setKey($input)
     {
         $rsa = new OpensslFun();
+
         $input['private_key'] = $rsa->getPrivateKey();
         $input['public_key'] = $rsa->getPublicKey();
+
         return $input;
     }
+
+    public function saveKeyFiles($path)
+    {
+        try {
+            mkdir(storage_path($path));
+        } catch (\Exception $exception) {}
+
+        $rsa = new OpensslFun();
+
+        $privateKey = $rsa->getPrivateKey();
+        $publicKey = $rsa->getPublicKey();
+
+        $source = fopen(storage_path("$path/private.key"), "w");
+        fwrite($source, $privateKey);
+        $source = fopen(storage_path("$path/public.key"), "w");
+        fwrite($source, $publicKey);
+    }
+
+    public function getPrivateKeyFile($path)
+    {
+        return File::get(storage_path("$path/private.key"));
+    }
+
+    public function getPublicKeyFile($path)
+    {
+        return File::get(storage_path("$path/public.key"));
+
+        Auth::logoutOtherDevices($password);
+    }
+
 }

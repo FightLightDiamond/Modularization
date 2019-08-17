@@ -29,9 +29,10 @@ trait RepositoriesTrait
             ->pluck($field, 'id');
     }
 
-    public function destroy($id, $skip = 0)
+    public function destroyGetData($id, $skip = 0)
     {
         $result = $this->delete($id);
+
         if ($result) {
             if ($skip !== 0) {
                 $data = $this->makeModel()
@@ -45,6 +46,7 @@ trait RepositoriesTrait
             }
             return $result;
         }
+
         return false;
     }
 
@@ -56,6 +58,7 @@ trait RepositoriesTrait
                 $this->create($value);
             }
         });
+
         unlink($path);
     }
 
@@ -74,11 +77,18 @@ trait RepositoriesTrait
             ->get($select);
     }
 
-    public function filterCount($input = [])
+    public function filterCount($input = [], $field = 'id')
     {
         return $this->makeModel()
             ->filter($input)
-            ->count();
+            ->count($field);
+    }
+
+    public function filterSum($input = [], $field = 'id')
+    {
+        return $this->makeModel()
+            ->filter($input)
+            ->sum($field);
     }
 
     public function filterAvg($input = [], $field = 'id')
@@ -147,16 +157,5 @@ trait RepositoriesTrait
     public function statisticListArray($column, $input = [])
     {
         return $this->statisticList($input, $column)->toArray();
-    }
-
-    public function tags($tagNames, $data)
-    {
-        $tagIds = [];
-
-        foreach ($tagNames as $tagName) {
-            $tag = $this->makeModel()->firstOrCreate(['name' => $tagName]);
-            array_push($tagIds, $tag->id);
-        }
-        $data->tags()->sync($tagIds);
     }
 }

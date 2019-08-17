@@ -11,50 +11,23 @@ namespace Modularization\Core\Factories\Http\Controllers;
 
 use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
 use Modularization\Core\Factories\_Interface;
-use Modularization\Http\Facades\FormatFa;
+use Modularization\Core\Factories\BaseFactory;
 
-class APICtrlFactory implements _Interface
+class APICtrlFactory extends BaseFactory implements _Interface
 {
     protected $component;
+    protected $sortPath = '/Http/Controllers/API';
+    protected $table = 'APIController.php';
 
     public function __construct(APICtrlComponent $component)
     {
         $this->component = $component;
     }
 
-    public function produce($table, $material, $path)
-    {
-        $pathOut = $this->getSource($table, $path);
-        $fileForm = fopen($pathOut, "w");
-        fwrite($fileForm, $material);
-    }
-
-    private function getSource($table, $path = 'app')
-    {
-        try {
-            mkdir(base_path($path . '/Http'));
-        } catch (\Exception $exception) {
-            logger(base_path($path . '/Http/Controllers'));
-        }
-
-        try {
-            mkdir(base_path($path . '/Http/Controllers'));
-        } catch (\Exception $exception) {
-            logger(base_path($path . '/Http/Controllers'));
-        }
-
-        try {
-            mkdir(base_path($path . '/Http/Controllers/API'));
-        } catch (\Exception $exception) {
-            logger(base_path($path . '/Http/Controllers/API'));
-        }
-
-        return base_path($path . '/Http/Controllers/API/' . FormatFa::formatAppName($table) . 'APIController.php');
-    }
-
     public function building($input)
     {
+        $this->table = $input['table'];
         $material = $this->component->building($input);
-        $this->produce($input['table'], $material, $input['path']);
+        $this->produce($material, $input['path']);
     }
 }

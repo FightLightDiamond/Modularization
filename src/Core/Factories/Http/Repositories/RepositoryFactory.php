@@ -10,48 +10,23 @@ namespace Modularization\Core\Factories\Http\Repositories;
 
 use Modularization\Core\Components\Http\Repositories\RepositoryComponent;
 use Modularization\Core\Factories\_Interface;
-use Modularization\Http\Facades\FormatFa;
+use Modularization\Core\Factories\BaseFactory;
 
-class RepositoryFactory implements _Interface
+class RepositoryFactory extends BaseFactory implements _Interface
 {
     protected $component;
-    private $sortPath = '/Http/Repositories/';
+    protected $sortPath = '/Http/Repositories/';
+    protected $table = 'RepositoryEloquent.php';
 
     public function __construct(RepositoryComponent $component)
     {
         $this->component = $component;
     }
 
-    public function produce($table, $material, $path = 'app')
-    {
-        $fileForm = fopen($this->getSource($table, $path), "w");
-        fwrite($fileForm, $material);
-    }
-
-    public function getSource($table, $path = 'app')
-    {
-        if (!is_dir(base_path($path . '/Http/Repositories'))) {
-            try {
-                mkdir(base_path($path . '/Http/Repositories'));
-            } catch (\Exception $exception) {
-                logger($path . '/Http/Repositories');
-            }
-        }
-
-        if (!is_dir(base_path($path . $this->sortPath))) {
-            try {
-                mkdir(base_path($path . $this->sortPath));
-            } catch (\Exception $exception) {
-                logger($exception->getMessage());
-            }
-        }
-
-        return base_path($path . $this->sortPath . FormatFa::formatAppName($table) . 'RepositoryEloquent.php');
-    }
-
     public function building($table, $namespace = 'App\\', $path = 'app')
     {
+        $this->table = $table;
         $material = $this->component->building($table, $namespace);
-        $this->produce($table, $material, $path);
+        $this->produce($material, $path);
     }
 }

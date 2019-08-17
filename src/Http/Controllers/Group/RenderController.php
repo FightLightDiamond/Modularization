@@ -56,35 +56,35 @@ class RenderController extends Controller
         $path = $input['path'];
         $class = $input['class'];
 
-        if(request()->provider && request()->provider !== 'App\\') {
+        if (request()->provider && request()->provider !== 'App\\') {
             app(ServiceProviderFactory::class)->building($namespace, $path, $prefix);
         }
-        if(request()->repository) {
+        if (request()->repository) {
             app(RepositoryFactory::class)->building($table, $namespace, $path);
             app(InterfaceFactory::class)->building($table, $namespace, $path);
         }
-        if(request()->model) {
+        if (request()->model) {
             app(ModelFactory::class)->building($table, $namespace, $path);
         }
-        if(request()->request) {
+        if (request()->request) {
             app(RequestFactory::class)->building($table, $namespace, $path);
         }
-        if(request()->policy) {
+        if (request()->policy) {
             app(PolicyFactory::class)->building($table, $namespace, $path);
         }
-        if(request()->route && request()->provider !== 'App\\') {
+        if (request()->route && request()->provider !== 'App\\') {
             app(RouterFactory::class)->building($namespace, $path);
         }
-        if(request()->service) {
+        if (request()->service) {
             app(ServiceFactory::class)->building($input);
         }
-        if(request()->test)
-        {
+        if (request()->test) {
             app(FeatureTestFactory::class)->building($input);
         }
-
-        Artisan::call("make:seeder {$class}Seeder");
-        Artisan::call("make:factory {$class}Factory --model={$class}");
+        if (request()->seed) {
+            Artisan::call("make:seeder {$class}Seeder");
+            Artisan::call("make:factory {$class}Factory --model={$class}");
+        }
     }
 
     public function fix($input)

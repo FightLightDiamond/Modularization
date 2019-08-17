@@ -8,10 +8,14 @@
 
 namespace Modularization\Core\Factories;
 
+use Modularization\Http\Facades\FormatFa;
+
 class BaseFactory
 {
-    protected $sortPath = '/Http/Services/API/';
-    protected $auth = 'API';
+    protected $sortPath;
+    protected $auth;
+    protected $table;
+    protected $fileName;
 
     public function setPath($sortPath)
     {
@@ -22,17 +26,32 @@ class BaseFactory
     public function setAuth($auth)
     {
         $this->auth = $auth;
+        $this->sortPath .= $auth;
+
         return $this;
     }
 
-    protected function makeFolder($path)
+    public function produce($material, $path)
     {
-        if (!is_dir(base_path($path . $this->sortPath))) {
-            try {
-                mkdir(base_path($path . $this->sortPath));
-            } catch (\Exception $exception) {
-                logger($path . $this->sortPath);
-            }
-        }
+        $pathOut = $this->getSource($path);
+//        dd($pathOut);
+        $fileForm = fopen($pathOut, "w");
+        fwrite($fileForm, $material);
+    }
+
+    protected function getSource($path)
+    {
+        return $this->buildUri($path);
+    }
+
+    protected function buildUri($path)
+    {
+//        dd($path);
+        $path = FormatFa::mixUri([$path, $this->sortPath]);
+
+        $segments = [$path, FormatFa::formatAppName($this->table) . $this->fileName];
+        $uri = FormatFa::mixUri($segments);
+
+        return base_path($uri);
     }
 }

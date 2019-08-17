@@ -10,38 +10,24 @@ namespace Modularization\Core\Factories\Polices;
 
 use Modularization\Core\Components\Policies\PolicyComponent;
 use Modularization\Core\Factories\_Interface;
+use Modularization\Core\Factories\BaseFactory;
 use Modularization\Http\Facades\FormatFa;
 
-class PolicyFactory implements _Interface
+class PolicyFactory extends BaseFactory implements _Interface
 {
     protected $component;
+    protected $sortPath = '/Policies/';
+    protected $table = 'Policy.php';
 
     public function __construct(PolicyComponent $component)
     {
         $this->component = $component;
     }
 
-    public function produce($table, $material, $path)
-    {
-        $fileForm = fopen($this->getSource($table, $path), "w");
-        fwrite($fileForm, $material);
-    }
-
-    public function getSource($table, $path = 'app')
-    {
-        if (!is_dir(base_path($path . '/Policies'))) {
-            try {
-                mkdir(base_path($path . '/Policies'));
-            } catch (\Exception $exception) {
-                logger($exception->getMessage());
-            }
-        }
-        return base_path($path . '/Policies/' . FormatFa::formatAppName($table) . 'Policy.php');
-    }
-
     public function building($table, $namespace = 'App\\', $path = 'app')
     {
+        $this->table = $table;
         $material = $this->component->building($table, $namespace);
-        $this->produce($table, $material, $path);
+        $this->produce($material, $path);
     }
 }

@@ -11,7 +11,7 @@ namespace Modularization\Core\Factories;
 
 interface _Interface
 {
-    public function produce($table, $material, $path);
+    public function produce($material, $path);
 
     public function building($input);
 }

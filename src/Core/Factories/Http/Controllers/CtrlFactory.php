@@ -10,44 +10,24 @@ namespace Modularization\Core\Factories\Http\Controllers;
 
 use Modularization\Core\Components\Http\Controllers\CtrlComponent;
 use Modularization\Core\Factories\_Interface;
+use Modularization\Core\Factories\BaseFactory;
 use Modularization\Http\Facades\FormatFa;
 
-class CtrlFactory implements _Interface
+class CtrlFactory extends BaseFactory implements _Interface
 {
     protected $component;
+    protected $sortPath = '/Http/Controllers/API';
+    protected $table = 'APIController.php';
 
     public function __construct(CtrlComponent $component)
     {
         $this->component = $component;
     }
 
-    public function produce($table, $material, $path)
-    {
-        $fileForm = fopen($this->getSource($table, $path), "w");
-        fwrite($fileForm, $material);
-    }
-
-    private function getSource($table, $path = 'app')
-    {
-        if (!is_dir(base_path($path . '/Http/Controllers'))) {
-            try {
-                mkdir(base_path($path . '/Http'));
-            } catch (\Exception $exception) {
-                logger($exception->getMessage());
-            }
-            try {
-                mkdir(base_path($path . '/Http/Controllers'));
-            } catch (\Exception $exception) {
-                logger($exception->getMessage());
-            }
-        }
-
-        return base_path($path . '/Http/Controllers/' . FormatFa::formatAppName($table) . 'Controller.php');
-    }
-
     public function building($input)
     {
+        $this->table = $input['table'];
         $material = $this->component->building($input);
-        $this->produce($input['table'], $material, $input['path']);
+        $this->produce($material, $input['path']);
     }
 }

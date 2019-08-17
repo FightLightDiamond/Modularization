@@ -9,35 +9,24 @@
 namespace Modularization\Core\Factories\Models;
 
 use Modularization\Core\Components\Models\ModelComponent;
+use Modularization\Core\Factories\BaseFactory;
 use Modularization\Http\Facades\FormatFa;
 
-class ModelFactory
+class ModelFactory extends BaseFactory
 {
     protected $component;
+    protected $sortPath = 'Models/';
+    protected $fileName = '.php';
 
     public function __construct(ModelComponent $component)
     {
         $this->component = $component;
     }
 
-    public function produce($table, $material, $path)
-    {
-        $fileForm = fopen($this->getSource($table, $path), "w");
-        fwrite($fileForm, $material);
-    }
-
-    public function getSource($table, $path = 'app')
-    {
-        if (!is_dir(base_path($path . '/Models'))) {
-            mkdir(base_path($path . '/Models'));
-        }
-
-        return base_path($path . '/Models/' . FormatFa::formatAppName($table) . '.php');
-    }
-
     public function building($table, $namespace = 'App\\', $path = 'app')
     {
+        $this->table = $table;
         $material = $this->component->building($table, $namespace);
-        $this->produce($table, $material, $path);
+        $this->produce($material, $path);
     }
 }

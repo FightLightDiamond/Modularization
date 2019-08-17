@@ -28,6 +28,7 @@ class AES_Encryption
     {
         $encrypted = $encrypted . ':' . base64_encode($this->iv);
         $parts = explode(':', $encrypted);
+
         return openssl_decrypt($parts[0], AES_256_CBC, $encryption_key, 0, base64_decode($parts[1]));
     }
 }

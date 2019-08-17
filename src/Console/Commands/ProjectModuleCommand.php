@@ -27,7 +27,7 @@ class ProjectModuleCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'module:project {table?} {--namespace=App\}  {--path=app}';
+    protected $signature = 'module:project {table?} {--namespace=App\}  {--path=app} {--seed=no}';
 
     /**
      * The console command description.
@@ -65,58 +65,67 @@ class ProjectModuleCommand extends Command
         $table = $this->argument('table') ?? '*';
         $namespace = $this->option('namespace');
         $path = $this->option('path');
+        $seed = $this->option('seed');
 
-//        app(RouteAPIFactory::class)->building($namespace, $path);
+        $tables = $this->getTables($table);
 
+        $bar = $this->output->createProgressBar(count($tables) * 2);
+        $bar->start();
+
+        foreach ($tables as $table) {
+            if (in_array($table, $this->getBlackTable())) {
+                continue;
+            }
+
+            $input = $this->fix($table);
+//            app(RouteAPIFactory::class)->building($namespace, $path);
+//            app(RouterFactory::class)->building($namespace, $path);
+
+            $this->HTTP($input, $table, $namespace, $path);
+            $this->MRP($table, $namespace, $path);
+            $this->admin($input);
+
+            $input = $this->fixTestInput($input);
+
+            app(FeatureTestFactory::class)->building($input);
+
+            $class = BuildInput::classe($table);
+            $bar->advance();
+
+            if($seed === 'yes') {
+                $this->runSeed($class);
+            }
+
+            $this->buildMessage($table);
+            $bar->advance();
+        }
+
+        $bar->finish();
+        $this->msg();
+    }
+
+    private function fixTestInput($input)
+    {
+        if ($input['path'] === 'app') {
+            $input['path'] = '';
+        }
+
+        return $input;
+    }
+
+    private function getTables($table)
+    {
         if ($table === '*') {
             $tables = DBFa::table();
         } else {
             $tables = [$table];
         }
 
-        $bar = $this->output->createProgressBar(count($tables));
-        $bar->start();
+        return $tables;
+    }
 
-        foreach ($tables as $table) {
-            if(in_array($table, $this->getBlackTable())) {
-                continue;
-            }
-
-            $bar->advance();
-
-            $input = $this->fix($table);
-            /*
-             * Http folder
-             */
-            app(APICtrlFactory::class)->building($input);
-            app(ResourceFactory::class)->building($input);
-            app(RequestFactory::class)->building($table, $namespace, $path);
-            app(ServiceFactory::class)->building($input);
-            /*
-            * Repository folder
-            */
-            app(RepositoryFactory::class)->building($table, $namespace, $path);
-            app(InterfaceFactory::class)->building($table, $namespace, $path);
-            /*
-            * Policy folder
-            */
-            app(PolicyFactory::class)->building($table, $namespace, $path);
-            /*
-            * Model folder
-            */
-            app(ModelFactory::class)->building($table, $namespace, $path);
-
-//            app(RouterFactory::class)->building($namespace, $path);
-            app(FeatureTestFactory::class)->building($input);
-
-            $class = BuildInput::classe($table);
-
-            $this->runSeed($class);
-            $this->admin($input);
-            $this->buildMessage($table);
-        }
-
-        $bar->finish();
+    private function msg()
+    {
         $this->info('');
         $this->line('Please copy to app/routes/api.php');
         $this->info($this->routeMsg);
@@ -124,12 +133,29 @@ class ProjectModuleCommand extends Command
         $this->info($this->repositoryMsg);
     }
 
+    private function HTTP($input, $table, $namespace, $path)
+    {
+        app(APICtrlFactory::class)->building($input);
+        app(ResourceFactory::class)->building($input);
+        app(RequestFactory::class)->building($table, $namespace, $path);
+        app(ServiceFactory::class)->building($input);
+    }
+
+    private function MRP($table, $namespace, $path)
+    {
+        app(RepositoryFactory::class)->building($table, $namespace, $path);
+        app(InterfaceFactory::class)->building($table, $namespace, $path);
+
+        app(PolicyFactory::class)->building($table, $namespace, $path);
+
+        app(ModelFactory::class)->building($table, $namespace, $path);
+    }
+
     private function runSeed($class)
     {
         Artisan::call("make:seeder {$class}Seeder");
         Artisan::call("make:factory {$class}Factory --model={$class}");
     }
-
 
     private function admin($input)
     {
@@ -139,28 +165,24 @@ class ProjectModuleCommand extends Command
 
         app(AdminCtrlFactory::class)->building($input);
         app(ServiceFactory::class)
-            ->setPath('/Http/Services/Admin/')
             ->setAuth('Admin')
             ->building($input);
 
         app(RequestFactory::class)
-            ->setPath('/Http/Requests/Admin/')
             ->setAuth('Admin')
             ->building($table, $namespace, $path);
 
         app(ResourceFactory::class)
-            ->setPath('/Http/Resources/Admin/')
             ->setAuth('Admin')
             ->building($input);
 
+        $input = $this->fixTestInput($input);
+
         app(FeatureTestFactory::class)
-            ->setPath('tests/Feature/Admin/')
             ->setAuth('Admin')
             ->building($input);
     }
-
-
-
+    
     private function fix($table)
     {
         $path = 'app';

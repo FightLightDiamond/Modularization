@@ -35,7 +35,7 @@ trait ModelsTrait
                 continue;
             }
 
-            if (in_array($field, $this->fillable)) {
+            if (in_array($field, $this->fillable, true)) {
                 $query->where($this->table . '.' . $field, $value);
                 continue;
             }

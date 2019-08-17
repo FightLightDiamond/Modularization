@@ -14,7 +14,7 @@ class TestModuleCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'module:test {table?} {--namespace=}  {--path=tests/Feature/}';
+    protected $signature = 'module:test {table?} {--namespace=}  {--path=} {--auth=API}';
 
     /**
      * The console command description.
@@ -42,6 +42,7 @@ class TestModuleCommand extends Command
         $table = $this->argument('table') ?? '*';
         $namespace = $this->option('namespace');
         $path = $this->option('path');
+        $auth = $this->option('auth');
 
         if($table === '*') {
             $tables = DBFa::table($dbName = NULL);
@@ -54,10 +55,10 @@ class TestModuleCommand extends Command
                 'table' => $table,
                 'namespace' => $namespace,
                 'path' => $path,
-                'route' => BuildInput::route($table)
+                'route' => BuildInput::route($table),
             ];
 
-            $this->featureTestFactory->building($input);
+            $this->featureTestFactory->setAuth($auth)->building($input);
         }
     }
 }

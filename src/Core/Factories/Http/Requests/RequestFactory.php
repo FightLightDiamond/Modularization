@@ -18,7 +18,8 @@ use Modularization\src\Helpers\BuildInput;
 class RequestFactory extends BaseFactory implements _Interface
 {
     protected $componentCreate, $componentUpdate;
-    protected $sortPath = '/Http/Requests/API/';
+    protected $sortPath = '/Http/Requests/';
+    protected $fileName = '.Request.php';
 
     public function __construct(RequestComponent $componentCreate, RequestComponent $componentUpdate )
     {
@@ -26,29 +27,16 @@ class RequestFactory extends BaseFactory implements _Interface
         $this->componentUpdate = $componentUpdate;
     }
 
-    public function produce($table, $material, $path = 'app')
-    {
-        $fileForm = fopen($this->getSource($table, $path), "w");
-        fwrite($fileForm, $material);
-    }
-
-    protected function getSource($table, $path = 'app')
-    {
-        if (!is_dir(base_path($path . '/Http/Requests'))) {
-            mkdir(base_path($path . '/Http/Requests'));
-        }
-
-        $this->makeFolder($path);
-
-        return base_path($path . $this->sortPath . FormatFa::formatAppName($table) . 'Request.php');
-    }
-
     public function building($table, $namespace = 'App\\', $path = 'app')
     {
-        $material = $this->componentCreate->building($table, 'Create', $namespace, $this->auth);
         $class = BuildInput::classe($table);
-        $this->produce($class . 'Create', $material, $path);
-        $material = $this->componentUpdate->building($table, 'Update', $namespace, $this->auth);
-        $this->produce($class . 'Update', $material, $path);
+
+        $material = $this->componentCreate->building($table,'Create', $namespace, $this->auth);
+        $this->table = $class . 'Create';
+        $this->produce($material, $path);
+
+        $material = $this->componentUpdate->building($table,'Update', $namespace, $this->auth);
+        $this->table = $class . 'Update';
+        $this->produce($material, $path);
     }
 }

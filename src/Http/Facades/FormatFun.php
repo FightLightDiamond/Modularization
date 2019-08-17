@@ -9,6 +9,7 @@
 namespace Modularization\Http\Facades;
 
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class FormatFun
 {
@@ -20,10 +21,12 @@ class FormatFun
     public function removeChar($content, $char = ' ')
     {
         $i = true;
+
         while ($i) {
             strpos($content, $char);
             $content = str_replace(' ', '', $content);
         }
+
         return $content;
     }
 
@@ -88,12 +91,12 @@ class FormatFun
         $fileName = $file->getClientOriginalName();
         $arrayName = explode('.', $fileName);
         $tail = array_pop($arrayName);
-        return str_random(8) . uniqid()  . '.' . $tail;
+        return str_random(8) . uniqid() . '.' . $tail;
     }
 
     public function formatAppName($name)
     {
-        return ucfirst( Str::camel(Str::singular($name)));
+        return ucfirst(Str::camel(Str::singular($name)));
     }
 
     function convertToHoursMins($time, $format = '%02d hours %02d minutes')
@@ -128,5 +131,61 @@ class FormatFun
     public function oneSpace($str)
     {
         return preg_replace('!\s+!', ' ', $str);
+    }
+
+    /*
+     * URI
+     */
+    public function elementUris($path)
+    {
+        $path = ltrim($path, "/");
+        $path = rtrim($path, "/");
+
+        while (strpos("//", $path)) {
+            $path = str_replace("//", "/", $path);
+        }
+
+        $paths = explode("/", $path);
+
+        return $paths;
+    }
+
+    public function makeFolder($paths)
+    {
+        $uri = "";
+
+        foreach ($paths as $path) {
+            $uri .= "/{$path}";
+            $realUri = base_path($uri);
+
+            if (!is_dir($realUri)) {
+                mkdir($realUri);
+            }
+        }
+
+        return $uri;
+    }
+
+    public function mixUri($segments)
+    {
+        foreach ($segments as $i => $segment) {
+            $segments[$i] = rtrim(ltrim($segment, '/'), '/');
+        }
+
+        return implode('/', $segments);
+    }
+
+    public function standardUri($path)
+    {
+        $paths = $this->elementUris($path);
+        return $this->makeFolder($paths);
+    }
+
+    public function formatBase64($image, $with = 100, $height = 100, $tail = 'png')
+    {
+        $img = Image::make($image);
+        $img->resize($with, $height);
+
+        return "data:image/png;base64," . base64_encode($img->stream($tail));
     }
 }
