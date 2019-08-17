@@ -41,6 +41,6 @@ php artisan vendor:publish
  ```angular2html
 ./vendor/bin/phpunit {pathFolderModule}
 
-./vendor/bin/phpunit --filter {function}  packages/MAM/src/Tests/Feature/{testName.php}
+./vendor/bin/phpunit --filter {function}  {pathFolderModule}
 ```
  ##
