@@ -15,7 +15,8 @@ use Modularization\Core\Factories\BaseFactory;
 class ServiceFactory extends BaseFactory implements _Interface
 {
     protected $component;
-    protected $sortPath = 'Http/Services/';
+    protected $auth = 'API';
+    protected $sortPath = 'Http/Services';
     protected $fileName = 'Service.php';
 
     public function __construct(ServiceComponent $component)

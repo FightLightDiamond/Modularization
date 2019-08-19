@@ -15,6 +15,7 @@ use Modularization\Core\Factories\BaseFactory;
 class ResourceFactory extends BaseFactory
 {
     protected $component;
+    protected $auth = 'API';
     protected $sortPath = '/Http/Resources/';
     protected $fileName = 'Resource.php';
 

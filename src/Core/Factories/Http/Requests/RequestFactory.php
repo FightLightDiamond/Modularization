@@ -18,6 +18,7 @@ use Modularization\src\Helpers\BuildInput;
 class RequestFactory extends BaseFactory implements _Interface
 {
     protected $componentCreate, $componentUpdate;
+    protected $auth = 'API';
     protected $sortPath = '/Http/Requests/';
     protected $fileName = '.Request.php';
 

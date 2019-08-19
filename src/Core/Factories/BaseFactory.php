@@ -26,15 +26,13 @@ class BaseFactory
     public function setAuth($auth)
     {
         $this->auth = $auth;
-        $this->sortPath .= $auth;
-
         return $this;
     }
 
     public function produce($material, $path)
     {
         $pathOut = $this->getSource($path);
-//        dd($pathOut);
+        echo ($pathOut) . "\n";
         $fileForm = fopen($pathOut, "w");
         fwrite($fileForm, $material);
     }
@@ -46,8 +44,8 @@ class BaseFactory
 
     protected function buildUri($path)
     {
-//        dd($path);
-        $path = FormatFa::mixUri([$path, $this->sortPath]);
+        $path = FormatFa::mixUri([$path, $this->sortPath, $this->auth]);
+        $path = FormatFa::standardUri($path);
 
         $segments = [$path, FormatFa::formatAppName($this->table) . $this->fileName];
         $uri = FormatFa::mixUri($segments);

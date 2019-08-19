@@ -16,7 +16,7 @@ class RepositoryFactory extends BaseFactory implements _Interface
 {
     protected $component;
     protected $sortPath = '/Http/Repositories/';
-    protected $table = 'RepositoryEloquent.php';
+    protected $fileName = 'RepositoryEloquent.php';
 
     public function __construct(RepositoryComponent $component)
     {

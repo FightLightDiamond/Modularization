@@ -55,6 +55,27 @@ class ProjectModuleCommand extends Command
         return config('modularization.black_tables');
     }
 
+    protected $table, $tables, $namespace, $path, $seed;
+
+    private function input()
+    {
+        $table = $this->argument('table') ?? '*';
+        $this->tables = $this->getTables($table);
+
+        $namespace = $this->option('namespace');
+        $namespace = rtrim($namespace, "\\");
+        $namespace .= "\\";
+        $this->namespace = $namespace;
+
+        $this->path = $this->option('path');
+        $this->seed = $this->option('seed');
+
+        $this->info("Table: {$table} ");
+        $this->info("Namespace: {$namespace} ");
+        $this->info("Path: {$this->path} ");
+        $this->info("Seed: {$this->seed} ");
+    }
+
     /**
      * Execute the console command.
      *
@@ -62,25 +83,12 @@ class ProjectModuleCommand extends Command
      */
     public function handle()
     {
-        $table = $this->argument('table') ?? '*';
-        $namespace = $this->option('namespace');
-        $namespace = rtrim($namespace, "\\");
-        $namespace .= "\\";
+        $this->input();
 
-        $path = $this->option('path');
-        $seed = $this->option('seed');
-
-        $this->info("Table: {$table} ");
-        $this->info("Namespace: {$namespace} ");
-        $this->info("Path: {$path} ");
-        $this->info("Seed: {$seed} ");
-
-        $tables = $this->getTables($table);
-
-        $bar = $this->output->createProgressBar(count($tables) * 2);
+        $bar = $this->output->createProgressBar(count($this->tables) * 2);
         $bar->start();
 
-        foreach ($tables as $table) {
+        foreach ($this->tables as $table) {
             if (in_array($table, $this->getBlackTable())) {
                 continue;
             }
@@ -89,8 +97,8 @@ class ProjectModuleCommand extends Command
 //            app(RouteAPIFactory::class)->building($namespace, $path);
 //            app(RouterFactory::class)->building($namespace, $path);
 
-            $this->HTTP($input, $table, $namespace, $path);
-            $this->MRP($table, $namespace, $path);
+            $this->HTTP($input, $table);
+            $this->MRP($table);
             $this->admin($input);
 
             $input = $this->fixTestInput($input);
@@ -100,7 +108,7 @@ class ProjectModuleCommand extends Command
             $class = BuildInput::classe($table);
             $bar->advance();
 
-            if($seed === 'yes') {
+            if($this->seed === 'yes') {
                 $this->runSeed($class);
             }
 
@@ -141,22 +149,22 @@ class ProjectModuleCommand extends Command
         $this->info($this->repositoryMsg);
     }
 
-    private function HTTP($input, $table, $namespace, $path)
+    private function HTTP($input, $table)
     {
         app(APICtrlFactory::class)->building($input);
         app(ResourceFactory::class)->building($input);
-        app(RequestFactory::class)->building($table, $namespace, $path);
+        app(RequestFactory::class)->building($table, $this->namespace, $this->path);
         app(ServiceFactory::class)->building($input);
     }
 
-    private function MRP($table, $namespace, $path)
+    private function MRP($table)
     {
-        app(RepositoryFactory::class)->building($table, $namespace, $path);
-        app(InterfaceFactory::class)->building($table, $namespace, $path);
+        app(RepositoryFactory::class)->building($table, $this->namespace, $this->path);
+        app(InterfaceFactory::class)->building($table, $this->namespace, $this->path);
 
-        app(PolicyFactory::class)->building($table, $namespace, $path);
+        app(PolicyFactory::class)->building($table, $this->namespace, $this->path);
 
-        app(ModelFactory::class)->building($table, $namespace, $path);
+        app(ModelFactory::class)->building($table, $this->namespace, $this->path);
     }
 
     private function runSeed($class)
@@ -193,11 +201,10 @@ class ProjectModuleCommand extends Command
     
     private function fix($table)
     {
-        $path = 'app';
-        $input['path'] = $path;
+        $input['path'] = $this->path;
         $input['table'] = $table;
         $input['prefix'] = '';
-        $input['namespace'] = 'App\\';
+        $input['namespace'] = $this->namespace;
         $input['route'] = BuildInput::route($table);
 //        $input['viewFolder'] = kebab_case(camel_case(str_singular($table)));
 

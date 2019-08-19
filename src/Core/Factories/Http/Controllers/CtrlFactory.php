@@ -17,7 +17,7 @@ class CtrlFactory extends BaseFactory implements _Interface
 {
     protected $component;
     protected $sortPath = '/Http/Controllers/API';
-    protected $table = 'APIController.php';
+    protected $fileName = 'APIController.php';
 
     public function __construct(CtrlComponent $component)
     {

@@ -16,8 +16,9 @@ use Modularization\Core\Factories\BaseFactory;
 class APICtrlFactory extends BaseFactory implements _Interface
 {
     protected $component;
-    protected $sortPath = '/Http/Controllers/API';
-    protected $table = 'APIController.php';
+    protected $auth = 'API';
+    protected $sortPath = '/Http/Controllers';
+    protected $fileName = 'APIController.php';
 
     public function __construct(APICtrlComponent $component)
     {

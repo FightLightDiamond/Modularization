@@ -155,9 +155,8 @@ class FormatFun
         $uri = "";
 
         foreach ($paths as $path) {
-            $uri .= "/{$path}";
+            $uri .= "{$path}/";
             $realUri = base_path($uri);
-
             if (!is_dir($realUri)) {
                 mkdir($realUri);
             }

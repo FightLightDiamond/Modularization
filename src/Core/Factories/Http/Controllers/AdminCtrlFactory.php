@@ -15,8 +15,9 @@ use Modularization\Core\Factories\BaseFactory;
 class AdminCtrlFactory extends BaseFactory implements _Interface
 {
     protected $component;
-    protected $sortPath = '/Http/Controllers/Admin';
-    protected $table = 'AdminController.php';
+    protected $auth = 'Admin';
+    protected $sortPath = '/Http/Controllers';
+    protected $fileName = 'AdminController.php';
 
     public function __construct(AdminCtrlComponent $component)
     {
