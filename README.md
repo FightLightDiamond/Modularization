@@ -35,7 +35,7 @@ php artisan vendor:publish
  ```
 - Use command line
  ```angular2html
- php artisan module:project {table?} {--namespace=App\}  {--path=app}
+ php artisan module:project {table?} {--namespace=App}  {--path=app}  {--seed=no}'
  ```
 ### Run unit test
  ```angular2html

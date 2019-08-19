@@ -27,7 +27,7 @@ class ProjectModuleCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'module:project {table?} {--namespace=App\}  {--path=app} {--seed=no}';
+    protected $signature = 'module:project {table?} {--namespace=App}  {--path=app} {--seed=no}';
 
     /**
      * The console command description.
@@ -64,8 +64,16 @@ class ProjectModuleCommand extends Command
     {
         $table = $this->argument('table') ?? '*';
         $namespace = $this->option('namespace');
+        $namespace = rtrim($namespace, "\\");
+        $namespace .= "\\";
+
         $path = $this->option('path');
         $seed = $this->option('seed');
+
+        $this->info("Table: {$table} ");
+        $this->info("Namespace: {$namespace} ");
+        $this->info("Path: {$path} ");
+        $this->info("Seed: {$seed} ");
 
         $tables = $this->getTables($table);
 
