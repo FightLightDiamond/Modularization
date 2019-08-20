@@ -20,7 +20,7 @@ class RequestFactory extends BaseFactory implements _Interface
     protected $componentCreate, $componentUpdate;
     protected $auth = 'API';
     protected $sortPath = '/Http/Requests/';
-    protected $fileName = '.Request.php';
+    protected $fileName = 'Request.php';
 
     public function __construct(RequestComponent $componentCreate, RequestComponent $componentUpdate )
     {
