@@ -17,7 +17,7 @@ class InterfaceFactory extends BaseFactory implements _Interface
 {
     protected $component;
     protected $sortPath = '/Http/Repositories/';
-    protected $fileName = '.Repository.php';
+    protected $fileName = 'Repository.php';
 
     public function __construct(InterfaceComponent $component)
     {

@@ -5,7 +5,7 @@ namespace _namespace_Http\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface NewsRepository
+ * Interface _class_Repository
  * @package namespace App\Repositories;
  */
 interface _class_Repository extends RepositoryInterface
