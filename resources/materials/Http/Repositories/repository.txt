@@ -10,7 +10,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use _namespace_Models\_class_;
 
 /**
- * Class NewsRepositoryEloquent
+ * Class_class_RepositoryEloquent
  * @package namespace App\Repositories;
  */
 class _class_RepositoryEloquent extends BaseRepository implements _class_Repository

@@ -14,6 +14,7 @@ use Modularization\src\Core\Components\Tests\Feature\FeatureTestComponent;
 class FeatureTestFactory extends BaseFactory
 {
     protected $component;
+    protected $auth = 'API';
     protected $sortPath = 'tests/Feature/';
     protected $fileName = 'Test.php';
 
