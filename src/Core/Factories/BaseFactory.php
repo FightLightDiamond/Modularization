@@ -29,24 +29,25 @@ class BaseFactory
         return $this;
     }
 
-    public function produce($material, $path)
+    public function produce($material, $path, $auth = true)
     {
-        $pathOut = $this->getSource($path);
+        $pathOut = $this->getSource($path, $auth);
         echo ($pathOut) . "\n";
         $fileForm = fopen($pathOut, "w");
         fwrite($fileForm, $material);
     }
 
-    protected function getSource($path)
-    {
-        return $this->buildUri($path);
-    }
 
-    protected function buildUri($path)
+    protected function getSource($path, $auth)
     {
-        $path = FormatFa::mixUri([$path, $this->sortPath, $this->auth]);
+        $segments = [$path, $this->sortPath];
+
+        if($auth) {
+            array_push($segments, $this->auth);
+        }
+
+        $path = FormatFa::mixUri($segments);
         $path = FormatFa::standardUri($path);
-
         $segments = [$path, FormatFa::formatAppName($this->table) . $this->fileName];
         $uri = FormatFa::mixUri($segments);
 

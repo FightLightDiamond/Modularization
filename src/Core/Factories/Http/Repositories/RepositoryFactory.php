@@ -27,6 +27,6 @@ class RepositoryFactory extends BaseFactory implements _Interface
     {
         $this->table = $table;
         $material = $this->component->building($table, $namespace);
-        $this->produce($material, $path);
+        $this->produce($material, $path, false);
     }
 }
