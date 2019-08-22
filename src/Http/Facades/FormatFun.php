@@ -115,6 +115,7 @@ class FormatFun
     function singleArray($arr)
     {
         $newArray = [];
+
         foreach ($arr as $key) {
             if (is_array($key)) {
                 $array = $this->singleArray($key);
@@ -125,6 +126,7 @@ class FormatFun
                 $newArray[] = $key;
             }
         }
+
         return $newArray;
     }
 
@@ -157,6 +159,7 @@ class FormatFun
         foreach ($paths as $path) {
             $uri .= "{$path}/";
             $realUri = base_path($uri);
+
             if (!is_dir($realUri)) {
                 mkdir($realUri);
             }
@@ -165,13 +168,13 @@ class FormatFun
         return $uri;
     }
 
-    public function mixUri($segments)
+    public function mixUri($segments, $char = '/')
     {
         foreach ($segments as $i => $segment) {
-            $segments[$i] = rtrim(ltrim($segment, '/'), '/');
+            $segments[$i] = rtrim(ltrim($segment, $char), $char);
         }
 
-        return implode('/', $segments);
+        return implode($char, $segments);
     }
 
     public function standardUri($path)

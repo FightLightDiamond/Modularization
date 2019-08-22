@@ -47,7 +47,7 @@ class _class_Test extends TestCase
 
 		];
 
-		$response = $this->call('GET', route('admin.services.index'), $params, [], [], $server);
+		$response = $this->call('GET', route('api._route_.index'), $params, [], [], $server);
 
         $response->assertStatus(200);
     }

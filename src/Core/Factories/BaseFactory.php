@@ -13,7 +13,7 @@ use Modularization\Http\Facades\FormatFa;
 class BaseFactory
 {
     protected $sortPath;
-    protected $auth;
+    protected $auth = 'API';
     protected $table;
     protected $fileName;
 

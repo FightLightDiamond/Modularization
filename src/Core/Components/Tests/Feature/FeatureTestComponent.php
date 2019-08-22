@@ -11,6 +11,7 @@ namespace Modularization\src\Core\Components\Tests\Feature;
 use Modularization\Core\Components\BaseComponent;
 use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
+use Modularization\Http\Facades\FormatFa;
 
 class FeatureTestComponent extends BaseComponent
 {
@@ -42,12 +43,16 @@ class FeatureTestComponent extends BaseComponent
 
     protected function buildModel($namespace)
     {
-        if(!$namespace) {
+        if (!$namespace) {
             $namespace = "App\\";
         }
 
         $class = $this->class;
-        $this->model = "\\{$namespace}Models\\$class";
+
+        $this->model = FormatFa::mixUri([
+            $namespace, 'Models', $class
+        ], '\\');
+
         $this->working(DecoHelper::MODEL, $this->model);
     }
 
@@ -59,8 +64,7 @@ class FeatureTestComponent extends BaseComponent
         $namespace = $input['namespace'];
         $route = $input['route'];
 
-        if($namespace === 'App\\')
-        {
+        if ($namespace === 'App\\') {
             $this->buildNameSpace('');
         } else {
             $this->buildNameSpace($namespace);
