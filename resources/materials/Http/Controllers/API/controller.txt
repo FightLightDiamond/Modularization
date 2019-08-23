@@ -83,7 +83,7 @@ class _class_ApiController extends Controller
         try {
             $data = $this->service->destroy($id);
 
-            return new _class_Resource([$data]);
+            return new _class_Resource($data);
         } catch (\Exception $exception) {
             throw new HttpException(500, $exception->getMessage());
         }

@@ -25,5 +25,16 @@ return [
         'migrations',
         'jobs',
         'fail_jobs'
+    ],
+
+    'test' => [
+        'user_account' => [
+            'username' => '',
+            'password' => ''
+        ],
+        'admin_account' => [
+            'username' => '',
+            'password' => ''
+        ]
     ]
 ];
