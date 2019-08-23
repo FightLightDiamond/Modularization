@@ -12,23 +12,42 @@ namespace Modularization\MultiInheritance;
 use Illuminate\Support\Facades\DB;
 
 
+/**
+ * Trait RepositoriesTrait
+ * @package Modularization\MultiInheritance
+ */
 trait RepositoriesTrait
 {
-    public function filterList($input = [], $field = 'name')
+    /**
+     * @param array $filter
+     * @param string $field
+     * @return mixed
+     */
+    public function filterList($filter = [], $field = 'name')
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->pluck($field, 'id');
     }
 
-    public function filterListOrder($input = [], $field = 'name')
+    /**
+     * @param array $filter
+     * @param string $field
+     * @return mixed
+     */
+    public function filterListOrder($filter = [], $field = 'name')
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->orderBy($field)
             ->pluck($field, 'id');
     }
 
+    /**
+     * @param $id
+     * @param int $skip
+     * @return bool
+     */
     public function destroyGetData($id, $skip = 0)
     {
         $result = $this->delete($id);
@@ -50,6 +69,9 @@ trait RepositoriesTrait
         return false;
     }
 
+    /**
+     * @param $path
+     */
     public function importing($path)
     {
         Excel::load($path, function ($reader) use ($path) {
@@ -62,100 +84,163 @@ trait RepositoriesTrait
         unlink($path);
     }
 
-    public function filterGet($input = [], $select = ['*'])
+    /**
+     * @param array $filter
+     * @param array $select
+     * @return mixed
+     */
+    public function filterGet($filter = [], $select = ['*'])
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->get($select);
     }
 
-    public function filterLimit($input = [], $select = ['*'], $limit = 1000)
+    /**
+     * @param array $filter
+     * @param array $select
+     * @param int $limit
+     * @return mixed
+     */
+    public function filterLimit($filter = [], $select = ['*'], $limit = 1000)
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->limit($limit)
             ->get($select);
     }
 
-    public function filterCount($input = [], $field = 'id')
+    /**
+     * @param array $filter
+     * @param string $field
+     * @return mixed
+     */
+    public function filterCount($filter = [], $field = 'id')
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->count($field);
     }
 
-    public function filterSum($input = [], $field = 'id')
+    /**
+     * @param array $filter
+     * @param string $field
+     * @return mixed
+     */
+    public function filterSum($filter = [], $field = 'id')
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->sum($field);
     }
 
-    public function filterAvg($input = [], $field = 'id')
+    /**
+     * @param array $filter
+     * @param string $field
+     * @return mixed
+     */
+    public function filterAvg($filter = [], $field = 'id')
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->avg($field);
     }
 
-    public function filterFirst($input = [])
+    /**
+     * @param array $filter
+     * @return mixed
+     */
+    public function filterFirst($filter = [])
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->first();
     }
 
-    public function filterLookFirst($input = [])
+    /**
+     * @param array $filter
+     * @return mixed
+     */
+    public function filterLookFirst($filter = [])
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->lockForUpdate()
             ->first();
     }
 
-    public function filterOneList($input = [], $field = 'id')
+    /**
+     * @param array $filter
+     * @param string $field
+     * @return mixed
+     */
+    public function filterOneList($filter = [], $field = 'id')
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->orderBy($field)
             ->pluck($field);
     }
 
-    public function filterDelete($input = [])
+    /**
+     * @param array $filter
+     * @return mixed
+     */
+    public function filterDelete($filter = [])
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->delete();
     }
 
-    public function filterValue($input = [], $field = 'id')
+    /**
+     * @param array $filter
+     * @param string $field
+     * @return mixed
+     */
+    public function filterValue($filter = [], $field = 'id')
     {
         return $this->makeModel()
-            ->filter($input)
+            ->filter($filter)
             ->value($field);
     }
 
-    public function statistic($column, $input = [])
+    /**
+     * @param $column
+     * @param array $filter
+     * @return mixed
+     */
+    public function statistic($column, $filter = [])
     {
         return $this->makeModel()
             ->select($column, DB::raw('COUNT(*) as count'))
-            ->filter($input)
+            ->filter($filter)
             ->groupBy($column)
             ->select($column, 'count')
             ->get();
     }
 
-    public function statisticList($column, $input = [])
+    /**
+     * @param $column
+     * @param array $filter
+     * @return mixed
+     */
+    public function statisticList($column, $filter = [])
     {
         return $this->makeModel()
             ->select($column, DB::raw('COUNT(*) as count'))
-            ->filter($input)
+            ->filter($filter)
             ->groupBy($column)
             ->pluck('count', $column);
     }
 
-    public function statisticListArray($column, $input = [])
+    /**
+     * @param $column
+     * @param array $filter
+     * @return mixed
+     */
+    public function statisticListArray($column, $filter = [])
     {
-        return $this->statisticList($input, $column)->toArray();
+        return $this->statisticList($filter, $column)->toArray();
     }
 }

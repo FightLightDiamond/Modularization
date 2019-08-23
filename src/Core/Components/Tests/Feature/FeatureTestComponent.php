@@ -50,7 +50,7 @@ class FeatureTestComponent extends BaseComponent
         $class = $this->class;
 
         $this->model = FormatFa::mixUri([
-           "", $namespace, 'Models', $class
+            "", $namespace, 'Models', $class
         ], '\\');
 
         $this->working(DecoHelper::MODEL, $this->model);

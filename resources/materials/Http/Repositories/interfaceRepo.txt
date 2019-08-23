@@ -2,13 +2,15 @@
 
 namespace _namespace_Http\Repositories;
 
+
+use Modularization\src\MultiInheritance\RepositoryInterfaceExtra;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
  * Interface _class_Repository
  * @package namespace App\Repositories;
  */
-interface _class_Repository extends RepositoryInterface
+interface _class_Repository extends RepositoryInterface, RepositoryInterfaceExtra
 {
     public function myPaginate($input);
 
