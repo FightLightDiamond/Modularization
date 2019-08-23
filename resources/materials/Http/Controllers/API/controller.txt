@@ -11,7 +11,7 @@ use _namespace_Http\Services\API\_class_Service;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class _class_ApiController extends Controller
+class _class_APIController extends Controller
 {
     private $service;
 
