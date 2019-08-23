@@ -37,6 +37,8 @@ trait TestTrait
 
     protected function getHeader($auth = true)
     {
+        $this->setAuth();
+
         if (!$this->token) {
             $this->token = $this->getToken();
         }
@@ -50,6 +52,13 @@ trait TestTrait
         }
 
         return $header;
+    }
+
+    public function setAuth()
+    {
+        $this->setUsername( config('modularization.test.user_account.username'));
+        $this->setPassword( config('modularization.test.user_account.username'));
+        $this->setProvider('users');
     }
 
     protected function getToken()

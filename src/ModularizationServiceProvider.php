@@ -41,15 +41,15 @@ class ModularizationServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mod');
         $this->loadRoutesFrom(__DIR__ . '/../routers/web.php');
 
-        $this->publishes([
-            __DIR__ . '/../resources/views/vendor/layouts/alerts/confirm.blade.php' => resource_path('/views/layouts/alerts/confirm.blade.php'),
-            __DIR__ . '/../resources/views/vendor/layouts/alerts/error.blade.php' => resource_path('/views/layouts/alerts/error.blade.php'),
-            __DIR__ . '/../resources/views/vendor/layouts/alerts/errors.blade.php' => resource_path('/views/layouts/alerts/errors.blade.php'),
-            __DIR__ . '/../resources/views/vendor/layouts/alerts/global.blade.php' => resource_path('/views/layouts/alerts/global.blade.php'),
-            __DIR__ . '/../resources/views/vendor/layouts/alerts/index.blade.php' => resource_path('/views/layouts/alerts/index.blade.php'),
-            __DIR__ . '/../resources/views/vendor/layouts/alerts/message.blade.php' => resource_path('/views/layouts/alerts/message.blade.php'),
-            __DIR__ . '/../resources/views/vendor/layouts/alerts/success.blade.php' => resource_path('/views/layouts/alerts/success.blade.php'),
-        ], 'modularization');
+//        $this->publishes([
+//            __DIR__ . '/../resources/views/vendor/layouts/alerts/confirm.blade.php' => resource_path('/views/layouts/alerts/confirm.blade.php'),
+//            __DIR__ . '/../resources/views/vendor/layouts/alerts/error.blade.php' => resource_path('/views/layouts/alerts/error.blade.php'),
+//            __DIR__ . '/../resources/views/vendor/layouts/alerts/errors.blade.php' => resource_path('/views/layouts/alerts/errors.blade.php'),
+//            __DIR__ . '/../resources/views/vendor/layouts/alerts/global.blade.php' => resource_path('/views/layouts/alerts/global.blade.php'),
+//            __DIR__ . '/../resources/views/vendor/layouts/alerts/index.blade.php' => resource_path('/views/layouts/alerts/index.blade.php'),
+//            __DIR__ . '/../resources/views/vendor/layouts/alerts/message.blade.php' => resource_path('/views/layouts/alerts/message.blade.php'),
+//            __DIR__ . '/../resources/views/vendor/layouts/alerts/success.blade.php' => resource_path('/views/layouts/alerts/success.blade.php'),
+//        ], 'modularization');
 
         $this->publishes([
             __DIR__ . '/../config/modularization.php' => config_path('modularization.php'),

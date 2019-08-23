@@ -20,8 +20,12 @@ class _class_Test extends TestCase
 	public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct();
-        $this->setUsername(config('modularization.test.user_account.username'));
-        $this->setPassword(config('modularization.test.user_account.password'));
+    }
+
+    public function setAuth()
+    {
+        $this->setUsername( config('modularization.test.user_account.username'));
+        $this->setPassword( config('modularization.test.user_account.password'));
         $this->setProvider('users');
     }
 
