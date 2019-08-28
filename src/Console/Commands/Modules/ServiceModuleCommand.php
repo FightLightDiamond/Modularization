@@ -1,20 +1,19 @@
 <?php
 
-namespace Modularization\Console\Commands;
+namespace Modularization\Console\Commands\Modules;
 
 use Illuminate\Console\Command;
-use Modularization\Core\Factories\Models\ModelFactory;
+use Modularization\Core\Factories\Http\Services\ServiceFactory;
 use Modularization\Http\Facades\DBFa;
-use Modularization\src\Helpers\BuildInput;
 
-class ModelModuleCommand extends Command
+class ServiceModuleCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'module:model {table?} {--namespace=App\}  {--path=app/}';
+    protected $signature = 'module:service {table?} {--namespace=App\}  {--path=app/}';
 
     /**
      * The console command description.
@@ -23,13 +22,13 @@ class ModelModuleCommand extends Command
      */
     protected $description = 'Command description';
 
-    protected $modelFactory;
+    protected $serviceFactory;
 
-    public function __construct(ModelFactory $modelFactory)
+    public function __construct(ServiceFactory $serviceFactory)
     {
         parent::__construct();
 
-        $this->modelFactory = $modelFactory;
+        $this->serviceFactory = $serviceFactory;
     }
 
     public function handle()
@@ -44,8 +43,11 @@ class ModelModuleCommand extends Command
             $tables = [$table];
         }
 
+        $input = compact('table', 'namespace', 'path');
+
         foreach ($tables as $table) {
-            $this->modelFactory->building($table, $namespace, $path);
+            $input['table'] = $table;
+            $this->serviceFactory->building($input);
         }
     }
 }

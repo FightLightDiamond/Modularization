@@ -2,11 +2,11 @@
 
 namespace Modularization;
 
-use Modularization\Console\Commands\ProjectModuleCommand;
-use Modularization\Console\Commands\ModelModuleCommand;
-use Modularization\Console\Commands\RepositoryModuleCommand;
-use Modularization\Console\Commands\RequestModuleCommand;
-use Modularization\Console\Commands\ServiceModuleCommand;
+use Modularization\Console\Commands\Modules\ProjectModuleCommand;
+use Modularization\Console\Commands\Modules\ModelModuleCommand;
+use Modularization\Console\Commands\Modules\RepositoryModuleCommand;
+use Modularization\Console\Commands\Modules\RequestModuleCommand;
+use Modularization\Console\Commands\Modules\ServiceModuleCommand;
 use Modularization\Console\Commands\TableName;
 use Modularization\Console\Commands\ConstDBCommand;
 use Modularization\Console\Commands\FileChange;
@@ -16,7 +16,7 @@ use Modularization\Console\Commands\ForceDBCommand;
 use Modularization\Console\Commands\RenderRoute;
 use Modularization\Console\Commands\TableColumn;
 use Modularization\Console\Commands\TableData;
-use Modularization\Console\Commands\TestModuleCommand;
+use Modularization\Console\Commands\Modules\TestModuleCommand;
 use Modularization\Console\Commands\TransDBCommand;
 use Modularization\Http\Facades\CheckFun;
 use Modularization\Http\Facades\CurlFun;
