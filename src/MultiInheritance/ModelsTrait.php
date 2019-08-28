@@ -24,11 +24,11 @@ trait ModelsTrait
     public function scopeFilter($query, $params)
     {
         foreach ($params as $field => $value) {
-            $method = 'filter' . Str::studly($field);
-
-            if ($value === '') {
+            if ($value === '' || $value === null) {
                 continue;
             }
+
+            $method = 'filter' . Str::studly($field);
 
             if (method_exists($this, $method)) {
                 $this->{$method}($query, $value);
@@ -42,6 +42,13 @@ trait ModelsTrait
         }
 
         return $query;
+    }
+
+    public function filterSearch($query, $value)
+    {
+        return $query->where('name', 'LIKE', "%{$value}%")
+            ->where('email', 'LIKE', "%{$value}%")
+            ->where('phone', 'LIKE', "%{$value}%");
     }
 
     public function scopeOrders($query, $input = [])

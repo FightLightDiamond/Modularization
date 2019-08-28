@@ -18,6 +18,20 @@ use Illuminate\Support\Facades\DB;
  */
 trait RepositoriesTrait
 {
+
+    /**
+     * @param array $filter
+     * @param string $field
+     * @return mixed
+     */
+    public function filterOneList($filter = [], $field = 'id')
+    {
+        return $this->makeModel()
+            ->filter($filter)
+            ->orderBy($field)
+            ->pluck($field);
+    }
+
     /**
      * @param array $filter
      * @param string $field
@@ -102,12 +116,21 @@ trait RepositoriesTrait
      * @param int $limit
      * @return mixed
      */
-    public function filterLimit($filter = [], $select = ['*'], $limit = 1000)
+    public function filterLimitGet($filter = [], $select = ['*'], $limit = 1000)
     {
         return $this->makeModel()
             ->filter($filter)
             ->limit($limit)
             ->get($select);
+    }
+
+    public function filterPaginate($filter = [], $select = ['*'], $perPage = 1000)
+    {
+        return $this->makeModel()
+            ->filter($filter)
+            ->select($select)
+            ->orderBy()
+            ->paginate($perPage);
     }
 
     /**
@@ -171,19 +194,6 @@ trait RepositoriesTrait
 
     /**
      * @param array $filter
-     * @param string $field
-     * @return mixed
-     */
-    public function filterOneList($filter = [], $field = 'id')
-    {
-        return $this->makeModel()
-            ->filter($filter)
-            ->orderBy($field)
-            ->pluck($field);
-    }
-
-    /**
-     * @param array $filter
      * @return mixed
      */
     public function filterDelete($filter = [])
@@ -242,5 +252,16 @@ trait RepositoriesTrait
     public function statisticListArray($column, $filter = [])
     {
         return $this->statisticList($filter, $column)->toArray();
+    }
+
+    public function rawUpdate($filter, $input)
+    {
+        $data = [];
+
+        foreach ($input as $key => $item) {
+            $data[$key] = \DB::raw("{$key} {$item['math']} {$item['value']}");
+        }
+
+        return $this->makeModel()->filter($filter)->update($data);
     }
 }

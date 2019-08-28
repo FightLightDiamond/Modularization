@@ -55,7 +55,9 @@ class _class_Service
     {
         $_var_ = $this->repository->find($id);
 
-        $this->repository->delete($id);
+		if (! empty($_var_)) {
+            $this->repository->delete($id);
+        }
 
         return $_var_;
     }

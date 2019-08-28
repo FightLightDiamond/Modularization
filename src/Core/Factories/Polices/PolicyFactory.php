@@ -17,7 +17,7 @@ class PolicyFactory extends BaseFactory implements _Interface
 {
     protected $component;
     protected $sortPath = '/Policies/';
-    protected $table = 'Policy.php';
+    protected $fileName = 'Policy.php';
 
     public function __construct(PolicyComponent $component)
     {
