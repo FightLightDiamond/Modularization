@@ -54,7 +54,7 @@ interface RepositoryInterfaceExtra
      * @param int $limit
      * @return mixed
      */
-    public function filterLimit($filter = [], $select = ['*'], $limit = 1000);
+    public function filterLimitGet($filter = [], $select = ['*'], $limit = 1000);
 
     /**
      * @param array $filter
