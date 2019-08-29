@@ -40,7 +40,7 @@ class TestModuleCommand extends Command
     public function handle()
     {
         $table = $this->argument('table') ?? '*';
-        $namespace = $this->option('namespace');
+        $namespace = $this->option('namespace') . "\\";
         $path = $this->option('path');
         $auth = $this->option('auth');
 
