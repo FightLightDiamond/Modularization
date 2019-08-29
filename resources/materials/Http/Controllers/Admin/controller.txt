@@ -11,7 +11,7 @@ use _namespace_Http\Services\Admin\_class_Service;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class _class_Controller extends Controller
+class _class_AdminController extends Controller
 {
     private $service;
 

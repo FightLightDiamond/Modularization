@@ -12,7 +12,6 @@ use Modularization\Console\Commands\ConstDBCommand;
 use Modularization\Console\Commands\FileChange;
 use Modularization\Console\Commands\FileRemove;
 use Modularization\Console\Commands\FileRename;
-use Modularization\Console\Commands\ForceDBCommand;
 use Modularization\Console\Commands\RenderRoute;
 use Modularization\Console\Commands\TableColumn;
 use Modularization\Console\Commands\TableData;
@@ -59,7 +58,6 @@ class ModularizationServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                ForceDBCommand::class,
                 ConstDBCommand::class,
                 FileRemove::class,
                 FileChange::class,
