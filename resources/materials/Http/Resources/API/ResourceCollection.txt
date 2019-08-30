@@ -1,0 +1,39 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * Date: 8/29/19
+ * Time: 5:48 PM
+ */
+
+namespace _namespace_Http\Resources\API;
+
+use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class _class_ResourceCollection extends ResourceCollection
+{
+    public function toArray($request)
+    {
+        $currentPage = $this->currentPage();
+        $perPage = $this->perPage();
+
+        return [
+            'status' => true,
+            'total' => $this->total(),
+            "last_page" => $this->lastPage(),
+            'per_page' => $perPage,
+            'current_page' => $currentPage,
+            "next_page_url" => $this->nextPageUrl(),
+            "prev_page_url" => $this->previousPageUrl(),
+            "from" => $perPage * ($currentPage -1) + 1,
+            "to" => $perPage  * ($currentPage -1) + $this->count(),
+
+            'data' => $this->collection,
+        ];
+    }
+
+    public function toResponse($request)
+    {
+        return Resource::toResponse($request);
+    }
+}

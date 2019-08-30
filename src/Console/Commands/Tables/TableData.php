@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Console\Commands;
+namespace Modularization\Console\Commands\Tables;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
