@@ -39,16 +39,20 @@ trait ModelsTrait
                 $query->where($this->table . '.' . $field, $value);
                 continue;
             }
+
+            if($field === 'sort') {
+                $query->sortBy($value);
+            }
         }
 
         return $query;
     }
 
-    public function filterSearch($query, $value)
+    public function scopeSortBy($query, $value)
     {
-        return $query->where('name', 'LIKE', "%{$value}%")
-            ->where('email', 'LIKE', "%{$value}%")
-            ->where('phone', 'LIKE', "%{$value}%");
+        $sorts = explode('|', $value);
+
+        return $query->orderBy($sorts[0], $sorts[1]);
     }
 
     public function scopeOrders($query, $input = [])
