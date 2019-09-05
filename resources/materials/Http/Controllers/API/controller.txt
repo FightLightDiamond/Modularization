@@ -21,6 +21,43 @@ class _class_APIController extends Controller
         $this->service = $service;
     }
 
+    /**
+     * Paginate
+     * @group _class_
+     * @authenticated
+     *
+     * @queryParam id required The fund id. Example: 1
+     *
+     * @response {
+     * "data": [
+     *   {
+     *    "id": 10,
+     *    "created_at": "2019-09-04 10:43:47",
+     *    "updated_at": "2019-09-04 10:43:47"
+     *   },
+     *   {
+     *    "id": 9,
+     *    "created_at": "2019-09-04 08:56:43",
+     *    "updated_at": "2019-09-04 08:56:43"
+     *   }
+     *  ],
+     *  "links": {
+     *     "first": "{url}?page=1",
+     *     "last": "{url}?page=1",
+     *     "prev": null,
+     *     "next": null
+     *  },
+     *  "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 1,
+     *     "path": "{url}",
+     *     "per_page": 10,
+     *     "to": 2,
+     *     "total": 2
+     *   }
+     * }
+     */
     public function index(Request $request)
     {
         try {
@@ -33,6 +70,21 @@ class _class_APIController extends Controller
         }
     }
 
+	/**
+     * Create
+     * @group _class_
+     * @authenticated
+     *
+     * @bodyParam is_active int required The is active. Example: 1
+     *
+     * @response {
+     *  "is_active": 0,
+     *  "updated_at": "2019-09-05 02:34:34",
+     *  "created_at": "2019-09-05 02:34:34",
+     *  "id": 11
+     * }
+     *
+     */
     public function store(_class_CreateRequest $request)
     {
         try {
@@ -45,6 +97,20 @@ class _class_APIController extends Controller
         }
     }
 
+	/**
+     * Show
+     * @group _class_
+     * @authenticated
+     *
+     *
+     * @response {
+     *  "is_active": 0,
+     *  "updated_at": "2019-09-05 02:34:34",
+     *  "created_at": "2019-09-05 02:34:34",
+     *  "id": 11
+     * }
+     *
+     */
     public function show($id)
     {
         try {
@@ -56,17 +122,21 @@ class _class_APIController extends Controller
         }
     }
 
-    public function edit($id)
-    {
-        try {
-            $_var_ = $this->service->edit($id);
-
-            return new _class_Resource($_var_);
-        } catch (\Exception $exception) {
-            throw new HttpException(500, $exception->getMessage());
-        }
-    }
-
+	/**
+     * Update
+     * @group _class_
+     * @authenticated
+     *
+     * @bodyParam is_active int optional The is active. Example: 1
+     *
+     * @response {
+     *  "is_active": 0,
+     *  "updated_at": "2019-09-05 02:34:34",
+     *  "created_at": "2019-09-05 02:34:34",
+     *  "id": 11
+     * }
+     *
+     */
     public function update(_class_UpdateRequest $request, $id)
     {
         $input = $request->all();
@@ -79,6 +149,19 @@ class _class_APIController extends Controller
         }
     }
 
+	/**
+     * Destroy
+     * @group _class_
+     * @authenticated
+     *
+     * @response {
+     *  "is_active": 0,
+     *  "updated_at": "2019-09-05 02:34:34",
+     *  "created_at": "2019-09-05 02:34:34",
+     *  "id": 11
+     * }
+     *
+     */
     public function destroy($id)
     {
         try {
