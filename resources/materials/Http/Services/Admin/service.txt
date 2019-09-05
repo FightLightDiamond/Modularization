@@ -21,6 +21,9 @@ class _class_Service
 
     public function index($input)
     {
+        $input['relationship'] = null;
+        $input['sort'] = 'id|desc';
+
         return $this->repository->myPaginate($input);
     }
 

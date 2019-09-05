@@ -33,7 +33,6 @@ class _class_RepositoryEloquent extends BaseRepository implements _class_Reposit
 
         return $this->makeModel()
             ->filter($input)
-            ->orderBy('id', 'DESC')
             ->paginate($input['per_page']);
     }
 

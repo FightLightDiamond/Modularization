@@ -22,37 +22,48 @@ trait RepositoriesTrait
     /**
      * @param array $filter
      * @param string $field
+     * @param boolean $distinct
      * @return mixed
      */
-    public function filterOneList($filter = [], $field = 'id')
+    public function filterOneList($filter = [], $field = 'id', $distinct = false)
     {
         return $this->makeModel()
             ->filter($filter)
-            ->orderBy($field)
+            ->when($distinct, function ($query) {
+                return $query->distinct();
+            })
             ->pluck($field);
     }
 
     /**
      * @param array $filter
      * @param string $field
+     * @param boolean $distinct
      * @return mixed
      */
-    public function filterList($filter = [], $field = 'name')
+    public function filterList($filter = [], $field = 'name', $distinct = false)
     {
         return $this->makeModel()
             ->filter($filter)
+            ->when($distinct, function ($query) {
+                return $query->distinct();
+            })
             ->pluck($field, 'id');
     }
 
     /**
      * @param array $filter
      * @param string $field
+     * @param boolean $distinct
      * @return mixed
      */
-    public function filterListOrder($filter = [], $field = 'name')
+    public function filterListOrder($filter = [], $field = 'name', $distinct = false)
     {
         return $this->makeModel()
             ->filter($filter)
+            ->when($distinct, function ($query) {
+                return $query->distinct();
+            })
             ->orderBy($field)
             ->pluck($field, 'id');
     }
@@ -86,17 +97,18 @@ trait RepositoriesTrait
     /**
      * @param $path
      */
-    public function importing($path)
-    {
-        Excel::load($path, function ($reader) use ($path) {
-            $results = $reader->toArray();
-            foreach ($results as $value) {
-                $this->create($value);
-            }
-        });
-
-        unlink($path);
-    }
+//    public function importing($path)
+//    {
+//        Excel::load($path, function ($reader) use ($path) {
+//            $results = $reader->toArray();
+//
+//            foreach ($results as $value) {
+//                $this->create($value);
+//            }
+//        });
+//
+//        unlink($path);
+//    }
 
     /**
      * @param array $filter
@@ -136,12 +148,16 @@ trait RepositoriesTrait
     /**
      * @param array $filter
      * @param string $field
+     * @param boolean $distinct
      * @return mixed
      */
-    public function filterCount($filter = [], $field = 'id')
+    public function filterCount($filter = [], $field = 'id', $distinct = false)
     {
         return $this->makeModel()
             ->filter($filter)
+            ->when($distinct, function ($query) {
+                return $query->distinct();
+            })
             ->count($field);
     }
 
