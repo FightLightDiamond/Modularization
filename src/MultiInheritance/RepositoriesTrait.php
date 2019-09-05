@@ -95,22 +95,6 @@ trait RepositoriesTrait
     }
 
     /**
-     * @param $path
-     */
-//    public function importing($path)
-//    {
-//        Excel::load($path, function ($reader) use ($path) {
-//            $results = $reader->toArray();
-//
-//            foreach ($results as $value) {
-//                $this->create($value);
-//            }
-//        });
-//
-//        unlink($path);
-//    }
-
-    /**
      * @param array $filter
      * @param array $select
      * @return mixed
@@ -136,6 +120,12 @@ trait RepositoriesTrait
             ->get($select);
     }
 
+    /**
+     * @param array $filter
+     * @param array $select
+     * @param int $perPage
+     * @return mixed
+     */
     public function filterPaginate($filter = [], $select = ['*'], $perPage = 1000)
     {
         return $this->makeModel()
@@ -270,6 +260,11 @@ trait RepositoriesTrait
         return $this->statisticList($filter, $column)->toArray();
     }
 
+    /**
+     * @param $filter
+     * @param $input
+     * @return mixed
+     */
     public function rawUpdate($filter, $input)
     {
         $data = [];

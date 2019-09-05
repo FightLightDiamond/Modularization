@@ -17,29 +17,33 @@ interface RepositoryInterfaceExtra
     /**
      * @param array $filter
      * @param string $field
+     * @param boolean $distinct
      * @return mixed
      */
-    public function filterList($filter = [], $field = 'name');
+    public function filterOneList($filter = [], $field = 'id', $distinct = false);
 
     /**
      * @param array $filter
      * @param string $field
+     * @param boolean $distinct
      * @return mixed
      */
-    public function filterListOrder($filter = [], $field = 'name');
+    public function filterList($filter = [], $field = 'name', $distinct = false);
+
+    /**
+     * @param array $filter
+     * @param string $field
+     * @param boolean $distinct
+     * @return mixed
+     */
+    public function filterListOrder($filter = [], $field = 'name', $distinct = false);
 
     /**
      * @param $id
      * @param int $skip
-     * @return mixed
+     * @return bool
      */
     public function destroyGetData($id, $skip = 0);
-
-    /**
-     * @param $path
-     * @return mixed
-     */
-    public function importing($path);
 
     /**
      * @param array $filter
@@ -58,10 +62,19 @@ interface RepositoryInterfaceExtra
 
     /**
      * @param array $filter
-     * @param string $field
+     * @param array $select
+     * @param int $perPage
      * @return mixed
      */
-    public function filterCount($filter = [], $field = 'id');
+    public function filterPaginate($filter = [], $select = ['*'], $perPage = 1000);
+
+    /**
+     * @param array $filter
+     * @param string $field
+     * @param boolean $distinct
+     * @return mixed
+     */
+    public function filterCount($filter = [], $field = 'id', $distinct = false);
 
     /**
      * @param array $filter
@@ -88,13 +101,6 @@ interface RepositoryInterfaceExtra
      * @return mixed
      */
     public function filterLookFirst($filter = []);
-
-    /**
-     * @param array $filter
-     * @param string $field
-     * @return mixed
-     */
-    public function filterOneList($filter = [], $field = 'id');
 
     /**
      * @param array $filter
@@ -129,4 +135,11 @@ interface RepositoryInterfaceExtra
      * @return mixed
      */
     public function statisticListArray($column, $filter = []);
+
+    /**
+     * @param $filter
+     * @param $input
+     * @return mixed
+     */
+    public function rawUpdate($filter, $input);
 }
