@@ -1,0 +1,33 @@
+<?php
+
+namespace _namespace_Observers;
+
+use _namespace_;
+
+class _class_
+{
+    public function created(_dependency_)
+    {
+
+    }
+    public function creating(_dependency_)
+    {
+        
+    }
+    public function updated(_dependency_)
+    {
+
+    }
+    public function updating(_dependency_)
+    {
+
+    }
+    public function deleting(_dependency_)
+    {
+
+    }
+    public function deleted(_dependency_)
+    {
+
+    }
+}

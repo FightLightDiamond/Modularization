@@ -1,0 +1,28 @@
+<?php
+/**
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
+ * Date: 1/19/18
+ * Time: 4:08 PM
+ */
+
+namespace _namespace_ViewComposer;
+
+
+use Illuminate\View\View;
+use _namespace_Repositories\_name_Repository;
+
+class _name_Composer
+{
+    private $repository;
+
+    public function __construct(_name_Repository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function compose(View $view)
+    {
+        return $view->with('_var_Compose', $this->repository->makeModel()->pluck(NAME_COL, 'id'));
+    }
+}

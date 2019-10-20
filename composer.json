@@ -1,0 +1,26 @@
+{
+  "name": "cuongpm/modularization",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [ "module", "crud", "editor", "repository", "html", "api", "document", "php", "laravel"],
+  "authors": [
+    {
+      "name": "Fight Light Diamond",
+      "email": "i.am.m.cuong@gmail.com",
+      "homepage": "http://cuongpm.viralsoft.vn/tutorial/show/19"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Modularization\\": "./src/"
+    }
+  },
+  "require": {
+    "cuongpm/uploader": "^1.0",
+    "intervention/image": "^2.3",
+    "mpociot/laravel-apidoc-generator": "^3.7",
+    "prettus/l5-repository": "^2.6",
+    "predis/predis": "^1.1"
+  }
+}

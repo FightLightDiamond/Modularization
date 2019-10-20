@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Created by cuongpm/modularization.
+ * User: vincent
+ * Date: 4/26/17
+ * Time: 2:57 PM
+ */
+
+_table_
+
+_column_

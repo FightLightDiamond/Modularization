@@ -1,0 +1,24 @@
+<?php
+
+namespace _namespace_Http\Repositories;
+
+
+use Modularization\src\MultiInheritance\RepositoryInterfaceExtra;
+use Prettus\Repository\Contracts\RepositoryInterface;
+
+/**
+ * Interface _class_Repository
+ * @package namespace App\Repositories;
+ */
+interface _class_Repository extends RepositoryInterface, RepositoryInterfaceExtra
+{
+    public function myPaginate($input);
+
+    public function store($input);
+
+    public function change($input, $data);
+
+    public function delete($data);
+
+    public function import($file);
+}

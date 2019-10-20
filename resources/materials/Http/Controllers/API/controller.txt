@@ -1,0 +1,180 @@
+<?php
+
+namespace _namespace_Http\Controllers\API;
+
+
+use App\Http\Controllers\Controller;
+use _namespace_Http\Requests\API\_class_CreateRequest;
+use _namespace_Http\Requests\API\_class_UpdateRequest;
+use _namespace_Http\Resources\API\_class_Resource;
+use _namespace_Http\Resources\Admin\_class_ResourceCollection;
+use _namespace_Http\Services\API\_class_Service;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+
+class _class_APIController extends Controller
+{
+    private $service;
+
+    public function __construct(_class_Service $service)
+    {
+        $this->service = $service;
+    }
+
+    /**
+     * Paginate
+     * @group _class_
+     * @authenticated
+     *
+     * @queryParam id required The fund id. Example: 1
+     *
+     * @response {
+     * "data": [
+     *   {
+     *    "id": 10,
+     *    "created_at": "2019-09-04 10:43:47",
+     *    "updated_at": "2019-09-04 10:43:47"
+     *   },
+     *   {
+     *    "id": 9,
+     *    "created_at": "2019-09-04 08:56:43",
+     *    "updated_at": "2019-09-04 08:56:43"
+     *   }
+     *  ],
+     *  "links": {
+     *     "first": "{url}?page=1",
+     *     "last": "{url}?page=1",
+     *     "prev": null,
+     *     "next": null
+     *  },
+     *  "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 1,
+     *     "path": "{url}",
+     *     "per_page": 10,
+     *     "to": 2,
+     *     "total": 2
+     *   }
+     * }
+     */
+    public function index(Request $request)
+    {
+        try {
+            $input = $request->all();
+            $data = $this->service->index($input);
+
+            return response()->json(new _class_ResourceCollection($data));
+        } catch (\Exception $exception) {
+            logger($exception->getMessage());
+            return response()->json($exception->getMessage());
+        }
+    }
+
+	/**
+     * Create
+     * @group _class_
+     * @authenticated
+     *
+     * @bodyParam is_active int required The is active. Example: 1
+     *
+     * @response {
+     *  "is_active": 0,
+     *  "updated_at": "2019-09-05 02:34:34",
+     *  "created_at": "2019-09-05 02:34:34",
+     *  "id": 11
+     * }
+     *
+     */
+    public function store(_class_CreateRequest $request)
+    {
+        try {
+            $input = $request->all();
+            $_var_ = $this->service->store($input);
+
+            return new _class_Resource($_var_);
+        } catch (\Exception $exception) {
+            logger($exception->getMessage());
+            return response()->json($exception->getMessage());
+        }
+    }
+
+	/**
+     * Show
+     * @group _class_
+     * @authenticated
+     *
+     *
+     * @response {
+     *  "is_active": 0,
+     *  "updated_at": "2019-09-05 02:34:34",
+     *  "created_at": "2019-09-05 02:34:34",
+     *  "id": 11
+     * }
+     *
+     */
+    public function show($id)
+    {
+        try {
+            $_var_ = $this->service->show($id);
+
+            return new _class_Resource($_var_);
+        } catch (\Exception $exception) {
+            logger($exception->getMessage());
+            return response()->json($exception->getMessage());
+        }
+    }
+
+	/**
+     * Update
+     * @group _class_
+     * @authenticated
+     *
+     * @bodyParam is_active int optional The is active. Example: 1
+     *
+     * @response {
+     *  "is_active": 0,
+     *  "updated_at": "2019-09-05 02:34:34",
+     *  "created_at": "2019-09-05 02:34:34",
+     *  "id": 11
+     * }
+     *
+     */
+    public function update(_class_UpdateRequest $request, $id)
+    {
+        $input = $request->all();
+        try {
+            $data = $this->service->update($input, $id);
+
+            return new _class_Resource($data);
+        } catch (\Exception $exception) {
+            logger($exception->getMessage());
+            return response()->json($exception->getMessage());
+        }
+    }
+
+	/**
+     * Destroy
+     * @group _class_
+     * @authenticated
+     *
+     * @response {
+     *  "is_active": 0,
+     *  "updated_at": "2019-09-05 02:34:34",
+     *  "created_at": "2019-09-05 02:34:34",
+     *  "id": 11
+     * }
+     *
+     */
+    public function destroy($id)
+    {
+        try {
+            $data = $this->service->destroy($id);
+
+            return new _class_Resource($data);
+        } catch (\Exception $exception) {
+            logger($exception->getMessage());
+            return response()->json($exception->getMessage());
+        }
+    }
+}

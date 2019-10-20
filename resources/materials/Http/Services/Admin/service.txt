@@ -1,0 +1,67 @@
+<?php
+/**
+ * Created by cuongpm/modularization.
+ * Author: Fight Light Diamond i.am.m.cuong@gmail.com
+ * MIT: 2e566161fd6039c38070de2ac4e4eadd8024a825
+ *
+ */
+
+namespace _namespace_Http\Services\Admin;
+
+use _namespace_Http\Repositories\_class_Repository;
+
+class _class_Service
+{
+    private $repository;
+
+    public function __construct(_class_Repository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function index($input)
+    {
+        $input['relationship'] = null;
+        $input['sort'] = 'id|desc';
+
+        return $this->repository->myPaginate($input);
+    }
+
+    public function create()
+    {
+        return [];
+    }
+
+    public function store($input)
+    {
+        return $this->repository->store($input);
+    }
+
+    public function show($id)
+    {
+       return $this->repository->find($id);
+    }
+
+    public function edit($id)
+    {
+       return $this->repository->find($id);
+    }
+
+    public function update($input, $id)
+    {
+        $_var_ = $this->repository->find($id);
+
+        return $this->repository->change($input, $_var_);
+    }
+
+    public function destroy($id)
+    {
+        $_var_ = $this->repository->find($id);
+
+        if (! empty($_var_)) {
+            $this->repository->delete($id);
+        }
+
+        return $_var_;
+    }
+}
