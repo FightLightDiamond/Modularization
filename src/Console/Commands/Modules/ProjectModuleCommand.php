@@ -106,14 +106,13 @@ class ProjectModuleCommand extends Command
             app(FeatureTestFactory::class)->building($input);
 
             $class = BuildInput::classe($table);
-            $bar->advance();
+            $bar->advance(2);
 
             if($this->seed === 'yes') {
                 $this->runSeed($class);
             }
 
             $this->buildMessage($table);
-            $bar->advance();
         }
 
         $bar->finish();
@@ -198,7 +197,7 @@ class ProjectModuleCommand extends Command
             ->setAuth('Admin')
             ->building($input);
     }
-    
+
     private function fix($table)
     {
         $input['path'] = $this->path;

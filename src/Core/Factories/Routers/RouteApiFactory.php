@@ -43,7 +43,7 @@ class RouteAPIFactory
             try {
                 mkdir(base_path("{$this->path}/routers"));
             } catch (\Exception $exception) {
-                logger($exception->getMessage());
+                logger($exception);
             }
         }
         return base_path("{$this->path}/routers/api.php");

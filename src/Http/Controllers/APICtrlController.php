@@ -116,7 +116,7 @@ class controller
         try {
             mkdir(base_path($path));
         } catch (\Exception $exception) {
-            logger($exception->getMessage());
+            logger($exception);
         }
 
         $input['table'] = isset($input['table']) ? $input['table'] : 'users';

@@ -94,7 +94,7 @@ class RenderController extends Controller
         try {
             mkdir(base_path($path));
         } catch (\Exception $exception) {
-            logger($exception->getMessage());
+            logger($exception);
         }
 
         $table = isset($input['table']) ? $input['table'] : 'users';

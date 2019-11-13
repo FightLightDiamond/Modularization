@@ -31,9 +31,4 @@ class _class_ResourceCollection extends ResourceCollection
             'data' => $this->collection,
         ];
     }
-
-    public function toResponse($request)
-    {
-        return Resource::toResponse($request);
-    }
 }
