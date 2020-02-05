@@ -19,6 +19,32 @@ trait ModelsTrait
 {
     use UploadAble;
 
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updater()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public function creatorName($field = 'email')
+    {
+        if ($this->creator) {
+            return $this->creator->$field;
+        }
+        return '--';
+    }
+
+    public function updaterName($field = 'email')
+    {
+        if ($this->updater) {
+            return $this->updater->$field;
+        }
+        return '--';
+    }
+
     //======================SCOPE===============================>
 
     public function scopeFilter($query, $params)
