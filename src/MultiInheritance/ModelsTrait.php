@@ -113,6 +113,16 @@ trait ModelsTrait
 
     //========================ACTION============================>
 
+    public function checkbox($input)
+    {
+        if (isset($this->checkbox)) {
+            foreach ($this->checkbox as $value) {
+                (isset($input[$value]) && $input[$value] !== '0') ? $input[$value] = 1 : $input[$value] = 0;
+            }
+        }
+        return $input;
+    }
+
     public function uploadImport($file)
     {
         $newName = FormatFa::reFileName($file);
