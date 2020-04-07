@@ -7,7 +7,7 @@
     {
       "name": "Fight Light Diamond",
       "email": "i.am.m.cuong@gmail.com",
-      "homepage": "http://cuongpm.viralsoft.vn/tutorial/show/19"
+      "homepage": "http://cuongpm.tk/tutorial/show/19"
     }
   ],
   "minimum-stability": "dev",
@@ -17,10 +17,9 @@
     }
   },
   "require": {
-    "cuongpm/uploader": "^1.21",
+    "cuongpm/uploader": "*",
     "intervention/image": "^2.3",
-    "mpociot/laravel-apidoc-generator": "^3.7",
-    "prettus/l5-repository": "^2.6",
+    "prettus/l5-repository": "*",
     "predis/predis": "^1.1"
   }
 }
