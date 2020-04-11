@@ -9,7 +9,7 @@
 namespace Cuongpm\Modularization\Http\Controllers\Group;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Cuongpm\Modularization\Core\Factories\Http\Controllers\CtrlFactory;
 use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
 

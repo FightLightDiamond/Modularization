@@ -10,7 +10,7 @@ namespace Cuongpm\Modularization\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Cuongpm\Modularization\Core\Components\Http\Controllers\APICtrlComponent;
 use Cuongpm\Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
 use Cuongpm\Modularization\Core\Factories\Http\Repositories\InterfaceFactory;

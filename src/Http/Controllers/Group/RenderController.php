@@ -10,7 +10,7 @@ namespace Cuongpm\Modularization\Http\Controllers\Group;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Cuongpm\Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 use Cuongpm\Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Cuongpm\Modularization\Core\Factories\Http\Requests\RequestFactory;

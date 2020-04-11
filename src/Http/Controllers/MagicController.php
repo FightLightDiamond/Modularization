@@ -17,7 +17,7 @@ use Cuongpm\Modularization\Core\Factories\Polices\PolicyFactory;
 use Cuongpm\Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Cuongpm\Modularization\Core\Factories\Routers\RouterFactory;
 use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
 use Cuongpm\Modularization\Core\Factories\Http\Services\ServiceFactory;

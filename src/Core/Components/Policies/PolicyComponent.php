@@ -8,7 +8,7 @@
 
 namespace Cuongpm\Modularization\Core\Components\Policies;
 
-use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Cuongpm\Modularization\Core\Components\BaseComponent;
 use Cuongpm\Modularization\Helpers\DecoHelper;
 
