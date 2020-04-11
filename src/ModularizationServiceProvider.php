@@ -25,8 +25,8 @@ use Cuongpm\Modularization\Http\Facades\FormatFun;
 use Cuongpm\Modularization\Http\Facades\InputFun;
 
 use Illuminate\Support\ServiceProvider;
-use Uploader\Facades\UploadFun;
-use Uploader\Providers\UploadServiceProvider;
+use Cuongpm\Uploader\Facades\UploadFun;
+use Cuongpm\Uploader\Providers\UploadServiceProvider;
 
 class ModularizationServiceProvider extends ServiceProvider
 {
