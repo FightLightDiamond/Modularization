@@ -13,7 +13,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Cuongpm\Modularization\Http\Facades\FormatFa;
-use Uploader\UploadAble;
+use Cuongpm\Uploader\UploadAble;
 
 trait ModelsTrait
 {
