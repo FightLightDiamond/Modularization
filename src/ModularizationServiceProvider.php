@@ -25,8 +25,7 @@ use Cuongpm\Modularization\Http\Facades\FormatFun;
 use Cuongpm\Modularization\Http\Facades\InputFun;
 
 use Illuminate\Support\ServiceProvider;
-use Cuongpm\Uploader\Facades\UploadFun;
-use Cuongpm\Uploader\Providers\UploadServiceProvider;
+use Cuongpm\Uploader\UploadServiceProvider;
 
 class ModularizationServiceProvider extends ServiceProvider
 {
@@ -91,7 +90,6 @@ class ModularizationServiceProvider extends ServiceProvider
         $this->app->bind('FileFa', FileFun::class);
         $this->app->bind('FormatFa', FormatFun::class);
         $this->app->bind('InputFa', InputFun::class);
-        $this->app->bind('UploadFa', UploadFun::class);
 
         $this->app->register(UploadServiceProvider::class);
     }
