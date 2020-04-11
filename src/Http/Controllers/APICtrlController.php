@@ -23,8 +23,7 @@ use Cuongpm\Modularization\Core\Factories\Routers\RouteAPIFactory;
 use Cuongpm\Modularization\Core\Factories\Routers\RouterFactory;
 use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
 
-
-class controller
+class APICtrlController
 {
     private $APICtrlFactory, $resourceFactory, $routeAPIFactory;
 
