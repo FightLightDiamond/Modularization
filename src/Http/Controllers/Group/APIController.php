@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Cuongpm\Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
 use Cuongpm\Modularization\Core\Factories\Http\Resources\ResourceFactory;
 use Cuongpm\Modularization\Core\Factories\Routers\RouteAPIFactory;
-use Cuongpm\Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Helpers\BuildInput;
 
 class APIController extends RenderController
 {

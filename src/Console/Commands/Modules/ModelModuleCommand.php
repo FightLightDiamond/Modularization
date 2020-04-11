@@ -5,7 +5,7 @@ namespace Cuongpm\Modularization\Console\Commands\Modules;
 use Illuminate\Console\Command;
 use Cuongpm\Modularization\Core\Factories\Models\ModelFactory;
 use Cuongpm\Modularization\Http\Facades\DBFa;
-use Cuongpm\Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Helpers\BuildInput;
 
 class ModelModuleCommand extends Command
 {

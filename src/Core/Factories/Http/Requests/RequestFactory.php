@@ -13,7 +13,7 @@ use Cuongpm\Modularization\Core\Components\Http\Requests\RequestComponent;
 use Cuongpm\Modularization\Core\Factories\_Interface;
 use Cuongpm\Modularization\Core\Factories\BaseFactory;
 use Cuongpm\Modularization\Http\Facades\FormatFa;
-use Cuongpm\Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Helpers\BuildInput;
 
 class RequestFactory extends BaseFactory implements _Interface
 {

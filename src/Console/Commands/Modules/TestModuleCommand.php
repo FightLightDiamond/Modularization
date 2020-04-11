@@ -4,8 +4,8 @@ namespace Cuongpm\Modularization\Console\Commands\Modules;
 
 use Illuminate\Console\Command;
 use Cuongpm\Modularization\Http\Facades\DBFa;
-use Cuongpm\Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
-use Cuongpm\Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Core\Factories\Tests\Feature\FeatureTestFactory;
+use Cuongpm\Modularization\Helpers\BuildInput;
 
 class TestModuleCommand extends Command
 {

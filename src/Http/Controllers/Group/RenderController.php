@@ -20,8 +20,8 @@ use Cuongpm\Modularization\Core\Factories\Polices\PolicyFactory;
 use Cuongpm\Modularization\Core\Factories\Routers\RouterFactory;
 use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
 use Cuongpm\Modularization\Http\Facades\DBFa;
-use Cuongpm\Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
-use Cuongpm\Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Core\Factories\Tests\Feature\FeatureTestFactory;
+use Cuongpm\Modularization\Helpers\BuildInput;
 
 class RenderController extends Controller
 {

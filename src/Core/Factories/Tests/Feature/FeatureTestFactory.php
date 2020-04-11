@@ -9,7 +9,7 @@ namespace Cuongpm\Modularization\Core\Factories\Tests\Feature;
 
 
 use Cuongpm\Modularization\Core\Factories\BaseFactory;
-use Cuongpm\Modularization\src\Core\Components\Tests\Feature\FeatureTestComponent;
+use Cuongpm\Modularization\Core\Components\Tests\Feature\FeatureTestComponent;
 
 class FeatureTestFactory extends BaseFactory
 {

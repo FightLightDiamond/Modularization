@@ -8,7 +8,7 @@
 
 namespace Cuongpm\Modularization\Helpers;
 
-use Cuongpm\Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Helpers\BuildInput;
 
 class CRUDPath
 {

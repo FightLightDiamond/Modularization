@@ -10,7 +10,7 @@ namespace Cuongpm\Modularization\MultiInheritance;
 
 /**
  * Interface RepositoryInterfaceTrait
- * @package Cuongpm\Modularization\src\MultiInheritance
+ * @package Cuongpm\Modularization\MultiInheritance
  */
 interface RepositoryInterfaceExtra
 {
