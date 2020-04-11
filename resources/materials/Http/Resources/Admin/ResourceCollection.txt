@@ -7,7 +7,6 @@
 
 namespace _namespace_Http\Resources\Admin;
 
-use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class _class_ResourceCollection extends ResourceCollection
