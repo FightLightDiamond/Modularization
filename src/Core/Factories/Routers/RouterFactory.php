@@ -8,7 +8,9 @@
 
 namespace Cuongpm\Modularization\Core\Factories\Routers;
 
-use Cuongpm\Modularization\Core\Components\RouterComponent;
+
+
+use Cuongpm\Modularization\Core\Components\Routers\RouterComponent;
 
 class RouterFactory
 {

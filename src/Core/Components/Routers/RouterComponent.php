@@ -6,7 +6,9 @@
  * Time: 9:01 PM
  */
 
-namespace Cuongpm\Modularization\Core\Components;
+namespace Cuongpm\Modularization\Core\Components\Routers;
+
+use Cuongpm\Modularization\Core\Components\BaseComponent;
 
 class RouterComponent extends BaseComponent
 {
