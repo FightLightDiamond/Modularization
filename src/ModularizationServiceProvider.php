@@ -28,7 +28,7 @@ use Illuminate\Support\ServiceProvider;
 use Uploader\Facades\UploadFun;
 use Uploader\Providers\UploadServiceProvider;
 
-class Cuongpm\ModularizationServiceProvider extends ServiceProvider
+class ModularizationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
