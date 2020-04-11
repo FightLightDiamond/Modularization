@@ -3,7 +3,7 @@
 namespace _namespace_Http\Repositories;
 
 
-use Modularization\src\MultiInheritance\RepositoryInterfaceExtra;
+use Cuongpm\Modularization\src\MultiInheritance\RepositoryInterfaceExtra;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**

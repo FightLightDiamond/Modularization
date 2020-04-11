@@ -1,10 +1,10 @@
 <?php
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\FormBuilderFactory;
-use Modularization\Interfaces\ControllerInterface;
+use Cuongpm\Modularization\Core\Factories\FormBuilderFactory;
+use Cuongpm\Modularization\Interfaces\ControllerInterface;
 use Illuminate\Support\Facades\View;
 
 /**

@@ -6,7 +6,7 @@
  * Time: 8:23 AM
  */
 
-namespace Modularization\Core\Factories;
+namespace Cuongpm\Modularization\Core\Factories;
 
 
 interface _Interface

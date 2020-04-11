@@ -6,7 +6,7 @@
  * Time: 5:27 PM
  */
 
-namespace Modularization\Helpers;
+namespace Cuongpm\Modularization\Helpers;
 
 
 class DecoHelper

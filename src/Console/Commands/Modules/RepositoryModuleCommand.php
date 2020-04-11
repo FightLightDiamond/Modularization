@@ -1,10 +1,10 @@
 <?php
 
-namespace Modularization\Console\Commands\Modules;
+namespace Cuongpm\Modularization\Console\Commands\Modules;
 
 use Illuminate\Console\Command;
-use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
-use Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
+use Cuongpm\Modularization\Http\Facades\DBFa;
 
 class RepositoryModuleCommand extends Command
 {

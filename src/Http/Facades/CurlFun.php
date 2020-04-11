@@ -6,7 +6,7 @@
  * Time: 9:53 PM
  */
 
-namespace Modularization\Http\Facades;
+namespace Cuongpm\Modularization\Http\Facades;
 
 class CurlFun
 {

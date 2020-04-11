@@ -6,10 +6,10 @@
  * Time: 9:14 AM
  */
 
-namespace Modularization\Core\Components;
+namespace Cuongpm\Modularization\Core\Components;
 
 use Illuminate\Support\Arr;
-use Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Helpers\DecoHelper;
 
 class BaseComponent
 {

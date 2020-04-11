@@ -6,22 +6,22 @@
  * Time: 2:29 PM
  */
 
-namespace Modularization\Http\Controllers\Group;
+namespace Cuongpm\Modularization\Http\Controllers\Group;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Arr;
-use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
-use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
-use Modularization\Core\Factories\Http\Requests\RequestFactory;
-use Modularization\Core\Factories\Http\Services\ServiceFactory;
-use Modularization\Core\Factories\Models\ModelFactory;
-use Modularization\Core\Factories\Polices\PolicyFactory;
-use Modularization\Core\Factories\Routers\RouterFactory;
-use Modularization\Core\Factories\ServiceProviderFactory;
-use Modularization\Http\Facades\DBFa;
-use Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
-use Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Requests\RequestFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Services\ServiceFactory;
+use Cuongpm\Modularization\Core\Factories\Models\ModelFactory;
+use Cuongpm\Modularization\Core\Factories\Polices\PolicyFactory;
+use Cuongpm\Modularization\Core\Factories\Routers\RouterFactory;
+use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
+use Cuongpm\Modularization\src\Helpers\BuildInput;
 
 class RenderController extends Controller
 {

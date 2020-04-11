@@ -6,11 +6,11 @@
  * Time: 9:32 AM
  */
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
-use Modularization\Core\Factories\Models\ModelFactory;
+use Cuongpm\Modularization\Core\Factories\Models\ModelFactory;
 
 class ModelController extends Controller
 {

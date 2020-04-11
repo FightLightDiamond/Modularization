@@ -6,10 +6,10 @@
  * Time: 3:33 PM
  */
 
-namespace Modularization\Core\Components\Http\Repositories;
+namespace Cuongpm\Modularization\Core\Components\Http\Repositories;
 
 
-use Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
 
 class InterfaceComponent extends BaseComponent
 {

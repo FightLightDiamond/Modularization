@@ -6,9 +6,9 @@
  * Time: 4:02 PM
  */
 
-namespace Modularization\Core\Components\Http\Controllers;
+namespace Cuongpm\Modularization\Core\Components\Http\Controllers;
 
-use Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
 
 class CtrlComponent extends BaseComponent
 {

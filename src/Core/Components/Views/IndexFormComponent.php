@@ -6,11 +6,11 @@
  * Time: 3:33 PM
  */
 
-namespace Modularization\Core\Components\Views;
+namespace Cuongpm\Modularization\Core\Components\Views;
 
 
-use Modularization\Core\Components\BaseComponent;
-use Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Helpers\DecoHelper;
 
 class IndexFormComponent extends BaseComponent
 {

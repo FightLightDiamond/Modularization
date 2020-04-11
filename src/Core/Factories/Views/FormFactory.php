@@ -6,20 +6,20 @@
  * Time: 9:24 AM
  */
 
-namespace Modularization\Core\Factories\Views;
+namespace Cuongpm\Modularization\Core\Factories\Views;
 
-use Modularization\Core\Components\Views\CreateFormComponent;
-use Modularization\Core\Components\Views\IndexFormComponent;
-use Modularization\Core\Components\Views\ShowFormComponent;
-use Modularization\Core\Components\Views\TableFormComponent;
-use Modularization\Core\Components\Views\UpdateFormComponent;
+use Cuongpm\Modularization\Core\Components\Views\CreateFormComponent;
+use Cuongpm\Modularization\Core\Components\Views\IndexFormComponent;
+use Cuongpm\Modularization\Core\Components\Views\ShowFormComponent;
+use Cuongpm\Modularization\Core\Components\Views\TableFormComponent;
+use Cuongpm\Modularization\Core\Components\Views\UpdateFormComponent;
 
 /**
  * Class FormFactory
  * Đối tượng form được sản xuất tại đây
  * Nơi sản xuất các thành phần component
  * Các
- * @package Modularization\Core\Factories
+ * @package Cuongpm\Modularization\Core\Factories
  */
 class FormFactory
 {

@@ -6,7 +6,7 @@
  * Time: 6:10 PM
  */
 
-namespace Modularization\Http\Facades;
+namespace Cuongpm\Modularization\Http\Facades;
 
 define('AES_256_CBC', 'aes-256-cbc');
 

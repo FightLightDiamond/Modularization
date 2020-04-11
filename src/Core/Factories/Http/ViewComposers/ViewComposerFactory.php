@@ -6,10 +6,10 @@
  * Time: 5:34 PM
  */
 
-namespace Modularization\Core\Factories\ViewComposers;
+namespace Cuongpm\Modularization\Core\Factories\ViewComposers;
 
 
-use Modularization\Core\Components\Http\ViewComposers\ViewComposerComponent;
+use Cuongpm\Modularization\Core\Components\Http\ViewComposers\ViewComposerComponent;
 
 class ViewComposerFactory
 {

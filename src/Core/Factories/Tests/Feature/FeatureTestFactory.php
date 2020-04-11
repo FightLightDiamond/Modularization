@@ -5,11 +5,11 @@
  * Time: 3:26 PM
  */
 
-namespace Modularization\src\Core\Factories\Tests\Feature;
+namespace Cuongpm\Modularization\src\Core\Factories\Tests\Feature;
 
 
-use Modularization\Core\Factories\BaseFactory;
-use Modularization\src\Core\Components\Tests\Feature\FeatureTestComponent;
+use Cuongpm\Modularization\Core\Factories\BaseFactory;
+use Cuongpm\Modularization\src\Core\Components\Tests\Feature\FeatureTestComponent;
 
 class FeatureTestFactory extends BaseFactory
 {

@@ -6,9 +6,9 @@
  * Time: 11:40 AM
  */
 
-namespace Modularization\Core\Factories\Views;
+namespace Cuongpm\Modularization\Core\Factories\Views;
 
-use Modularization\Core\Components\Views\TranslationComponent;
+use Cuongpm\Modularization\Core\Components\Views\TranslationComponent;
 
 class TranslationFactory
 {

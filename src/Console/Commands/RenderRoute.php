@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Console\Commands;
+namespace Cuongpm\Modularization\Console\Commands;
 
 use Illuminate\Console\Command;
 

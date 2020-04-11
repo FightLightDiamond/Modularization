@@ -1,8 +1,8 @@
 <?php
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
-use Modularization\Core\Factories\Observers\ObserverFactory;
+use Cuongpm\Modularization\Core\Factories\Observers\ObserverFactory;
 use Illuminate\Support\Facades\View;
 
 /**

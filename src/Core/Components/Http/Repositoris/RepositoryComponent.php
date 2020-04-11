@@ -6,10 +6,10 @@
  * Time: 4:02 PM
  */
 
-namespace Modularization\Core\Components\Http\Repositories;
+namespace Cuongpm\Modularization\Core\Components\Http\Repositories;
 
 
-use Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
 
 class RepositoryComponent extends BaseComponent
 {

@@ -6,11 +6,11 @@
  * Time: 4:02 PM
  */
 
-namespace Modularization\Core\Components\Policies;
+namespace Cuongpm\Modularization\Core\Components\Policies;
 
 use Illuminate\Support\Arr;
-use Modularization\Core\Components\BaseComponent;
-use Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Helpers\DecoHelper;
 
 class PolicyComponent extends BaseComponent
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
-use Modularization\Core\Factories\Polices\PolicyFactory;
+use Cuongpm\Modularization\Core\Factories\Polices\PolicyFactory;
 
 /**
  * Created by cuongpm/modularization.

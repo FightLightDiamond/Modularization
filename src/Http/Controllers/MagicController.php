@@ -6,23 +6,23 @@
  * Time: 6:18 PM
  */
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\Http\Controllers\CtrlFactory;
-use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
-use Modularization\Core\Factories\Http\Requests\RequestFactory;
-use Modularization\Core\Factories\Models\ModelFactory;
-use Modularization\Core\Factories\Polices\PolicyFactory;
-use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Controllers\CtrlFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Requests\RequestFactory;
+use Cuongpm\Modularization\Core\Factories\Models\ModelFactory;
+use Cuongpm\Modularization\Core\Factories\Polices\PolicyFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Modularization\Core\Factories\Routers\RouterFactory;
-use Modularization\Core\Factories\ServiceProviderFactory;
-use Modularization\Core\Factories\Http\Services\ServiceFactory;
-use Modularization\Core\Factories\Views\FormFactory;
-use Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\Core\Factories\Routers\RouterFactory;
+use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Services\ServiceFactory;
+use Cuongpm\Modularization\Core\Factories\Views\FormFactory;
+use Cuongpm\Modularization\Http\Facades\DBFa;
 
 class MagicController extends Controller
 {

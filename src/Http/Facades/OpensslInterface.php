@@ -6,7 +6,7 @@
  * Time: 2:40 PM
  */
 
-namespace Modularization\Http\Facades;
+namespace Cuongpm\Modularization\Http\Facades;
 
 
 interface OpensslInterface

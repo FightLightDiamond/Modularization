@@ -6,12 +6,12 @@
  * Time: 3:34 PM
  */
 
-namespace Modularization\Core\Factories\Http\Controllers;
+namespace Cuongpm\Modularization\Core\Factories\Http\Controllers;
 
-use Modularization\Core\Components\Http\Controllers\CtrlComponent;
-use Modularization\Core\Factories\_Interface;
-use Modularization\Core\Factories\BaseFactory;
-use Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\Core\Components\Http\Controllers\CtrlComponent;
+use Cuongpm\Modularization\Core\Factories\_Interface;
+use Cuongpm\Modularization\Core\Factories\BaseFactory;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
 
 class CtrlFactory extends BaseFactory implements _Interface
 {

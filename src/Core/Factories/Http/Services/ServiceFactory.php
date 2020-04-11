@@ -6,11 +6,11 @@
  * Time: 1:26 PM
  */
 
-namespace Modularization\Core\Factories\Http\Services;
+namespace Cuongpm\Modularization\Core\Factories\Http\Services;
 
-use Modularization\Core\Components\Http\Services\ServiceComponent;
-use Modularization\Core\Factories\_Interface;
-use Modularization\Core\Factories\BaseFactory;
+use Cuongpm\Modularization\Core\Components\Http\Services\ServiceComponent;
+use Cuongpm\Modularization\Core\Factories\_Interface;
+use Cuongpm\Modularization\Core\Factories\BaseFactory;
 
 class ServiceFactory extends BaseFactory implements _Interface
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Modularization\MultiInheritance;
+namespace Cuongpm\Modularization\MultiInheritance;
 
 
 trait NullPatternTrait

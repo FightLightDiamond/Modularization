@@ -6,12 +6,12 @@
  * Time: 3:33 PM
  */
 
-namespace Modularization\Core\Components\Views;
+namespace Cuongpm\Modularization\Core\Components\Views;
 
 use Illuminate\Support\Arr;
-use Modularization\Core\Components\BaseComponent;
-use Modularization\Http\Facades\DBFa;
-use Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\Helpers\DecoHelper;
 
 class ShowFormComponent extends BaseComponent
 {

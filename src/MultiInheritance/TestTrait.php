@@ -5,7 +5,7 @@
  * Time: 10:10 AM
  */
 
-namespace Modularization\MultiInheritance;
+namespace Cuongpm\Modularization\MultiInheritance;
 
 use Illuminate\Support\Facades\DB;
 

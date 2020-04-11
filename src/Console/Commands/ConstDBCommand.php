@@ -6,11 +6,11 @@
  * Time: 9:17 AM
  */
 
-namespace Modularization\Console\Commands;
+namespace Cuongpm\Modularization\Console\Commands;
 
 
 use Illuminate\Console\Command;
-use Modularization\Core\Factories\Constants\ConstantFactory;
+use Cuongpm\Modularization\Core\Factories\Constants\ConstantFactory;
 
 class ConstDBCommand extends Command
 {

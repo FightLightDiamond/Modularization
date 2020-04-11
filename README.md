@@ -1,4 +1,4 @@
-# Modularization
+# Cuongpm\Modularization
 This package makes it easy to build project
 
 ## Postcardware
@@ -19,7 +19,7 @@ The service provider will automatically get registered. Or you may manually add 
 ```
 'providers' => [
     // ...
-    Modularization\ModularizationServiceProvider::class,
+    Cuongpm\Modularization\Cuongpm\ModularizationServiceProvider::class,
 ];
 ```
 

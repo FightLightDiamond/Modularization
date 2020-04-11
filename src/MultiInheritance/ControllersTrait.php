@@ -6,7 +6,7 @@
  * Time: 1:40 PM
  */
 
-namespace Modularization\MultiInheritance;
+namespace Cuongpm\Modularization\MultiInheritance;
 
 
 use Illuminate\Http\Request;

@@ -6,9 +6,9 @@
  * Time: 9:24 AM
  */
 
-namespace Modularization\Core\Factories;
+namespace Cuongpm\Modularization\Core\Factories;
 
-use Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
 
 class BaseFactory
 {

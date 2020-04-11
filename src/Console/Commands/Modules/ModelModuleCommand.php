@@ -1,11 +1,11 @@
 <?php
 
-namespace Modularization\Console\Commands\Modules;
+namespace Cuongpm\Modularization\Console\Commands\Modules;
 
 use Illuminate\Console\Command;
-use Modularization\Core\Factories\Models\ModelFactory;
-use Modularization\Http\Facades\DBFa;
-use Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Core\Factories\Models\ModelFactory;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\src\Helpers\BuildInput;
 
 class ModelModuleCommand extends Command
 {

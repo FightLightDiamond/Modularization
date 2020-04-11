@@ -7,7 +7,7 @@
  * Time: 8:47 AM
  */
 
-namespace Modularization\Http\Facades;
+namespace Cuongpm\Modularization\Http\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

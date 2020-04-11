@@ -6,14 +6,14 @@
  * Time: 3:59 PM
  */
 
-namespace Modularization\Core\Factories\Http\Requests;
+namespace Cuongpm\Modularization\Core\Factories\Http\Requests;
 
 
-use Modularization\Core\Components\Http\Requests\RequestComponent;
-use Modularization\Core\Factories\_Interface;
-use Modularization\Core\Factories\BaseFactory;
-use Modularization\Http\Facades\FormatFa;
-use Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Core\Components\Http\Requests\RequestComponent;
+use Cuongpm\Modularization\Core\Factories\_Interface;
+use Cuongpm\Modularization\Core\Factories\BaseFactory;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\src\Helpers\BuildInput;
 
 class RequestFactory extends BaseFactory implements _Interface
 {

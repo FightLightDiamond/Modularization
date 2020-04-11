@@ -6,11 +6,11 @@
  * Time: 9:32 AM
  */
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
-use Modularization\Core\Factories\Views\FormFactory;
+use Cuongpm\Modularization\Core\Factories\Views\FormFactory;
 
 class FormController extends Controller
 {

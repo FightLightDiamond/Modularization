@@ -5,13 +5,13 @@
  * Time: 12:25 PM
  */
 
-namespace Modularization\src\Core\Components\Tests\Feature;
+namespace Cuongpm\Modularization\src\Core\Components\Tests\Feature;
 
 
-use Modularization\Core\Components\BaseComponent;
-use Modularization\Http\Facades\DBFa;
-use Modularization\Helpers\DecoHelper;
-use Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
 
 class FeatureTestComponent extends BaseComponent
 {

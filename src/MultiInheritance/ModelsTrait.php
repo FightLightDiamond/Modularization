@@ -7,12 +7,12 @@
  * Time: 1:36 PM
  */
 
-namespace Modularization\MultiInheritance;
+namespace Cuongpm\Modularization\MultiInheritance;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
 use Uploader\UploadAble;
 
 trait ModelsTrait

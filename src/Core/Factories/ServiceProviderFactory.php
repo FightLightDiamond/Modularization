@@ -6,10 +6,10 @@
  * Time: 8:46 PM
  */
 
-namespace Modularization\Core\Factories;
+namespace Cuongpm\Modularization\Core\Factories;
 
 
-use Modularization\Core\Components\ServiceProviderComponent;
+use Cuongpm\Modularization\Core\Components\ServiceProviderComponent;
 
 class ServiceProviderFactory
 {

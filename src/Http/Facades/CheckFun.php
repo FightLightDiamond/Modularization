@@ -6,7 +6,7 @@
  * Time: 2:35 PM
  */
 
-namespace Modularization\Http\Facades;
+namespace Cuongpm\Modularization\Http\Facades;
 
 
 class CheckFun

@@ -6,11 +6,11 @@
  * Time: 9:32 AM
  */
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
-use Modularization\Core\Factories\Models\MutatorFactory;
+use Cuongpm\Modularization\Core\Factories\Models\MutatorFactory;
 
 class MutatorController extends Controller
 {

@@ -6,10 +6,10 @@
  * Time: 10:44 AM
  */
 
-namespace Modularization\Core\Components\Routers;
+namespace Cuongpm\Modularization\Core\Components\Routers;
 
 
-use Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
 
 class RouterAdminComponent extends BaseComponent
 {

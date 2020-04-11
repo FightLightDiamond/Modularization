@@ -1,34 +1,34 @@
 <?php
 
-namespace Modularization;
+namespace Cuongpm\Modularization;
 
-use Modularization\Console\Commands\Modules\ProjectModuleCommand;
-use Modularization\Console\Commands\Modules\ModelModuleCommand;
-use Modularization\Console\Commands\Modules\RepositoryModuleCommand;
-use Modularization\Console\Commands\Modules\RequestModuleCommand;
-use Modularization\Console\Commands\Modules\ServiceModuleCommand;
-use Modularization\Console\Commands\Tables\TableName;
-use Modularization\Console\Commands\ConstDBCommand;
-use Modularization\Console\Commands\Files\FileChange;
-use Modularization\Console\Commands\Files\FileRemove;
-use Modularization\Console\Commands\Files\FileRename;
-use Modularization\Console\Commands\RenderRoute;
-use Modularization\Console\Commands\Tables\TableColumn;
-use Modularization\Console\Commands\Tables\TableData;
-use Modularization\Console\Commands\Modules\TestModuleCommand;
-use Modularization\Console\Commands\TransDBCommand;
-use Modularization\Http\Facades\CheckFun;
-use Modularization\Http\Facades\CurlFun;
-use Modularization\Http\Facades\DBFun;
-use Modularization\Http\Facades\FileFun;
-use Modularization\Http\Facades\FormatFun;
-use Modularization\Http\Facades\InputFun;
+use Cuongpm\Modularization\Console\Commands\Modules\ProjectModuleCommand;
+use Cuongpm\Modularization\Console\Commands\Modules\ModelModuleCommand;
+use Cuongpm\Modularization\Console\Commands\Modules\RepositoryModuleCommand;
+use Cuongpm\Modularization\Console\Commands\Modules\RequestModuleCommand;
+use Cuongpm\Modularization\Console\Commands\Modules\ServiceModuleCommand;
+use Cuongpm\Modularization\Console\Commands\Tables\TableName;
+use Cuongpm\Modularization\Console\Commands\ConstDBCommand;
+use Cuongpm\Modularization\Console\Commands\Files\FileChange;
+use Cuongpm\Modularization\Console\Commands\Files\FileRemove;
+use Cuongpm\Modularization\Console\Commands\Files\FileRename;
+use Cuongpm\Modularization\Console\Commands\RenderRoute;
+use Cuongpm\Modularization\Console\Commands\Tables\TableColumn;
+use Cuongpm\Modularization\Console\Commands\Tables\TableData;
+use Cuongpm\Modularization\Console\Commands\Modules\TestModuleCommand;
+use Cuongpm\Modularization\Console\Commands\TransDBCommand;
+use Cuongpm\Modularization\Http\Facades\CheckFun;
+use Cuongpm\Modularization\Http\Facades\CurlFun;
+use Cuongpm\Modularization\Http\Facades\DBFun;
+use Cuongpm\Modularization\Http\Facades\FileFun;
+use Cuongpm\Modularization\Http\Facades\FormatFun;
+use Cuongpm\Modularization\Http\Facades\InputFun;
 
 use Illuminate\Support\ServiceProvider;
 use Uploader\Facades\UploadFun;
 use Uploader\Providers\UploadServiceProvider;
 
-class ModularizationServiceProvider extends ServiceProvider
+class Cuongpm\ModularizationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.

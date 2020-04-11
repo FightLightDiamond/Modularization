@@ -6,10 +6,10 @@
  * Time: 10:54 AM
  */
 
-namespace Modularization\Core\Factories\Routers;
+namespace Cuongpm\Modularization\Core\Factories\Routers;
 
 
-use Modularization\Core\Components\Routers\RouterAPIComponent;
+use Cuongpm\Modularization\Core\Components\Routers\RouterAPIComponent;
 
 class RouteAPIFactory
 {

@@ -6,10 +6,10 @@
  * Time: 3:00 PM
  */
 
-namespace Modularization\Core\Factories\Models;
+namespace Cuongpm\Modularization\Core\Factories\Models;
 
-use Modularization\Core\Components\Models\AccessorComponent;
-use Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\Core\Components\Models\AccessorComponent;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
 
 class AccessorFactory
 {

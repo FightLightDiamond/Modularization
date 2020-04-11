@@ -6,10 +6,10 @@
  * Time: 4:49 PM
  */
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\Models\AccessorFactory;
+use Cuongpm\Modularization\Core\Factories\Models\AccessorFactory;
 use Illuminate\Support\Facades\View;
 
 class AccessorController extends Controller

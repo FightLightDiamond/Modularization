@@ -1,10 +1,10 @@
 <?php
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
-use Modularization\Core\Factories\Http\Requests\RequestFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Requests\RequestFactory;
 
 /**
  * Created by cuongpm/modularization.

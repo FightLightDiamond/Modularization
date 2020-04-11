@@ -6,7 +6,7 @@
  * Time: 4:55 PM
  */
 
-namespace Modularization\Interfaces;
+namespace Cuongpm\Modularization\Interfaces;
 
 interface FactoryInterface
 {

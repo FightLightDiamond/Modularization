@@ -6,11 +6,11 @@
  * Time: 12:56 AM
  */
 
-namespace Modularization\Core\Factories\Observers;
+namespace Cuongpm\Modularization\Core\Factories\Observers;
 
 use Illuminate\Support\Str;
-use Modularization\Core\Components\Observers\ObserverComponent;
-use Modularization\Core\Factories\_Interface;
+use Cuongpm\Modularization\Core\Components\Observers\ObserverComponent;
+use Cuongpm\Modularization\Core\Factories\_Interface;
 
 class ObserverFactory implements _Interface
 {

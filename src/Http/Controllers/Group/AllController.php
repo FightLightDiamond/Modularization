@@ -6,7 +6,7 @@
  * Time: 2:28 PM
  */
 
-namespace Modularization\Http\Controllers\Group;
+namespace Cuongpm\Modularization\Http\Controllers\Group;
 
 
 class AllController

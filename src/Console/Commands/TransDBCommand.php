@@ -1,9 +1,9 @@
 <?php
 
-namespace Modularization\Console\Commands;
+namespace Cuongpm\Modularization\Console\Commands;
 
 use Illuminate\Console\Command;
-use Modularization\Core\Factories\Views\TranslationFactory;
+use Cuongpm\Modularization\Core\Factories\Views\TranslationFactory;
 
 class TransDBCommand extends Command
 {

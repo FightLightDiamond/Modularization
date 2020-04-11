@@ -6,7 +6,7 @@
  * Time: 11:40 AM
  */
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 
 class TranslationController

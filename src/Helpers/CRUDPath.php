@@ -6,9 +6,9 @@
  * Time: 5:21 PM
  */
 
-namespace Modularization\Helpers;
+namespace Cuongpm\Modularization\Helpers;
 
-use Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\src\Helpers\BuildInput;
 
 class CRUDPath
 {

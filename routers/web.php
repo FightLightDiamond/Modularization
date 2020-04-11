@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Modularization\Http\Controllers',
+Route::group(['namespace' => 'Cuongpm\Modularization\Http\Controllers',
     'middleware' => config('modularization.middleware', 'web')
 ],
     function () {
@@ -33,8 +33,8 @@ Route::group(['namespace' => 'Modularization\Http\Controllers',
 
 
 //Route::get('seed/{tables}', function ($tables) {
-//    app(\Modularization\Http\Facades\DBFun::class)->seedTables($tables);
+//    app(\Cuongpm\Modularization\Http\Facades\DBFun::class)->seedTables($tables);
 //});
 //Route::get('seedAll', function () {
-//    app(\Modularization\Http\Facades\DBFun::class)->seed();
+//    app(\Cuongpm\Modularization\Http\Facades\DBFun::class)->seed();
 //});

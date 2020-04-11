@@ -6,11 +6,11 @@
  * Time: 9:25 AM
  */
 
-namespace Modularization\Core\Factories\Models;
+namespace Cuongpm\Modularization\Core\Factories\Models;
 
-use Modularization\Core\Components\Models\ModelComponent;
-use Modularization\Core\Factories\BaseFactory;
-use Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\Core\Components\Models\ModelComponent;
+use Cuongpm\Modularization\Core\Factories\BaseFactory;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
 
 class ModelFactory extends BaseFactory
 {

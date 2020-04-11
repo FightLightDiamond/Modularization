@@ -6,7 +6,7 @@
  * Time: 11:45 PM
  */
 
-namespace Modularization\Http\Facades;
+namespace Cuongpm\Modularization\Http\Facades;
 
 
 class FileFa

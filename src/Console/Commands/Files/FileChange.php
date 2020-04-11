@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Console\Commands\Files;
+namespace Cuongpm\Modularization\Console\Commands\Files;
 
 use Illuminate\Console\Command;
 

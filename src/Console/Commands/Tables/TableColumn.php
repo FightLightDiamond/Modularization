@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Console\Commands\Tables;
+namespace Cuongpm\Modularization\Console\Commands\Tables;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;

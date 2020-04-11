@@ -6,10 +6,10 @@
  * Time: 3:16 PM
  */
 
-namespace Modularization\Core\Factories\Constants;
+namespace Cuongpm\Modularization\Core\Factories\Constants;
 
-use Modularization\Core\Components\Constants\ConstantComponent;
-use Modularization\Core\Factories\_Interface;
+use Cuongpm\Modularization\Core\Components\Constants\ConstantComponent;
+use Cuongpm\Modularization\Core\Factories\_Interface;
 
 class ConstantFactory implements _Interface
 {

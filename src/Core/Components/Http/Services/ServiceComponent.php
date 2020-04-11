@@ -6,9 +6,9 @@
  * Time: 1:12 PM
  */
 
-namespace Modularization\Core\Components\Http\Services;
+namespace Cuongpm\Modularization\Core\Components\Http\Services;
 
-use Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
 
 class ServiceComponent extends BaseComponent
 {

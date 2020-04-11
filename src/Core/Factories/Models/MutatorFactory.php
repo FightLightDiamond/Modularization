@@ -6,11 +6,11 @@
  * Time: 9:24 AM
  */
 
-namespace Modularization\Core\Factories\Models;
+namespace Cuongpm\Modularization\Core\Factories\Models;
 
-use Modularization\Core\Components\Models\MutatorComponent;
-use Modularization\Core\Factories\_Interface;
-use Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\Core\Components\Models\MutatorComponent;
+use Cuongpm\Modularization\Core\Factories\_Interface;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
 
 class MutatorFactory implements _Interface
 {

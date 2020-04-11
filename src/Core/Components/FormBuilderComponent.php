@@ -6,11 +6,11 @@
  * Time: 4:34 PM
  */
 
-namespace Modularization\Core\Components;
+namespace Cuongpm\Modularization\Core\Components;
 
-use Modularization\Http\Facades\DBFa;
-use Modularization\Helpers\DecoHelper;
-use Modularization\Ingredients\Form;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Ingredients\Form;
 
 class FormBuilderComponent extends BaseComponent
 {

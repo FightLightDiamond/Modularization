@@ -1,11 +1,11 @@
 <?php
 
-namespace Modularization\Console\Commands\Modules;
+namespace Cuongpm\Modularization\Console\Commands\Modules;
 
 use Illuminate\Console\Command;
-use Modularization\Http\Facades\DBFa;
-use Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
-use Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
+use Cuongpm\Modularization\src\Helpers\BuildInput;
 
 class TestModuleCommand extends Command
 {

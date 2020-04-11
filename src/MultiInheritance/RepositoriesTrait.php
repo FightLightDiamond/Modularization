@@ -6,7 +6,7 @@
  * Time: 1:40 PM
  */
 
-namespace Modularization\MultiInheritance;
+namespace Cuongpm\Modularization\MultiInheritance;
 
 
 use Illuminate\Support\Facades\DB;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * Trait RepositoriesTrait
- * @package Modularization\MultiInheritance
+ * @package Cuongpm\Modularization\MultiInheritance
  */
 trait RepositoriesTrait
 {

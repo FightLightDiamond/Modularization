@@ -6,9 +6,9 @@
  * Time: 5:29 PM
  */
 
-namespace Modularization\Core\Components\Http\ViewComposers;
+namespace Cuongpm\Modularization\Core\Components\Http\ViewComposers;
 
-use Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
 
 class ViewComposerComponent extends BaseComponent
 {

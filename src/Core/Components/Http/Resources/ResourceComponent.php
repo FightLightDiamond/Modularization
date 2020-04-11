@@ -6,10 +6,10 @@
  * Time: 5:55 PM
  */
 
-namespace Modularization\Core\Components\Http\Resources;
+namespace Cuongpm\Modularization\Core\Components\Http\Resources;
 
 
-use Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
 
 class ResourceComponent extends BaseComponent
 {

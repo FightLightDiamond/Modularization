@@ -6,10 +6,10 @@
  * Time: 3:52 PM
  */
 
-namespace Modularization\Core\Factories;
+namespace Cuongpm\Modularization\Core\Factories;
 
-use Modularization\Core\Components\FormBuilderComponent;
-use Modularization\Interfaces\FactoryInterface;
+use Cuongpm\Modularization\Core\Components\FormBuilderComponent;
+use Cuongpm\Modularization\Interfaces\FactoryInterface;
 
 class FormBuilderFactory implements FactoryInterface
 {

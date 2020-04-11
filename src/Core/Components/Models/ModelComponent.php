@@ -6,11 +6,11 @@
  * Time: 9:25 AM
  */
 
-namespace Modularization\Core\Components\Models;
+namespace Cuongpm\Modularization\Core\Components\Models;
 
-use Modularization\Core\Components\BaseComponent;
-use Modularization\Http\Facades\DBFa;
-use Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\Helpers\DecoHelper;
 
 class ModelComponent extends BaseComponent
 {

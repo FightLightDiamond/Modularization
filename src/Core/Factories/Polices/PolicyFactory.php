@@ -6,12 +6,12 @@
  * Time: 3:35 PM
  */
 
-namespace Modularization\Core\Factories\Polices;
+namespace Cuongpm\Modularization\Core\Factories\Polices;
 
-use Modularization\Core\Components\Policies\PolicyComponent;
-use Modularization\Core\Factories\_Interface;
-use Modularization\Core\Factories\BaseFactory;
-use Modularization\Http\Facades\FormatFa;
+use Cuongpm\Modularization\Core\Components\Policies\PolicyComponent;
+use Cuongpm\Modularization\Core\Factories\_Interface;
+use Cuongpm\Modularization\Core\Factories\BaseFactory;
+use Cuongpm\Modularization\Http\Facades\FormatFa;
 
 class PolicyFactory extends BaseFactory implements _Interface
 {

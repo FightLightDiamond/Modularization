@@ -6,11 +6,11 @@
  * Time: 3:17 PM
  */
 
-namespace Modularization\Core\Components\Constants;
+namespace Cuongpm\Modularization\Core\Components\Constants;
 
-use Modularization\Core\Components\BaseComponent;
-use Modularization\Http\Facades\DBFa;
-use Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\Helpers\DecoHelper;
 
 class ConstantComponent extends BaseComponent
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
-use Modularization\Core\Factories\Constants\ConstantFactory;
+use Cuongpm\Modularization\Core\Factories\Constants\ConstantFactory;
 
 /**
  * Created by cuongpm/modularization.

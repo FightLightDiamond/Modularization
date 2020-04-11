@@ -6,12 +6,12 @@
  * Time: 2:28 PM
  */
 
-namespace Modularization\Http\Controllers\Group;
+namespace Cuongpm\Modularization\Http\Controllers\Group;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Modularization\Core\Factories\Http\Controllers\CtrlFactory;
-use Modularization\Core\Factories\ServiceProviderFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Controllers\CtrlFactory;
+use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
 
 class FrontendController extends RenderController
 {

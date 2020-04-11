@@ -6,7 +6,7 @@
  * Time: 8:47 PM
  */
 
-namespace Modularization\Core\Components;
+namespace Cuongpm\Modularization\Core\Components;
 
 
 class ServiceProviderComponent  extends BaseComponent

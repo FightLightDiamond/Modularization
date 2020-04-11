@@ -6,12 +6,12 @@
  * Time: 5:54 PM
  */
 
-namespace Modularization\Core\Factories\Http\Resources;
+namespace Cuongpm\Modularization\Core\Factories\Http\Resources;
 
 
-use Modularization\Core\Components\Http\Resources\ResourceComponent;
-use Modularization\Core\Factories\BaseFactory;
-use Modularization\src\Core\Components\Http\Resources\ResourceCollectionComponent;
+use Cuongpm\Modularization\Core\Components\Http\Resources\ResourceComponent;
+use Cuongpm\Modularization\Core\Factories\BaseFactory;
+use Cuongpm\Modularization\src\Core\Components\Http\Resources\ResourceCollectionComponent;
 
 class ResourceFactory extends BaseFactory
 {

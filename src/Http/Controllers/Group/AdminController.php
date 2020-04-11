@@ -6,13 +6,13 @@
  * Time: 2:27 PM
  */
 
-namespace Modularization\Http\Controllers\Group;
+namespace Cuongpm\Modularization\Http\Controllers\Group;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Modularization\Core\Factories\Http\Controllers\AdminCtrlFactory;
-use Modularization\Core\Factories\ServiceProviderFactory;
-use Modularization\Core\Factories\Views\FormFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Controllers\AdminCtrlFactory;
+use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
+use Cuongpm\Modularization\Core\Factories\Views\FormFactory;
 
 class AdminController extends RenderController
 {

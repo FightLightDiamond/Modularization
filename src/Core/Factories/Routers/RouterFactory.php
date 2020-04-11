@@ -6,9 +6,9 @@
  * Time: 9:02 PM
  */
 
-namespace Modularization\Core\Factories\Routers;
+namespace Cuongpm\Modularization\Core\Factories\Routers;
 
-use Modularization\Core\Components\RouterComponent;
+use Cuongpm\Modularization\Core\Components\RouterComponent;
 
 class RouterFactory
 {

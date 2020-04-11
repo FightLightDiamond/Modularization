@@ -6,11 +6,11 @@
  * Time: 12:57 AM
  */
 
-namespace Modularization\Core\Components\Observers;
+namespace Cuongpm\Modularization\Core\Components\Observers;
 
 use Illuminate\Support\Arr;
-use Modularization\Core\Components\BaseComponent;
-use Modularization\Helpers\DecoHelper;
+use Cuongpm\Modularization\Core\Components\BaseComponent;
+use Cuongpm\Modularization\Helpers\DecoHelper;
 
 class ObserverComponent extends BaseComponent
 {

@@ -5,12 +5,12 @@
  * Time: 5:41 PM
  */
 
-namespace Modularization\src\MultiInheritance;
+namespace Cuongpm\Modularization\src\MultiInheritance;
 
 
 /**
  * Interface RepositoryInterfaceTrait
- * @package Modularization\src\MultiInheritance
+ * @package Cuongpm\Modularization\src\MultiInheritance
  */
 interface RepositoryInterfaceExtra
 {

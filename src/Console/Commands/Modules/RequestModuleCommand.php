@@ -1,11 +1,11 @@
 <?php
 
-namespace Modularization\Console\Commands\Modules;
+namespace Cuongpm\Modularization\Console\Commands\Modules;
 
 use Illuminate\Console\Command;
-use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
-use Modularization\Core\Factories\Http\Requests\RequestFactory;
-use Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Requests\RequestFactory;
+use Cuongpm\Modularization\Http\Facades\DBFa;
 
 class RequestModuleCommand extends Command
 {

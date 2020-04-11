@@ -1,9 +1,9 @@
 <?php
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modularization\Core\Factories\Http\Controllers\CtrlFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Controllers\CtrlFactory;
 use Illuminate\View\View;
 
 /**

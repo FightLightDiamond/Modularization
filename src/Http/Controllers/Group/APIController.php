@@ -6,14 +6,14 @@
  * Time: 2:28 PM
  */
 
-namespace Modularization\Http\Controllers\Group;
+namespace Cuongpm\Modularization\Http\Controllers\Group;
 
 
 use Illuminate\Http\Request;
-use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
-use Modularization\Core\Factories\Http\Resources\ResourceFactory;
-use Modularization\Core\Factories\Routers\RouteAPIFactory;
-use Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Resources\ResourceFactory;
+use Cuongpm\Modularization\Core\Factories\Routers\RouteAPIFactory;
+use Cuongpm\Modularization\src\Helpers\BuildInput;
 
 class APIController extends RenderController
 {

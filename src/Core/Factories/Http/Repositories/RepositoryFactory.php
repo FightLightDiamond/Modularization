@@ -6,11 +6,11 @@
  * Time: 3:59 PM
  */
 
-namespace Modularization\Core\Factories\Http\Repositories;
+namespace Cuongpm\Modularization\Core\Factories\Http\Repositories;
 
-use Modularization\Core\Components\Http\Repositories\RepositoryComponent;
-use Modularization\Core\Factories\_Interface;
-use Modularization\Core\Factories\BaseFactory;
+use Cuongpm\Modularization\Core\Components\Http\Repositories\RepositoryComponent;
+use Cuongpm\Modularization\Core\Factories\_Interface;
+use Cuongpm\Modularization\Core\Factories\BaseFactory;
 
 class RepositoryFactory extends BaseFactory implements _Interface
 {

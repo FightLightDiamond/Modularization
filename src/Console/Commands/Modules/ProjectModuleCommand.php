@@ -1,24 +1,24 @@
 <?php
 
-namespace Modularization\Console\Commands\Modules;
+namespace Cuongpm\Modularization\Console\Commands\Modules;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
-use Modularization\Core\Factories\Http\Controllers\AdminCtrlFactory;
-use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
-use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
-use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
-use Modularization\Core\Factories\Http\Requests\RequestFactory;
-use Modularization\Core\Factories\Http\Resources\ResourceFactory;
-use Modularization\Core\Factories\Http\Services\ServiceFactory;
-use Modularization\Core\Factories\Models\ModelFactory;
-use Modularization\Core\Factories\Polices\PolicyFactory;
-use Modularization\Core\Factories\Routers\RouteAPIFactory;
-use Modularization\Core\Factories\Routers\RouterFactory;
-use Modularization\Http\Facades\DBFa;
-use Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
-use Modularization\src\Helpers\BuildInput;
+use Cuongpm\Modularization\Core\Components\Http\Controllers\APICtrlComponent;
+use Cuongpm\Modularization\Core\Factories\Http\Controllers\AdminCtrlFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Requests\RequestFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Resources\ResourceFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Services\ServiceFactory;
+use Cuongpm\Modularization\Core\Factories\Models\ModelFactory;
+use Cuongpm\Modularization\Core\Factories\Polices\PolicyFactory;
+use Cuongpm\Modularization\Core\Factories\Routers\RouteAPIFactory;
+use Cuongpm\Modularization\Core\Factories\Routers\RouterFactory;
+use Cuongpm\Modularization\Http\Facades\DBFa;
+use Cuongpm\Modularization\src\Core\Factories\Tests\Feature\FeatureTestFactory;
+use Cuongpm\Modularization\src\Helpers\BuildInput;
 
 class ProjectModuleCommand extends Command
 {

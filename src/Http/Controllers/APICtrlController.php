@@ -6,22 +6,22 @@
  * Time: 9:42 AM
  */
 
-namespace Modularization\Http\Controllers;
+namespace Cuongpm\Modularization\Http\Controllers;
 
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
-use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
-use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
-use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
-use Modularization\Core\Factories\Http\Resources\ResourceFactory;
-use Modularization\Core\Factories\Http\Services\ServiceFactory;
-use Modularization\Core\Factories\Models\ModelFactory;
-use Modularization\Core\Factories\Polices\PolicyFactory;
-use Modularization\Core\Factories\Routers\RouteAPIFactory;
-use Modularization\Core\Factories\Routers\RouterFactory;
-use Modularization\Core\Factories\ServiceProviderFactory;
+use Cuongpm\Modularization\Core\Components\Http\Controllers\APICtrlComponent;
+use Cuongpm\Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Resources\ResourceFactory;
+use Cuongpm\Modularization\Core\Factories\Http\Services\ServiceFactory;
+use Cuongpm\Modularization\Core\Factories\Models\ModelFactory;
+use Cuongpm\Modularization\Core\Factories\Polices\PolicyFactory;
+use Cuongpm\Modularization\Core\Factories\Routers\RouteAPIFactory;
+use Cuongpm\Modularization\Core\Factories\Routers\RouterFactory;
+use Cuongpm\Modularization\Core\Factories\ServiceProviderFactory;
 
 
 class controller

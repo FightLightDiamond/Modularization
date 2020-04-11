@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularization\Http\Facades;
+namespace Cuongpm\Modularization\Http\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

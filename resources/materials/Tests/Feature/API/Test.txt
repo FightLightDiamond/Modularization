@@ -8,7 +8,7 @@
 namespace _namespace_Tests\Feature\API;
 
 
-use Modularization\MultiInheritance\TestTrait;
+use Cuongpm\Modularization\MultiInheritance\TestTrait;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
