@@ -6,7 +6,7 @@
  * Time: 5:34 PM
  */
 
-namespace Cuongpm\Modularization\Core\Factories\ViewComposers;
+namespace Cuongpm\Modularization\Core\Factories\Http\ViewComposers;
 
 
 use Cuongpm\Modularization\Core\Components\Http\ViewComposers\ViewComposerComponent;
