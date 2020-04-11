@@ -5,7 +5,7 @@
  * Time: 5:41 PM
  */
 
-namespace Cuongpm\Modularization\src\MultiInheritance;
+namespace Cuongpm\Modularization\MultiInheritance;
 
 
 /**

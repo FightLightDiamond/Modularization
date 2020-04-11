@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cuongpm\Modularization\Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -27,7 +26,6 @@ class ModularizationTest extends TestCase
             'route' => true,
             'service' => true,
             'test' => true,
-
         ];
 
         $response = $this->post(route('api.render'), $params);

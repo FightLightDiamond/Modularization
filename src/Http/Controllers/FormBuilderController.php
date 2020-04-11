@@ -4,7 +4,7 @@ namespace Cuongpm\Modularization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Cuongpm\Modularization\Core\Factories\FormBuilderFactory;
-use Cuongpm\Modularization\Interfaces\ControllerInterface;
+use Cuongpm\Modularization\Core\Interfaces\ControllerInterface;
 use Illuminate\Support\Facades\View;
 
 /**

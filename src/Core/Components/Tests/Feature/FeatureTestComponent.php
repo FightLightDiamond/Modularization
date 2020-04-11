@@ -5,7 +5,7 @@
  * Time: 12:25 PM
  */
 
-namespace Cuongpm\Modularization\src\Core\Components\Tests\Feature;
+namespace Cuongpm\Modularization\Core\Components\Tests\Feature;
 
 
 use Cuongpm\Modularization\Core\Components\BaseComponent;

@@ -6,7 +6,7 @@
  * Time: 4:55 PM
  */
 
-namespace Cuongpm\Modularization\Interfaces;
+namespace Cuongpm\Modularization\Core\Interfaces;
 
 
 interface ControllerInterface

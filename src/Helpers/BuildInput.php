@@ -5,7 +5,7 @@
  * Time: 12:34 AM
  */
 
-namespace Cuongpm\Modularization\src\Helpers;
+namespace Cuongpm\Modularization\Helpers;
 
 
 use Illuminate\Support\Str;

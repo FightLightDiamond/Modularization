@@ -9,7 +9,7 @@
 namespace Cuongpm\Modularization\Core\Factories;
 
 use Cuongpm\Modularization\Core\Components\FormBuilderComponent;
-use Cuongpm\Modularization\Interfaces\FactoryInterface;
+use Cuongpm\Modularization\Core\Interfaces\FactoryInterface;
 
 class FormBuilderFactory implements FactoryInterface
 {

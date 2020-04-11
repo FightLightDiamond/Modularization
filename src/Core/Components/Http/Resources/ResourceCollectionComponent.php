@@ -5,7 +5,7 @@
  * Time: 11:21 PM
  */
 
-namespace Cuongpm\Modularization\src\Core\Components\Http\Resources;
+namespace Cuongpm\Modularization\Core\Components\Http\Resources;
 
 
 use Cuongpm\Modularization\Core\Components\BaseComponent;
