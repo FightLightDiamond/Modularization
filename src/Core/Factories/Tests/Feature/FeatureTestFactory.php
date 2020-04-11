@@ -15,7 +15,7 @@ class FeatureTestFactory extends BaseFactory
 {
     protected $component;
     protected $auth = 'API';
-    protected $sortPath = 'tests/Feature/';
+    protected $sortPath = 'Tests/Feature/';
     protected $fileName = 'Test.php';
 
     public function __construct(FeatureTestComponent $component)
