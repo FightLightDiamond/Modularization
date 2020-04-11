@@ -17,6 +17,7 @@ use Modularization\Core\Factories\Polices\PolicyFactory;
 use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Modularization\Core\Factories\Routers\RouterFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
 use Modularization\Core\Factories\Http\Services\ServiceFactory;
@@ -96,8 +97,8 @@ class MagicController extends Controller
 
     private function buildMessage($table)
     {
-        $name = ucfirst(camel_case(str_singular($table)));
-        $route = kebab_case(camel_case(($table)));
+        $name = Str::ucfirst(Str::camel(Str::singular($table)));
+        $route = Str::kebab(Str::camel(($table)));
         $mgs = "Route::resource('{$route}' , '{$name}Controller'); \n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
         return $mgs;
@@ -105,8 +106,8 @@ class MagicController extends Controller
 
     public function buildMenu($table, $namespace)
     {
-        $name = (camel_case(($table)));
-        $route = kebab_case(camel_case(($table)));
+        $name = (Str::camel(($table)));
+        $route = Str::kebab(Str::camel(($table)));
 
         return "<li class=\"has-sub root-level\" id=\"{$namespace}Menu\">
             <a>
@@ -129,8 +130,8 @@ class MagicController extends Controller
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
         $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App\\';
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
-        $input['route'] = kebab_case(camel_case(($input['table'])));
-        $input['viewFolder'] = kebab_case(camel_case(str_singular($input['table'])));
+        $input['route'] = Str::kebab(Str::camel(($input['table'])));
+        $input['viewFolder'] = Str::kebab(Str::camel(Str::singular($input['table'])));
 
         return $input;
     }

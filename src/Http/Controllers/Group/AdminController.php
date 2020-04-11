@@ -9,6 +9,7 @@
 namespace Modularization\Http\Controllers\Group;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Modularization\Core\Factories\Http\Controllers\AdminCtrlFactory;
 use Modularization\Core\Factories\ServiceProviderFactory;
 use Modularization\Core\Factories\Views\FormFactory;
@@ -46,8 +47,8 @@ class AdminController extends RenderController
 
     private function buildMessage($table)
     {
-        $name = ucfirst(camel_case(str_singular($table)));
-        $route = kebab_case(camel_case(($table)));
+        $name = Str::ucfirst(Str::camel(Str::singular($table)));
+        $route = Str::kebab(Str::camel(($table)));
         $mgs = "Route::resource('{$route}' , '{$name}Controller'); \n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
 
@@ -56,8 +57,8 @@ class AdminController extends RenderController
 
     public function buildMenu($table, $namespace)
     {
-        $name = (camel_case(($table)));
-        $route = kebab_case(camel_case(($table)));
+        $name = (Str::camel(($table)));
+        $route = Str::kebab(Str::camel(($table)));
 
         return "<li class=\"has-sub root-level\" id=\"{$namespace}Menu\">
             <a>

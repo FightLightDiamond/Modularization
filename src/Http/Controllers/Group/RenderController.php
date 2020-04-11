@@ -10,6 +10,7 @@ namespace Modularization\Http\Controllers\Group;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Arr;
 use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
 use Modularization\Core\Factories\Http\Repositories\RepositoryFactory;
 use Modularization\Core\Factories\Http\Requests\RequestFactory;
@@ -104,7 +105,7 @@ class RenderController extends Controller
         $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : "App\\";
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
         $input['route'] = BuildInput::route($table);
-        $input['viewFolder'] = kebab_case(camel_case(str_singular($table)));
+        $input['viewFolder'] = Str::kebab(Str::camel(Str::singular($table)));
 
         $input['class'] = BuildInput::classe($table);
 

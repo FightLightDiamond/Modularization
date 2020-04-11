@@ -8,6 +8,7 @@
 
 namespace Modularization\Core\Components\Http\Requests;
 
+use Illuminate\Support\Arr;
 use Modularization\Core\Components\BaseComponent;
 use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
@@ -41,7 +42,7 @@ class RequestComponent extends BaseComponent
         $this->buildNameSpace($namespace);
         $this->buildRule($table);
         $this->buildMessage();
-        $this->buildClassName(str_singular($table) . $action);
+        $this->buildClassName(Str::singular($table) . $action);
 
         return $this->source;
     }

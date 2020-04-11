@@ -205,7 +205,7 @@ class ProjectModuleCommand extends Command
         $input['prefix'] = '';
         $input['namespace'] = $this->namespace;
         $input['route'] = BuildInput::route($table);
-//        $input['viewFolder'] = kebab_case(camel_case(str_singular($table)));
+//        $input['viewFolder'] = Str::kebab(Str::camel(Str::singular($table)));
 
         return $input;
     }

@@ -39,9 +39,11 @@ class ConstantComponent extends BaseComponent
     {
         $constants = '';
         $upper_columns = array_map('strtoupper', $columns);
+
         foreach ($columns as $key => $column) {
             $constants .= '  const ' . $upper_columns[$key] . '_COL = \'' . $column . '\'' . ";\n";
         }
+
         $this->working(DecoHelper::COLUMN, $constants);
     }
 
@@ -49,9 +51,11 @@ class ConstantComponent extends BaseComponent
     {
         $constants = '';
         $upper = array_map('strtoupper', $tables);
+
         foreach ($tables as $key => $table) {
             $constants .= '  const ' . $upper[$key] . '_TB = \'' . $table . '\'' . ";\n";
         }
+
         $this->working(DecoHelper::TABLE, $constants);
     }
 
@@ -61,6 +65,7 @@ class ConstantComponent extends BaseComponent
         $columns = $this->getAllColumn($tables);
         $this->buildTable($tables);
         $this->buildColumn($columns);
+
         return $this->source;
     }
 }

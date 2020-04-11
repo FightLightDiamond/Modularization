@@ -36,7 +36,7 @@ class FormBuilderComponent extends BaseComponent
 
     private function buildFormData($table)
     {
-        $table = 'form' . ucfirst($table) . 'Data';
+        $table = 'form' . Str::ucfirst($table) . 'Data';
         $material = str_replace(DecoHelper::FORM_DATA, $table, $this->ingredient->formData);
         $this->working(DecoHelper::FORM_DATA, $material);
     }
@@ -52,7 +52,7 @@ class FormBuilderComponent extends BaseComponent
 
     private function buildFormGroup($table)
     {
-        $table = 'form' . ucfirst($table) . 'Group';
+        $table = 'form' . Str::ucfirst($table) . 'Group';
         $material = str_replace(DecoHelper::FORM_GROUP, $table, $this->ingredient->formGroup);
         $this->working(DecoHelper::FORM_GROUP, $material);
     }

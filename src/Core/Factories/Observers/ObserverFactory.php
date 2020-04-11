@@ -8,7 +8,7 @@
 
 namespace Modularization\Core\Factories\Observers;
 
-
+use Illuminate\Support\Str;
 use Modularization\Core\Components\Observers\ObserverComponent;
 use Modularization\Core\Factories\_Interface;
 
@@ -32,7 +32,7 @@ class ObserverFactory implements _Interface
         if (!is_dir(base_path($path . '/Observers'))) {
             mkdir(base_path($path . '\Observers'));
         }
-        return app_path('Observers/' . ucfirst(str_singular($table)) . 'Observer.php');
+        return app_path('Observers/' . Str::ucfirst(Str::singular($table)) . 'Observer.php');
     }
 
     public function building($table, $namespace = 'App\\', $path = 'app')

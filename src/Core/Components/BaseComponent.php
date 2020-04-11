@@ -8,7 +8,7 @@
 
 namespace Modularization\Core\Components;
 
-
+use Illuminate\Support\Arr;
 use Modularization\Helpers\DecoHelper;
 
 class BaseComponent
@@ -89,14 +89,14 @@ class BaseComponent
 
     protected function buildName($table)
     {
-        $this->working(DecoHelper::NAME, ucfirst(str_singular($table)));
+        $this->working(DecoHelper::NAME, Str::ucfirst(Str::singular($table)));
     }
 
     protected $class;
 
     protected function buildClassName($table, $tail = '')
     {
-        $this->class = str_singular(ucfirst(camel_case($table)));
+        $this->class = Str::singular(Str::ucfirst(Str::camel($table)));
         $this->working(DecoHelper::CLASSES,  $this->class . $tail);
     }
 
@@ -112,18 +112,18 @@ class BaseComponent
 
     protected function buildView($table, $prefix)
     {
-        $view = $prefix . str_singular(kebab_case(camel_case($table)));
+        $view = $prefix . Str::singular(Str::kebab(Str::camel($table)));
         $this->working(DecoHelper::VIEW, $view);
     }
 
     protected function buildVariable($table)
     {
-        $this->working(DecoHelper::VARIABLE, str_singular(camel_case($table)));
+        $this->working(DecoHelper::VARIABLE, Str::singular(Str::camel($table)));
     }
 
     protected function buildVariables($table)
     {
-        $this->working(DecoHelper::VARIABLES, camel_case($table));
+        $this->working(DecoHelper::VARIABLES, Str::camel($table));
     }
 
     protected function working($changed, $material)

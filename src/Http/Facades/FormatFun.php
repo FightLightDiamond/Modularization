@@ -96,7 +96,7 @@ class FormatFun
 
     public function formatAppName($name)
     {
-        return ucfirst(Str::camel(Str::singular($name)));
+        return Str::ucfirst(Str::camel(Str::singular($name)));
     }
 
     function convertToHoursMins($time, $format = '%02d hours %02d minutes')

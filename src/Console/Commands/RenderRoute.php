@@ -37,7 +37,7 @@ class RenderRoute extends Command
      */
     public function handle()
     {
-        $controller = ucfirst($this->argument('controller'));
+        $controller = Str::ucfirst($this->argument('controller'));
         $except =
             [
                 '__construct',
@@ -62,14 +62,14 @@ class RenderRoute extends Command
     {
         $class_methods = get_class_methods(app("\App\Http\Controllers\\" . $controller . 'Controller'));
         $content = "<?php \n";
-        $prefix = str_replace("\\-", '/', kebab_case($controller));
+        $prefix = str_replace("\\-", '/', Str::kebab($controller));
         $content .= "Route::group(['prefix'=> '" .$prefix. "'], function () {\n";
         $routeName = str_replace('/', ".", $prefix);
         $fileName = str_replace('/', "-", $prefix);
 
         foreach ($class_methods as $method_name) {
             if (!in_array($method_name, $except)) {
-                $content .= "   Route::get('" . kebab_case($method_name) . "', '" . $controller . "Controller@" . $method_name . "')->name('" . $routeName . "." . $method_name . "');\n";
+                $content .= "   Route::get('" . Str::kebab($method_name) . "', '" . $controller . "Controller@" . $method_name . "')->name('" . $routeName . "." . $method_name . "');\n";
             }
         }
 

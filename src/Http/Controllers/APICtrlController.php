@@ -10,6 +10,7 @@ namespace Modularization\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Modularization\Core\Components\Http\Controllers\APICtrlComponent;
 use Modularization\Core\Factories\Http\Controllers\APICtrlFactory;
 use Modularization\Core\Factories\Http\Repositories\InterfaceFactory;
@@ -92,8 +93,8 @@ class controller
 
     private function buildMessage($table)
     {
-        $name = ucfirst(camel_case(str_singular($table)));
-        $route = kebab_case(camel_case(($table)));
+        $name = Str::ucfirst(Str::camel(Str::singular($table)));
+        $route = Str::kebab(Str::camel(($table)));
         $mgs = "Route::resource('{$route}' , '{$name}APIController'); \n";
         $mgs .= '$this->app->bind(' . $name . 'Repository::class, ' . $name . 'RepositoryEloquent::class);' . " \n";
         return $mgs;
@@ -123,8 +124,8 @@ class controller
         $input['path'] = isset($input['path']) ? $input['path'] : 'app';
         $input['namespace'] = isset($input['namespace']) ? $input['namespace'] : 'App\\';
         $input['prefix'] = isset($input['prefix']) ? $input['prefix'] . '::' : '';
-        $input['route'] = kebab_case(camel_case(($input['table'])));
-        $input['viewFolder'] = kebab_case(camel_case(str_singular($input['table'])));
+        $input['route'] = Str::kebab(Str::camel(($input['table'])));
+        $input['viewFolder'] = Str::kebab(Str::camel(Str::singular($input['table'])));
         return $input;
     }
 }

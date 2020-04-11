@@ -8,7 +8,7 @@
 
 namespace Modularization\Core\Components\Observers;
 
-
+use Illuminate\Support\Arr;
 use Modularization\Core\Components\BaseComponent;
 use Modularization\Helpers\DecoHelper;
 
@@ -22,9 +22,9 @@ class ObserverComponent extends BaseComponent
 
     private function buildDependency($table)
     {
-        $table = str_singular($table);
+        $table = Str::singular($table);
         $variable = '$' . $table;
-        $model = ucfirst($table);
+        $model = Str::ucfirst($table);
         $dependency = $model . ' ' . $variable;
         $this->working(DecoHelper::DEPENDENCY, $dependency);
     }

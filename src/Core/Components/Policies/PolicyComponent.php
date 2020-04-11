@@ -8,7 +8,7 @@
 
 namespace Modularization\Core\Components\Policies;
 
-
+use Illuminate\Support\Arr;
 use Modularization\Core\Components\BaseComponent;
 use Modularization\Helpers\DecoHelper;
 
@@ -21,7 +21,7 @@ class PolicyComponent extends BaseComponent
 
     public function buildName($table)
     {
-        $this->working(DecoHelper::NAME, str_singular($table));
+        $this->working(DecoHelper::NAME, Str::singular($table));
     }
 
     public function building($table, $namespace = 'app')

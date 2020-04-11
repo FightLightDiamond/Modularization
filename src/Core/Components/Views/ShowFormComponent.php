@@ -8,6 +8,7 @@
 
 namespace Modularization\Core\Components\Views;
 
+use Illuminate\Support\Arr;
 use Modularization\Core\Components\BaseComponent;
 use Modularization\Http\Facades\DBFa;
 use Modularization\Helpers\DecoHelper;
@@ -36,7 +37,7 @@ class ShowFormComponent extends BaseComponent
         foreach (DBFa::getDataTypes($table) as $column => $type) {
             $packet .= '<tr>';
             $packet .= "<th>{{__('label.{$column}')}}</th>\n";
-            $variable = '$' . str_singular($table);
+            $variable = '$' . Str::singular($table);
             $packet .= "<td>{!! $variable->$column !!}</td>\n";
             $packet .='</tr>';
         }
