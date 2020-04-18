@@ -122,22 +122,22 @@ class FormFactory
         try {
             mkdir(base_path($path), 0755, true);
         } catch (\Exception $exception) {
-            echo ($exception->getMessage()) . '</br>';
+            echo ($exception->getMessage(), 500) . '</br>';
         }
         try {
             mkdir(base_path($path . '/resources'), 0755, true);
         } catch (\Exception $exception) {
-            echo ($exception->getMessage()) . '</br>';
+            echo ($exception->getMessage(), 500) . '</br>';
         }
         try {
             mkdir(base_path($path . '/resources/views'), 0755, true);
         } catch (\Exception $exception) {
-            echo ($exception->getMessage()) . '</br>';
+            echo ($exception->getMessage(), 500) . '</br>';
         }
         try {
             mkdir(base_path($path . '/resources/views/' . $input['viewFolder']), 0755, true);
         } catch (\Exception $exception) {
-            echo ($exception->getMessage()) . '</br>';
+            echo ($exception->getMessage(), 500) . '</br>';
         }
         $this->path = $path . '/resources/views';
     }

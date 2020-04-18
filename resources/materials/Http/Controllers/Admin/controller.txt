@@ -64,10 +64,10 @@ class _class_AdminController extends Controller
             $input = $request->all();
             $data = $this->service->index($input);
 
-           return new _class_ResourceCollection($data);
+            return new _class_ResourceCollection($data);
         } catch (\Exception $exception) {
             logger($exception);
-            return response()->json($exception->getMessage());
+            return response()->json($exception->getMessage(), 500);
         }
     }
 
@@ -95,7 +95,7 @@ class _class_AdminController extends Controller
             return new _class_Resource($_var_);
         } catch (\Exception $exception) {
             logger($exception);
-            return response()->json($exception->getMessage());
+            return response()->json($exception->getMessage(), 500);
         }
     }
 
@@ -121,7 +121,7 @@ class _class_AdminController extends Controller
             return new _class_Resource($_var_);
         } catch (\Exception $exception) {
             logger($exception);
-            return response()->json($exception->getMessage());
+            return response()->json($exception->getMessage(), 500);
         }
     }
 
@@ -149,7 +149,7 @@ class _class_AdminController extends Controller
             return new _class_Resource($data);
         } catch (\Exception $exception) {
             logger($exception);
-            return response()->json($exception->getMessage());
+            return response()->json($exception->getMessage(), 500);
         }
     }
 
@@ -174,7 +174,7 @@ class _class_AdminController extends Controller
             return new _class_Resource($data);
         } catch (\Exception $exception) {
             logger($exception);
-            return response()->json($exception->getMessage());
+            return response()->json($exception->getMessage(), 500);
         }
     }
 }
