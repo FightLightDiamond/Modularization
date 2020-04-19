@@ -80,6 +80,11 @@ trait ModelsTrait
                 $query->with($value);
                 continue;
             }
+
+            if ($field === '{randomOrder}') {
+                $query->inRandomOrder();
+                continue;
+            }
         }
 
         return $query;
@@ -109,7 +114,6 @@ trait ModelsTrait
 
         return $query;
     }
-
 
     //========================ACTION============================>
 
