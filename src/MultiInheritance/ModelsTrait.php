@@ -15,6 +15,11 @@ use Illuminate\Support\Str;
 use Cuongpm\Modularization\Http\Facades\FormatFa;
 use Cuongpm\Uploader\UploadAble;
 
+const SORT_FILTER = 'sort';
+const MY_FILTER = 'my';
+const RANDOM_ORDER_FILTER = '{randomOrder}';
+const RELATIONSHIP_FILTER = '{relationship}';
+
 trait ModelsTrait
 {
     use UploadAble;
@@ -66,22 +71,22 @@ trait ModelsTrait
                 continue;
             }
 
-            if ($field === 'sort') {
+            if ($field === SORT_FILTER) {
                 $query->sortBy($value);
                 continue;
             }
 
-            if ($field === 'my') {
+            if ($field === MY_FILTER) {
                 $query->my();
                 continue;
             }
 
-            if ($field === 'relationship') {
+            if ($field === RELATIONSHIP_FILTER) {
                 $query->with($value);
                 continue;
             }
 
-            if ($field === '{randomOrder}') {
+            if ($field === RANDOM_ORDER_FILTER) {
                 $query->inRandomOrder();
                 continue;
             }
