@@ -92,7 +92,7 @@ class _class_APIController extends Controller
             $input = $request->all();
             $_var_ = $this->service->store($input);
 
-            return new _class_Resource($_var_);
+            return response()->json(new _class_Resource($_var_));
         } catch (\Exception $exception) {
             logger($exception);
             return response()->json($exception->getMessage(), 500);
@@ -118,7 +118,7 @@ class _class_APIController extends Controller
         try {
             $_var_ = $this->service->show($id);
 
-            return new _class_Resource($_var_);
+            return response()->json(new _class_Resource($_var_));
         } catch (\Exception $exception) {
             logger($exception);
             return response()->json($exception->getMessage(), 500);

@@ -62,9 +62,9 @@ class _class_AdminController extends Controller
     {
         try {
             $input = $request->all();
-            $data = $this->service->index($input);
+            $_var_ = $this->service->index($input);
 
-            return new _class_ResourceCollection($data);
+            return new _class_ResourceCollection($_var_);
         } catch (\Exception $exception) {
             logger($exception);
             return response()->json($exception->getMessage(), 500);
@@ -92,7 +92,7 @@ class _class_AdminController extends Controller
             $input = $request->all();
             $_var_ = $this->service->store($input);
 
-            return new _class_Resource($_var_);
+            return response()->json(new _class_Resource($_var_));
         } catch (\Exception $exception) {
             logger($exception);
             return response()->json($exception->getMessage(), 500);
@@ -118,7 +118,7 @@ class _class_AdminController extends Controller
         try {
             $_var_ = $this->service->show($id);
 
-            return new _class_Resource($_var_);
+            return response()->json(new _class_Resource($_var_));
         } catch (\Exception $exception) {
             logger($exception);
             return response()->json($exception->getMessage(), 500);
@@ -144,9 +144,9 @@ class _class_AdminController extends Controller
     {
         $input = $request->all();
         try {
-            $data = $this->service->update($input, $id);
+            $_var_ = $this->service->update($input, $id);
 
-            return new _class_Resource($data);
+            return response()->json(new _class_Resource($_var_));
         } catch (\Exception $exception) {
             logger($exception);
             return response()->json($exception->getMessage(), 500);
@@ -169,9 +169,9 @@ class _class_AdminController extends Controller
     public function destroy($id)
     {
         try {
-            $data = $this->service->destroy($id);
+            $_var_ = $this->service->destroy($id);
 
-            return new _class_Resource($data);
+            return response()->json(new _class_Resource($_var_));
         } catch (\Exception $exception) {
             logger($exception);
             return response()->json($exception->getMessage(), 500);
